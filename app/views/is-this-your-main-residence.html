@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you have a bank account in your name?
+Is this your main or sole residence?
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,22 +12,26 @@ Do you have a bank account in your name?
   }) }}
 {% endblock %}
 
+{% set address %}
+You address you have given is <address>{{ data['address-line-1'] }}<br>{% if data['address-line-2'] %}{{ data['address-line-2'] }}<br>{% endif %}{{ data['address-town'] }}<br>{% if data['address-county'] %}{{ address['address-county'] }}<br>{% endif %} {{ data['address-postcode'] }}<br></address>
+{% endset %}
+
 {% block content %}
 <form action="">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        name: "do-you-have-a-bank-account",
+        name: "do-you-pay-council-tax",
         fieldset: {
           legend: {
-            text: "Do you have a bank account in your name?",
+            text: "Is this your main or sole residence?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         hint: {
-          text: "The name on the bank account must be the same as the name you're applying under"
+          text: address | safe
         },
         items: [
           {

@@ -2,12 +2,13 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Does your household pay council tax
+Does your household pay council tax?
 {% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
-    text: "Back"
+    text: "Back",
+    href: "/"
   }) }}
 {% endblock %}
 
@@ -17,10 +18,10 @@ Does your household pay council tax
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        name: "do-you-pay-council-tax",
+        name: "does-your-household-pay-council-tax",
         fieldset: {
           legend: {
-            text: "Does your household pay council tax",
+            text: "Does your household pay council tax?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }

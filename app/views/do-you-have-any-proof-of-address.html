@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you have a bank account in your name?
+Do you have any proof of address?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,16 +18,13 @@ Do you have a bank account in your name?
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        name: "do-you-have-a-bank-account",
+        name: "do-you-have-any-proof-of-address",
         fieldset: {
           legend: {
-            text: "Do you have a bank account in your name?",
+            text: "Do you have any proof of address?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
-        },
-        hint: {
-          text: "The name on the bank account must be the same as the name you're applying under"
         },
         items: [
           {
