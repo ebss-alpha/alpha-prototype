@@ -1,0 +1,78 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What type of central heating does your home have?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<form action="">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukRadios({
+        name: "central-heating-type",
+        fieldset: {
+          legend: {
+            text: "What type of central heating does your home have?",
+            hint: "Central heating is a central system that generates heat for multiple rooms",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "no-central-heating",
+            text: "No central heating"
+          },
+          {
+            value: "mains-gas",
+            text: "Mains gas"
+          },
+          {
+            value: "tank-or-bottled-gas",
+            text: "Tank or bottled gas"
+          },
+          {
+            value: "electric",
+            text: "Electric (including storage heaters)"
+          },
+          {
+            value: "oil",
+            text: "Oil"
+          },
+          {
+            value: "wood",
+            text: "Wood (for example, logs, waste wood or pellets)"
+          },
+          {
+            value: "solid-fuel",
+            text: "Solid fuel (for example, coal)"
+          },
+          {
+            value: "renewable",
+            text: "Renewable energy (for example, solar thermal or heat pumps)"
+          },
+          {
+            value: "heat-network",
+            text: "District or communal heat network"
+          },
+          {
+            value: "other",
+            text: "Other"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How would you describe where you live?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<form action="">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukRadios({
+        name: "describe-where-you-live",
+        fieldset: {
+          legend: {
+            text: "How would you describe where you live?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "housing-association",
+            text: "I rent from a social or housing association"
+          },
+          {
+            value: "care-home",
+            text: "I live in a care home or assisted living facility"
+          },
+          {
+            value: "park-home",
+            text: "I live permanently in a park home"
+          },
+          {
+            value: "registered-traveller-site",
+            text: "I live on a permanent registered Gypsy and Traveller site run privately or by a local council"
+          },
+          {
+            value: "heat-network",
+            text: "I live in a building supplied by a heat network",
+            hint: {
+              text: "Where heating is provided by a shared boiler, or another heat source, that provides heat to all homes within that building or multiple buildings."
+            }
+          },
+          {
+            value: "boat",
+            text: "I live on a houseboat on a long term, permanent, or home mooring"
+          },
+          {
+            value: "rent-private-landlord",
+            text: "I rent from a private landlord"
+          },
+          {
+            value: "off-grid",
+            text: "I live on a home without a connection to the electricity or gas grid"
+          },
+          {
+            value: "other",
+            text: "I don't live somewhere that fit into any of the categories, but I think I am eligible for the Energy Bill Support Scheme Alternative Fund"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+
+{% endblock %}
