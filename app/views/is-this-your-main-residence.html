@@ -8,7 +8,7 @@ Is this your main or sole residence?
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/"
+    href: "describe-where-you-live"
   }) }}
 {% endblock %}
 
@@ -17,12 +17,12 @@ You address you have given is <address>{{ data['address-line-1'] }}<br>{% if dat
 {% endset %}
 
 {% block content %}
-<form action="">
+<form action="residence-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        name: "do-you-pay-council-tax",
+        name: "is-this-your-main-residence",
         fieldset: {
           legend: {
             text: "Is this your main or sole residence?",

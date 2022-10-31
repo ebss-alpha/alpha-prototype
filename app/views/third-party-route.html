@@ -1,0 +1,21 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Third party branch starts here
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "applying-for-yourself-or-someone-else"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Third party branch starts here</h1>
+  </div>
+</div>
+{% endblock %}

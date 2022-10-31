@@ -8,12 +8,12 @@ What is your address?
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/"
+    href: "start"
   }) }}
 {% endblock %}
 
 {% block content %}
-<form action="">
+<form action="central-heating-type">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {% call govukFieldset({

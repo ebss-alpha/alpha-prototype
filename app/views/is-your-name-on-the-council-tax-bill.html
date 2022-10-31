@@ -8,12 +8,12 @@ Is your name on the council tax bill?
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/"
+    href: "does-your-household-pay-council-tax"
   }) }}
 {% endblock %}
 
 {% block content %}
-<form action="">
+<form action="name-on-bill-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({

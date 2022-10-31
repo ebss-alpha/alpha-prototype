@@ -1,0 +1,76 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What are your bank account or building society details?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "do-you-have-a-bank-account"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">What are your bank account or building society details?</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukInput({
+      label: {
+        text: "Name on the account"
+      },
+      id: "name-on-the-account",
+      name: "name-on-the-account",
+      autocomplete: "name",
+      spellcheck: false
+    }) }}
+    
+    {{ govukInput({
+      label: {
+        text: "Sort code"
+      },
+      classes: "govuk-input--width-5",
+      hint: {
+        text: "Must be 6 digits long"
+      },
+      id: "sort-code",
+      name: "sort-code",
+      inputmode: "numeric",
+      spellcheck: false
+    }) }}
+    
+    {{ govukInput({
+      label: {
+        text: "Account number"
+      },
+      classes: "govuk-input--width-10",
+      hint: {
+        text: "Must be between 6 and 8 digits long"
+      },
+      id: "account-number",
+      name: "account-number",
+      inputmode: "numeric",
+      spellcheck: false
+    }) }}
+    
+    {{ govukInput({
+      label: {
+        text: "Building society roll number (if you have one)"
+      },
+      classes: "govuk-input--width-10",
+      hint: {
+        text: "You can find it on your card, statement or passbook"
+      },
+      id: "roll-number",
+      name: "roll-number",
+      spellcheck: false
+    }) }}
+    
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </div>
+</div>
+{% endblock %}

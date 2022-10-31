@@ -8,12 +8,12 @@ Does your household pay council tax?
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/"
+    href: "is-this-your-main-residence"
   }) }}
 {% endblock %}
 
 {% block content %}
-<form action="">
+<form action="council-tax-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
@@ -25,9 +25,6 @@ Does your household pay council tax?
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
-        },
-        hint: {
-          text: "The name on the bank account must be the same as the name you're applying under"
         },
         items: [
           {
