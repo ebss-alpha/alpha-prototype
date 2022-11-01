@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Is this your main or sole residence?
+Is this your main or only home?
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,26 +12,25 @@ Is this your main or sole residence?
   }) }}
 {% endblock %}
 
-{% set address %}
-You address you have given is <address>{{ data['address-line-1'] }}<br>{% if data['address-line-2'] %}{{ data['address-line-2'] }}<br>{% endif %}{{ data['address-town'] }}<br>{% if data['address-county'] %}{{ address['address-county'] }}<br>{% endif %} {{ data['address-postcode'] }}<br></address>
-{% endset %}
+
 
 {% block content %}
-<form action="residence-check">
+<form action="home-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body">You address you have given is:<address>{{ data['address-line-1'] }}<br>{% if data['address-line-2'] %}{{ data['address-line-2'] }}<br>{% endif %}{{ data['address-town'] }}<br>{% if data['address-county'] %}{{ address['address-county'] }}<br>{% endif %} {{ data['address-postcode'] }}<br></address>      </p>
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        name: "is-this-your-main-residence",
+        name: "is-this-your-main-home",
         fieldset: {
           legend: {
-            text: "Is this your main or sole residence?",
+            text: "Is this your main or only home?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         hint: {
-          text: address | safe
+          text: "If you own multiple houses, only your main home is eligible for energy bill support."  
         },
         items: [
           {

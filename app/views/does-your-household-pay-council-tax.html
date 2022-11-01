@@ -8,7 +8,7 @@ Does your household pay council tax?
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "is-this-your-main-residence"
+    href: "is-this-your-main-home"
   }) }}
 {% endblock %}
 
@@ -19,6 +19,9 @@ Does your household pay council tax?
       {{ govukRadios({
         classes: "govuk-radios--inline",
         name: "does-your-household-pay-council-tax",
+        hint: {
+          text: "Your local council will use council tax records to check you live in. "
+        },
         fieldset: {
           legend: {
             text: "Does your household pay council tax?",

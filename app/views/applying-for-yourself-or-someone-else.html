@@ -19,6 +19,9 @@ Are you applying for yourself or on someone else's behalf?
       {{ govukRadios({
         classes: "govuk-radios--inline",
         name: "applying-for-yourself-or-someone-else",
+        hint: {
+          text: "If you are applying on someone else’s behalf, you will need to give information about yourself as well as about the person you’re applying for."
+        },
         fieldset: {
           legend: {
             text: "Are you applying for yourself or on someone else's behalf?",
@@ -29,11 +32,11 @@ Are you applying for yourself or on someone else's behalf?
         items: [
           {
             value: "myself",
-            text: "Myself"
+            text: "For myself"
           },
           {
             value: "someone-else",
-            text: "Someone else"
+            text: "One someone else's behalf"
           }
         ]
       }) }}

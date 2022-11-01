@@ -23,8 +23,8 @@ router.get(['/third-party-check'], (req, res) => {
   }
 })
 
-router.get(['/residence-check'], (req, res) => {
-  if (req.session.data['is-this-your-main-residence'] === 'yes') {
+router.get(['/home-check'], (req, res) => {
+  if (req.session.data['is-this-your-main-home'] === 'yes') {
     res.redirect('/does-your-household-pay-council-tax')
   } else {
     res.redirect('/ineligible')

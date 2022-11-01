@@ -19,6 +19,9 @@ Is your name on the council tax bill?
       {{ govukRadios({
         classes: "govuk-radios--inline",
         name: "is-your-name-on-the-council-tax-bill",
+        hint: {
+          text: "If your name is not on the council tax bill. This will make it easier to check."
+        },
         fieldset: {
           legend: {
             text: "Is your name on the council tax bill?",
