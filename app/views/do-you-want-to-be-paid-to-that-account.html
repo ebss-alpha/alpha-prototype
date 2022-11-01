@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you want to be paid to that bank account?
+Do you want your energy bill support payment sent to that bank account? 
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,15 +13,15 @@ Do you want to be paid to that bank account?
 {% endblock %}
 
 {% block content %}
-<form action="">
+<form action="payment-method-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        name: "do-you-want-be-paid-to-that-bank-account",
+        name: "do-you-want-your-energy-bill-support-sent-to-that-account",
         fieldset: {
           legend: {
-            text: "Do you want to be paid to that bank account?",
+            text: "Do you want your energy bill support payment sent to that bank account?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }

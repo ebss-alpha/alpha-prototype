@@ -54,3 +54,11 @@ router.get(['/bank-account-check'], (req, res) => {
     res.redirect('/how-would-you-like-to-be-paid')
   }
 })
+
+router.get(['/payment-method-check'], (req, res) => {
+  if (req.session.data['do-you-want-your-energy-bill-support-sent-to-that-account'] === 'yes') {
+    res.redirect('/confirmation')
+  } else {
+    res.redirect('/how-would-you-like-to-be-paid')
+  }
+})
