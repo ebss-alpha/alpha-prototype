@@ -9,7 +9,14 @@ Confirmation page
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Confirmation page</h1>
+    {{ govukPanel({
+      titleText: "Application received",
+      html: "Reference number<br><strong>xxxxxxxx</strong>"
+    }) }}
+    <p>Your application for energy bill support has been submitted. You will receive confirmation to the email address you provided.</p>
+    <h2 class="govuk-heading-m">What happens next</h2>
+    <p>Your application will be checked to make sure you are eligible.</p>
+    <p>You will be contacted by the Department for Business, Energy and Industrial Strategy or your local council to tell you about the outcome of your application.</p>
   </div>
 </div>
 {% endblock %}
