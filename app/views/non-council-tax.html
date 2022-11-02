@@ -1,0 +1,29 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Non-council tax branch
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "does-your-household-pay-council-tax"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Non-council tax branch</h1>
+    <p class="govuk-body">Here's where a branch for non-council tax paying individuals would go.</p>
+    <p class="govuk-body">The continue link below returns you to the branch for individuals that pay council tax.</p>
+    {{ govukButton({
+      text: "Continue",
+      href: "do-you-have-a-bank-account"
+    }) }}
+  </div>
+</div>
+{% endblock %}

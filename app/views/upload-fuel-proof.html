@@ -1,0 +1,46 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Upload proof of address
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "afp-and-ebss"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<form action="what-is-your-full-name">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Upload proof that you use alternative fuels to heat your home</h1>
+      <p class="govuk-body">You must upload proof that you use alternative fuels to heat your home. You should upload: </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a delivery note</li>
+        <li>a receipt</li>
+      </ul>
+      <p class="govuk-body">Your document must be:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>no more than XX size</li>
+        <li>these file types </li>
+      </ul>
+      
+      {{ govukFileUpload({
+        id: "fuel-proof",
+        name: "fuel-proof",
+        label: {
+          text: "Upload a file"
+        }
+      }) }}
+      {{ govukButton({
+        text: "Confirm and continue"
+      }) }}
+      <input type="hidden" name="afp-and-ebss" value="1">
+    </div>
+  </div>
+</form>
+
+{% endblock %}

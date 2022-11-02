@@ -8,12 +8,12 @@ What is your address?
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "start"
+    href: "applying-for-yourself-or-someone-else"
   }) }}
 {% endblock %}
 
 {% block content %}
-<form action="central-heating-type">
+<form action="is-this-your-main-home">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {% call govukFieldset({
@@ -23,7 +23,7 @@ What is your address?
           isPageHeading: true
         }
       }) %}
-      <p class="govuk-hint">We will use your postcode to check whether your home is eligible for energy bill support.  </p>
+      <p class="govuk-hint">We will use your postcode to check whether your home is eligible for energy bill support.</p>
         {{ govukInput({
           label: {
             text: 'Address line 1'

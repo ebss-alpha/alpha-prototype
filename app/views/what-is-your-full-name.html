@@ -5,14 +5,19 @@
 What is your full name?
 {% endblock %}
 
+{% set afpAndEbss = data['afp-and-ebss'] == '1' %}
+{% set backLink = 'upload-fuel-proof' if afpAndEbss else 'ebss-only' %}
+
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "applying-for-yourself-or-someone-else"
+    href: backLink
   }) }}
 {% endblock %}
 
 {% block content %}
+<!--{{ afpAndEbss }}-->
 <form action="what-is-your-date-of-birth">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">

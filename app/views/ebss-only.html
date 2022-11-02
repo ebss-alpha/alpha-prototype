@@ -1,0 +1,30 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You can apply for the £400 Energy Bills Support Scheme payment
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "central-heating-type"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You can apply for the £400 Energy Bills Support Scheme payment</h1>
+    <p class="govuk-body">Based on your answers, you might be able to get the £400 Energy Bills Support Scheme payment.</p>
+    <p class="govuk-body">We need to ask you additional questions to complete your application so we can check you are eligible.</p>
+    {{ govukButton({
+      text: "Continue",
+      href: "what-is-your-full-name"
+    }) }}
+  </div>
+</div>
+
+{% endblock %}

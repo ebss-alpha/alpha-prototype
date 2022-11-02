@@ -2,8 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Third party branch starts here
-{% endblock %}
+Third party branch{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -12,10 +11,18 @@ Third party branch starts here
   }) }}
 {% endblock %}
 
+
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Third party branch starts here</h1>
+    <h1 class="govuk-heading-l">Third party branch</h1>
+    <p class="govuk-body">Here's where a branch for those applying on someone else's behalf will go.</p>
+    <p class="govuk-body">The continue link below returns you to the branch for individuals applying for themselves.</p>
+    {{ govukButton({
+      text: "Continue",
+      href: "what-is-your-address"
+    }) }}
   </div>
 </div>
 {% endblock %}

@@ -7,17 +7,22 @@ module.exports = router
 
 const afpOptions = ['gas', 'oil', 'wood', 'solid-fuel', 'heat-network']
 
+router.get(['/'], (req, res) => {
+  req.session.data = {}
+  res.render('index.html')
+})
+
 router.get(['/afp-check'], (req, res) => {
   if (afpOptions.some(option => option === req.session.data['central-heating-type'])) {
-    res.redirect('/afp-route')
+    res.redirect('/afp-and-ebss')
   } else {
-    res.redirect('/applying-for-yourself-or-someone-else')
+    res.redirect('/ebss-only')
   }
 })
 
 router.get(['/third-party-check'], (req, res) => {
   if (req.session.data['applying-for-yourself-or-someone-else'] === 'myself') {
-    res.redirect('/what-is-your-full-name')
+    res.redirect('/what-is-your-address')
   } else {
     res.redirect('/third-party-route')
   }
@@ -25,9 +30,9 @@ router.get(['/third-party-check'], (req, res) => {
 
 router.get(['/home-check'], (req, res) => {
   if (req.session.data['is-this-your-main-home'] === 'yes') {
-    res.redirect('/does-your-household-pay-council-tax')
+    res.redirect('/central-heating-type')
   } else {
-    res.redirect('/ineligible')
+    res.redirect('/ineligible-second-home')
   }
 })
 
@@ -35,7 +40,7 @@ router.get(['/council-tax-check'], (req, res) => {
   if (req.session.data['does-your-household-pay-council-tax'] === 'yes') {
     res.redirect('/is-your-name-on-the-council-tax-bill')
   } else {
-    res.redirect('/do-you-have-any-proof-of-address')
+    res.redirect('/non-council-tax')
   }
 })
 
@@ -43,7 +48,7 @@ router.get(['/name-on-bill-check'], (req, res) => {
   if (req.session.data['is-your-name-on-the-council-tax-bill'] === 'yes') {
     res.redirect('/do-you-have-a-bank-account')
   } else {
-    res.redirect('/do-you-have-any-proof-of-address')
+    res.redirect('/name-not-on-bill')
   }
 })
 
@@ -51,14 +56,6 @@ router.get(['/bank-account-check'], (req, res) => {
   if (req.session.data['do-you-have-a-bank-account'] === 'yes') {
     res.redirect('/what-are-your-bank-account-details')
   } else {
-    res.redirect('/how-would-you-like-to-be-paid')
-  }
-})
-
-router.get(['/payment-method-check'], (req, res) => {
-  if (req.session.data['do-you-want-your-energy-bill-support-sent-to-that-account'] === 'yes') {
-    res.redirect('/confirmation')
-  } else {
-    res.redirect('/how-would-you-like-to-be-paid')
+    res.redirect('/non-bank-account')
   }
 })
