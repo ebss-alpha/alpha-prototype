@@ -1,0 +1,51 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is your full name?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "what-is-your-email-address"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<!--{{ afpAndEbss }}-->
+<form action="phone-check">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukInput({
+        label: {
+          text: "What is your phone number?",
+          isPageHeading: true,
+          classes: "govuk-label--l"
+        },
+        hint: {
+          text: '<div class="govuk-!-margin-bottom-2">Include your local area code.</div><div>The Department for Business, Energy and Industrial Strategy or your local council will use your email address to contact you about your application.</div>' | safe
+        },
+        id: "telephone-number",
+        name: "telephone-number",
+        type: "tel",
+        autocomplete: "tel",
+        classes: "govuk-input--width-20"
+      }) }}
+      {{ govukCheckboxes({
+        name: "no-phone",
+        items: [
+          {
+            value: "no-phone",
+            text: "I don't have access to an phone",
+            behaviour: "exclusive"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+{% endblock %}

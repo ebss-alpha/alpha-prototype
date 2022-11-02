@@ -36,11 +36,27 @@ router.get(['/home-check'], (req, res) => {
   }
 })
 
+router.get(['/email-check'], (req, res) => {
+  if (req.session.data['no-email']) {
+    res.redirect('/what-is-your-phone-number')
+  } else {
+    res.redirect('/does-your-household-pay-council-tax')
+  }
+})
+
+router.get(['/phone-check'], (req, res) => {
+  if (req.session.data['no-phone']) {
+    res.redirect('/difficult-to-contact-individuals')
+  } else {
+    res.redirect('/does-your-household-pay-council-tax')
+  }
+})
+
 router.get(['/council-tax-check'], (req, res) => {
   if (req.session.data['does-your-household-pay-council-tax'] === 'yes') {
     res.redirect('/is-your-name-on-the-council-tax-bill')
   } else {
-    res.redirect('/non-council-tax')
+    res.redirect('/upload-proof-of-address')
   }
 })
 

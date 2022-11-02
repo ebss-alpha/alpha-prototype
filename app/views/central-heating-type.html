@@ -18,11 +18,11 @@ What type of central heating does your home have?
       {{ govukRadios({
         name: "central-heating-type",
         hint: {
-          text: "If you are not on the mains gas grid and use alternative fuels to heat your home, you may be eligible for an additional £100."
+          text: '<div class="govuk-!-margin-bottom-2">If you are not on the mains gas grid and use alternative fuels to heat your home that have been affected by rising prices you may be eligible for the £100 alternative fuel payment.</div><div>You will need to upload proof that you use this fuel on the next screen.</div>' | safe
         },
         fieldset: {
           legend: {
-            text: "What type of central heating does your home have?",
+            text: "What is the main type of central heating in your home?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }

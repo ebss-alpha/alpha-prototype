@@ -17,7 +17,6 @@ Are you applying for yourself or on someone else's behalf?
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
-        classes: "govuk-radios--inline",
         name: "applying-for-yourself-or-someone-else",
         hint: {
           text: "If you are applying on someone else’s behalf, you will need to give information about yourself as well as about the person you’re applying for."
@@ -32,11 +31,15 @@ Are you applying for yourself or on someone else's behalf?
         items: [
           {
             value: "myself",
-            text: "For myself"
+            text: "I am applying for myself"
           },
           {
             value: "someone-else",
-            text: "On someone else's behalf"
+            text: "I am applying on someone else’s behalf"
+          },
+          {
+            value: "manager",
+            text: "I am applying as the manager of a care home or sheltered or supported accommodation"
           }
         ]
       }) }}

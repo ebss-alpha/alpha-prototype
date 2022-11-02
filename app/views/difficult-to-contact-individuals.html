@@ -1,0 +1,29 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Difficult to contact individuals
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "does-your-household-pay-council-tax"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Difficult to contact individuals</h1>
+    <p class="govuk-body">Here's where a branch for difficult to contact individuals would go. This can include recently homeless individuals who do not have reliable access to a phone number or email address.</p>
+    <p class="govuk-body">The continue link below returns you to the branch for individuals have an email address or phone number.</p>
+    {{ govukButton({
+      text: "Continue",
+      href: "does-your-household-pay-council-tax"
+    }) }}
+  </div>
+</div>
+{% endblock %}

@@ -8,7 +8,7 @@ Upload proof of address
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "do-you-have-any-proof-of-address"
+    href: "does-your-household-pay-council-tax"
   }) }}
 {% endblock %}
 
@@ -17,9 +17,14 @@ Upload proof of address
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">Upload proof of address</h1>
+      <p>We need proof that you live at this address. You will need to upload a document such as:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a tenancy agreement</li>
+        <li>a houseboat license</li>
+      </ul>
       {{ govukFileUpload({
-        id: "file-upload-1",
-        name: "file-upload-1",
+        id: "proof-of-address",
+        name: "proof-of-address",
         label: {
           text: "Upload a file"
         }

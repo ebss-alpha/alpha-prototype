@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Does your household pay council tax?
+Do you or your household pay council tax?
 {% endblock %}
 
 {% block beforeContent %}
@@ -20,11 +20,11 @@ Does your household pay council tax?
         classes: "govuk-radios--inline",
         name: "does-your-household-pay-council-tax",
         hint: {
-          text: "Your local council will use council tax records to check you live in. "
+          text: '<div class="govuk-!-margin-bottom-2">Your local council will use council tax records to check you live in.</div><div>If no one in your household pays council tax, you will need to upload proof of address on the next screen.</div>' | safe
         },
         fieldset: {
           legend: {
-            text: "Does your household pay council tax?",
+            text: "Do you or your household pay council tax?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
