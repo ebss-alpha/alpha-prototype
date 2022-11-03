@@ -36,16 +36,8 @@ router.get(['/home-check'], (req, res) => {
   }
 })
 
-router.get(['/email-check'], (req, res) => {
-  if (req.session.data['no-email']) {
-    res.redirect('/what-is-your-phone-number')
-  } else {
-    res.redirect('/does-your-household-pay-council-tax')
-  }
-})
-
-router.get(['/phone-check'], (req, res) => {
-  if (req.session.data['no-phone']) {
+router.get(['/contact-check'], (req, res) => {
+  if (req.session.data['no-phone'] && req.session.data['no-email']) {
     res.redirect('/difficult-to-contact-individuals')
   } else {
     res.redirect('/does-your-household-pay-council-tax')
