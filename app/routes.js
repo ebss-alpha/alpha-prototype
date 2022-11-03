@@ -40,23 +40,22 @@ router.get(['/contact-check'], (req, res) => {
   if (req.session.data['no-phone'] && req.session.data['no-email']) {
     res.redirect('/difficult-to-contact-individuals')
   } else {
-    res.redirect('/does-your-household-pay-council-tax')
+    res.redirect('/is-your-name-on-your-council-tax-bill')
   }
 })
 
 router.get(['/council-tax-check'], (req, res) => {
-  if (req.session.data['does-your-household-pay-council-tax'] === 'yes') {
-    res.redirect('/is-your-name-on-the-council-tax-bill')
-  } else {
-    res.redirect('/upload-proof-of-address')
-  }
-})
-
-router.get(['/name-on-bill-check'], (req, res) => {
-  if (req.session.data['is-your-name-on-the-council-tax-bill'] === 'yes') {
-    res.redirect('/do-you-have-a-bank-account')
-  } else {
-    res.redirect('/name-not-on-bill')
+  switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
+    case 'no':
+      res.redirect('/name-not-on-bill')
+      break
+    case 'no-council-tax':
+      res.redirect('/upload-proof-of-address')
+      break
+    case 'yes':
+    default:
+      res.redirect('/do-you-have-a-bank-account')
+      break
   }
 })
 

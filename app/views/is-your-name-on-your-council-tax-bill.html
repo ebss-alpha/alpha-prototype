@@ -8,23 +8,22 @@ Is your name on the council tax bill?
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "does-your-household-pay-council-tax"
+    href: "what-is-your-phone-number"
   }) }}
 {% endblock %}
 
 {% block content %}
-<form action="name-on-bill-check">
+<form action="council-tax-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
-        classes: "govuk-radios--inline",
-        name: "is-your-name-on-the-council-tax-bill",
+        name: "is-your-name-on-your-council-tax-bill",
         hint: {
           text: '<div class="govuk-!-margin-bottom-2">Your name should be on the council tax bill to make this application. This is so that your local council can check that you live at this address.</div><div>If your name is not on the council tax bill, you should ask the person in your household whose name is on the bill to make this application.</div>' | safe
         },
         fieldset: {
           legend: {
-            text: "Is your name on the council tax bill?",
+            text: "Is your name on your council tax bill?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -37,6 +36,10 @@ Is your name on the council tax bill?
           {
             value: "no",
             text: "No"
+          },
+          {
+            value: "no-council-tax",
+            text: "I don't pay council tax"
           }
         ]
       }) }}
