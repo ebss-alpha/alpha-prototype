@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% block pageTitle %}
 What type of central heating does your home have?
@@ -11,12 +12,23 @@ What type of central heating does your home have?
   }) }}
 {% endblock %}
 
+{% set otherBox %}
+{{ govukInput({
+  classes: ['govuk-input--width-20'],
+  label: {
+    text: "Type of fuel"
+  },
+  id: "other-fuel",
+  name: "other-fuel"
+}) }}
+{% endset %}
+
 {% block content %}
 <form action="afp-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
-        name: "central-heating-type",
+        name: "do-you-use-one-of-these-fuels",
         hint: {
           text: '<div class="govuk-!-margin-bottom-2">If your main form of central heating uses alternative fuels that have been affected by rising prices to heat your home, you might be eligible for the £100 alternative fuel payment.</div><div>You will need to upload proof that you use this fuel on the next screen.</div>' | safe
         },
@@ -47,6 +59,13 @@ What type of central heating does your home have?
           {
             value: "heat-network",
             text: "District or communal heat network"
+          },
+          {
+            value: "other",
+            text: "Other",
+            conditional: {
+              html: otherBox
+            }
           },
           {
             value: "no-alternative-fuels",

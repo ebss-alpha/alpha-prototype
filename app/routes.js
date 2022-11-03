@@ -5,7 +5,7 @@ const router = express.Router()
 
 module.exports = router
 
-const afpOptions = ['gas', 'oil', 'wood', 'solid-fuel', 'heat-network']
+const afpOptions = ['gas', 'oil', 'wood', 'solid-fuel', 'heat-network', 'other']
 
 router.get(['/'], (req, res) => {
   req.session.data = {}
@@ -13,7 +13,7 @@ router.get(['/'], (req, res) => {
 })
 
 router.get(['/afp-check'], (req, res) => {
-  if (afpOptions.some(option => option === req.session.data['central-heating-type'])) {
+  if (afpOptions.some(option => option === req.session.data['do-you-use-one-of-these-fuels'])) {
     res.redirect('/afp-and-ebss')
   } else {
     res.redirect('/ebss-only')
@@ -30,7 +30,7 @@ router.get(['/third-party-check'], (req, res) => {
 
 router.get(['/home-check'], (req, res) => {
   if (req.session.data['is-this-your-main-home'] === 'yes') {
-    res.redirect('/central-heating-type')
+    res.redirect('/do-you-use-one-of-these-fuels')
   } else {
     res.redirect('/ineligible-second-home')
   }
