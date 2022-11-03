@@ -18,31 +18,19 @@ What type of central heating does your home have?
       {{ govukRadios({
         name: "central-heating-type",
         hint: {
-          text: '<div class="govuk-!-margin-bottom-2">If you are not on the mains gas grid and use alternative fuels to heat your home that have been affected by rising prices you may be eligible for the £100 alternative fuel payment.</div><div>You will need to upload proof that you use this fuel on the next screen.</div>' | safe
+          text: '<div class="govuk-!-margin-bottom-2">If your main form of central heating uses alternative fuels that have been affected by rising prices to heat your home, you might be eligible for the £100 alternative fuel payment.</div><div>You will need to upload proof that you use this fuel on the next screen.</div>' | safe
         },
         fieldset: {
           legend: {
-            text: "What is the main type of central heating in your home?",
+            text: "Do you use one of these fuels for your main central heating in your home?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            value: "no-central-heating",
-            text: "No central heating"
-          },
-          {
-            value: "mains-gas",
-            text: "Mains gas"
-          },
-          {
             value: "gas",
             text: "Tank or bottled gas"
-          },
-          {
-            value: "electric",
-            text: "Electric (including storage heaters)"
           },
           {
             value: "oil",
@@ -57,16 +45,12 @@ What type of central heating does your home have?
             text: "Solid fuel (for example, coal)"
           },
           {
-            value: "renewable",
-            text: "Renewable energy (for example, solar thermal or heat pumps)"
-          },
-          {
             value: "heat-network",
             text: "District or communal heat network"
           },
           {
-            value: "other",
-            text: "Other"
+            value: "no-alternative-fuels",
+            text: "I don’t use any of these fuels for my main central heating"
           }
         ]
       }) }}
