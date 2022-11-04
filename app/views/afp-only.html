@@ -1,0 +1,31 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You can apply for the £100 alternative fuels payment
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "do-you-use-one-of-these-fuels"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You can apply for the £100 alternative fuels payment</h1>
+    <p class="govuk-body">Based on your answers, you might be able to get the £100 alternative fuels payment.</p>
+    <p class="govuk-body">We need to ask you additional questions so we can check you are eligible.</p>
+    <p class="govuk-body">You will need to upload proof that you use alternative fuels to heat your home.</p>
+    <p class="govuk-body">You should be getting the £400 Energy Bills Support Scheme discount automatically from your energy supplier. Contact your supplier if you have not received the discount.</p>
+    {{ govukButton({
+      text: "Continue",
+      href: "upload-fuel-proof"
+    }) }}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Have you received a payment from the Energy Bills Support Scheme already?  
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "is-this-your-main-home"
+  }) }}
+{% endblock %}
+
+{% set preamble %}
+<p class="govuk-body">
+  Most households will be receiving the discount automatically and do not need to apply.
+</p>
+<p class="govuk-body">
+  If you have already received the Energy Bills Support Scheme discount, you will have received either:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>£66 or £67 monthly discounts to your household electricity bill; or</li>
+  <li>£66 or £67 monthly vouchers to top up your prepayment meter</li>
+</ul>
+{% endset %}
+
+
+{% block content %}
+<form action="do-you-use-one-of-these-fuels">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukRadios({
+        name: "received-main-ebss",
+        fieldset: {
+          legend: {
+            text: "Have you received a payment from the Energy Bills Support Scheme already?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: preamble | safe  
+        },
+        items: [
+          {
+            value: "yes",
+            text: "I have already received a payment from the Energy Bills Support Scheme "
+          },
+          {
+            value: "no",
+            text: "I have not received a payment from the Energy Bills Support Scheme "
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+
+{% endblock %}

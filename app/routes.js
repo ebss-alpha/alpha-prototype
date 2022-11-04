@@ -13,8 +13,14 @@ router.get(['/'], (req, res) => {
 })
 
 router.get(['/afp-check'], (req, res) => {
-  if (afpOptions.some(option => option === req.session.data['do-you-use-one-of-these-fuels'])) {
+  const receivedMainEbss = req.session.data['received-main-ebss'] === 'yes'
+  const useAlternativeFuel = afpOptions.some(option => option === req.session.data['do-you-use-one-of-these-fuels'])
+  if (useAlternativeFuel && !receivedMainEbss) {
     res.redirect('/afp-and-ebss')
+  } else if (useAlternativeFuel && receivedMainEbss) {
+    res.redirect('/afp-only')
+  } else if (!useAlternativeFuel && receivedMainEbss) {
+    res.redirect('/cannot-apply')
   } else {
     res.redirect('/ebss-only')
   }
@@ -30,7 +36,7 @@ router.get(['/third-party-check'], (req, res) => {
 
 router.get(['/home-check'], (req, res) => {
   if (req.session.data['is-this-your-main-home'] === 'yes') {
-    res.redirect('/do-you-use-one-of-these-fuels')
+    res.redirect('/have-you-received-a-payment-already')
   } else {
     res.redirect('/ineligible-second-home')
   }

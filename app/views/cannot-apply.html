@@ -1,0 +1,26 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You can’t apply for energy bills support
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "do-you-use-one-of-these-fuels"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You can’t apply for energy bills support</h1>
+    <p class="govuk-body">Based on your answers, you can’t apply for energy bills support.</p>
+    <p class="govuk-body">You should be getting the £400 Energy Bills Support Scheme discount automatically from your energy supplier.</p>
+    <p class="govuk-body">You are not eligible for the £100 alternative fuels payment because you told us you don’t use alternative fuels that have been affected by rising fuel prices to heat your home.</p>
+  </div>
+</div>
+{% endblock %}

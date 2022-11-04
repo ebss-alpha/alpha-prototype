@@ -2,13 +2,25 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Upload proof of address
+Upload proof that you use alternative fuels to heat your home
 {% endblock %}
+
+{% set gotMainEbss = data['received-main-ebss'] == 'yes' %}
+{% set useAlternativeFuel = data['do-you-use-one-of-these-fuels'] != 'no-alternative-fuels' %}
+{% if gotMainEbss and useAlternativeFuel %}
+{% set backLink = 'afp-only' %}
+{% elif not gotMainEbss and useAlternativeFuel %}
+{% set backLink = 'afp-and-ebss' %}
+{% elif not gotMainEbss and not useAlternativeFuel %}
+{% set backLink = 'ebss-only' %}
+{% elif gotMainEbss and not useAlternativeFuel %}
+{% set backLink = 'cannot-apply' %}
+{% endif %}
 
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "afp-and-ebss"
+    href: backLink
   }) }}
 {% endblock %}
 
