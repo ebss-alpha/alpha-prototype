@@ -67,19 +67,40 @@ router.get(['/council-tax-check'], (req, res) => {
 
 router.get(['/bank-account-check'], (req, res) => {
   if (req.session.data['do-you-have-a-bank-account'] === 'yes') {
-    res.redirect('/what-are-your-bank-account-details')
-  } else {
     res.redirect('/payment-options-check')
+  } else {
+    res.redirect('/no-bank-account-check')
   }
 })
 
 router.get(['/payment-options-check'], (req, res) => {
+  const paysCouncilTax = req.session.data['is-your-name-on-your-council-tax-bill'] === 'yes'
+  const hasBank = req.session.data['do-you-have-a-bank-account'] === 'yes'
+  if (hasBank && paysCouncilTax) {
+    res.redirect('/preferred-payment')
+  } else {
+    res.redirect('/what-are-your-bank-account-details')
+  }
+})
+
+router.get(['/preferred-payment-check'], (req, res) => {
+  switch (req.session.data['preferred-payment']) {
+    case 'bank':
+      res.redirect('/what-are-your-bank-account-details')
+      break
+    case 'council-tax':
+    default:
+      res.redirect('/council-tax-rebate')
+  }
+})
+
+router.get(['/no-bank-account-check'], (req, res) => {
   switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
     case 'no-council-tax':
       res.redirect('/voucher-option')
       break
     case 'yes':
     default:
-      res.redirect('/council-tax-offset')
+      res.redirect('/council-tax-rebate')
   }
 })

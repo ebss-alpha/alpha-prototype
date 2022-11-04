@@ -5,10 +5,16 @@
 What are your bank account or building society details?
 {% endblock %}
 
+{% if data['is-your-name-on-your-council-tax-bill'] == 'yes' %}
+{% set backLink = 'preferred-payment' %}
+{% else %}
+{% set backLink = 'do-you-have-a-bank-account' %}
+{% endif %}
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "do-you-have-a-bank-account"
+    href: backLink
   }) }}
 {% endblock %}
 

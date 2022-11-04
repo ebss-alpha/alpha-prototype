@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-How do you want to receive a voucher?
+How would you prefer to receive your support?
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,36 +12,36 @@ How do you want to receive a voucher?
   }) }}
 {% endblock %}
 
-
+{% set preamble %}
+<p class="govuk-hint">
+  If you are eligible for the energy bills support you are applying for, it can be delivered as a payment to your bank or building society or removed from your council tax.
+</p>
+{% endset %}
 
 {% block content %}
-<form action="confirmation">
+<form action="preferred-payment-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
         name: "preferred-payment",
         hint: {
-          text: "If you are eligible for the energy bills support you are applying for, you will be sent a voucher to redeem at a Post Office or PayPoint shop. "
+          text: preamble | safe
         },
         fieldset: {
           legend: {
-            text: "How do you want to receive a voucher?",
+            text: "How would you prefer to receive your support?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            value: "post",
-            text: "By post"
+            value: "bank",
+            text: "Directly to my bank or building society account"
           },
           {
-            value: "email",
-            text: "By email"
-          },
-          {
-            value: "sms",
-            text: "By text message"
+            value: "council-tax",
+            text: "As a council tax rebate"
           }
         ]
       }) }}
@@ -51,4 +51,5 @@ How do you want to receive a voucher?
     </div>
   </div>
 </form>
+
 {% endblock %}

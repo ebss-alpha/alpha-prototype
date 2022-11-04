@@ -12,12 +12,24 @@ How would you describe where you live?
   }) }}
 {% endblock %}
 
+{% set preamble %}
+<p class="govuk-hint">
+  We are asking this question so we can check what energy bill support you are eligible for. 
+</p>
+<p class="govuk-hint">
+  Select the option that best fits where you live if you think you fit into more than one category. 
+</p>
+{% endset %}
+
 {% block content %}
 <form action="upload-proof-of-address">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
         name: "describe-where-you-live",
+        hint: {
+          text: preamble | safe
+        },
         fieldset: {
           legend: {
             text: "How would you describe where you live?",
@@ -27,39 +39,46 @@ How would you describe where you live?
         },
         items: [
           {
-            value: "housing-association",
-            text: "I rent from a social or housing association"
-          },
-          {
             value: "care-home",
-            text: "I live in a care home or assisted living facility"
+            text: "I live in a care home or assisted living facility and pay for some or all of my care"
           },
           {
             value: "park-home",
             text: "I live permanently in a park home"
           },
           {
-            value: "registered-traveller-site",
-            text: "I live on a permanent registered Gypsy and Traveller site run privately or by a local council"
-          },
-          {
-            value: "heat-network",
-            text: "I live in a building supplied by a heat network",
-            hint: {
-              text: "Where heating is provided by a shared boiler, or another heat source, that provides heat to all homes within that building or multiple buildings."
-            }
+            value: "traveller-site",
+            text: "I live on a permanent Gypsy and Traveller site"
           },
           {
             value: "boat",
-            text: "I live on a houseboat on a long term, permanent, or home mooring"
+            text: "I live on a houseboat"
           },
           {
-            value: "rent-private-landlord",
-            text: "I rent from a private landlord"
+            value: "heat-network",
+            text: "I live in a building supplied by a heat network and I don’t have an electricity meter in my home"
           },
           {
             value: "off-grid",
-            text: "I live in a home without a connection to the electricity or gas grid"
+            text: "I live in a home without a connection to the electricity and/or gas grid"
+          },
+          {
+            value: "non-domestic-used-as-home",
+            text: "I live in a non-domestic property which is used as a home such as a flat above a shop "
+          },
+          {
+            divider: ''
+          },
+          {
+            value: "private-landlord",
+            text: "I rent from a private landlord and don’t fit into any of the other categories"
+          },
+          {
+            value: "social-or-housing-association",
+            text: "I rent from a social or housing association and don’t fit into any of the other categories"
+          },
+          {
+            divider: ''
           },
           {
             value: "other",
