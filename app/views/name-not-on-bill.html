@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Name not on council tax branch
+A person in your household whose name is on the council tax bill should apply 
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,13 +17,9 @@ Name not on council tax branch
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Name not on council tax branch</h1>
-    <p class="govuk-body">Here's where a branch for individuals whose name does not appear on the council tax bill goes.</p>
-    <p class="govuk-body">The continue link below returns you to the branch for individuals whose name appears on council tax bill.</p>
-    {{ govukButton({
-      text: "Continue",
-      href: "do-you-have-a-bank-account"
-    }) }}
+    <h1 class="govuk-heading-l">A person in your household whose name is on the council tax bill should apply </h1>
+    <p class="govuk-body">You should ask someone in your household whose name is on the bill to make this application.</p>
+    <p class="govuk-body">This will mean that we can check you live at this address.  </p>
   </div>
 </div>
 {% endblock %}

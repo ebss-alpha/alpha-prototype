@@ -56,7 +56,7 @@ router.get(['/council-tax-check'], (req, res) => {
       res.redirect('/name-not-on-bill')
       break
     case 'no-council-tax':
-      res.redirect('/upload-proof-of-address')
+      res.redirect('/describe-where-you-live')
       break
     case 'yes':
     default:
@@ -69,6 +69,17 @@ router.get(['/bank-account-check'], (req, res) => {
   if (req.session.data['do-you-have-a-bank-account'] === 'yes') {
     res.redirect('/what-are-your-bank-account-details')
   } else {
-    res.redirect('/non-bank-account')
+    res.redirect('/payment-options-check')
+  }
+})
+
+router.get(['/payment-options-check'], (req, res) => {
+  switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
+    case 'no-council-tax':
+      res.redirect('/voucher-option')
+      break
+    case 'yes':
+    default:
+      res.redirect('/council-tax-offset')
   }
 })
