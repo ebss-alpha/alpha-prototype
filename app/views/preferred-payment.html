@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-How would you prefer to receive your support?
+Choose how to receive the payment if you are eligible for energy bills support
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,7 +14,7 @@ How would you prefer to receive your support?
 
 {% set preamble %}
 <p class="govuk-hint">
-  If you are eligible for the energy bills support you are applying for, it can be delivered as a payment to your bank or building society or removed from your council tax.
+  Choose how to receive the payment if you are eligible for energy bills support
 </p>
 {% endset %}
 
@@ -29,7 +29,7 @@ How would you prefer to receive your support?
         },
         fieldset: {
           legend: {
-            text: "How would you prefer to receive your support?",
+            text: "How do you want to get your energy bills support?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -37,11 +37,11 @@ How would you prefer to receive your support?
         items: [
           {
             value: "bank",
-            text: "Directly to my bank or building society account"
+            text: "As a payment directly to my bank account"
           },
           {
             value: "council-tax",
-            text: "As a council tax rebate"
+            text: "As a refund to my council tax account"
           }
         ]
       }) }}

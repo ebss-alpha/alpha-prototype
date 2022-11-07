@@ -16,7 +16,7 @@ Do you use one of these fuels for your main central heating in your home?
 {{ govukInput({
   classes: ['govuk-input--width-20'],
   label: {
-    text: "Type of fuel"
+    text: "Alternative fuel"
   },
   id: "other-fuel",
   name: "other-fuel"
@@ -45,8 +45,16 @@ Do you use one of these fuels for your main central heating in your home?
             text: "Tank or bottled gas"
           },
           {
+            value: "lpg",
+            text: "Liquid petroleum gas"
+          },
+          {
             value: "oil",
             text: "Oil"
+          },
+          {
+            value: "bio-oil",
+            text: "Bio oil"
           },
           {
             value: "wood",
@@ -57,19 +65,15 @@ Do you use one of these fuels for your main central heating in your home?
             text: "Solid fuel (for example, coal)"
           },
           {
-            value: "heat-network",
-            text: "District or communal heat network"
+            value: "no-alternative-fuels",
+            text: "I don’t use any of these fuels for my main central heating"
           },
           {
             value: "other",
-            text: "Other",
+            text: "I use another alternative fuel",
             conditional: {
               html: otherBox
             }
-          },
-          {
-            value: "no-alternative-fuels",
-            text: "I don’t use any of these fuels for my main central heating"
           }
         ]
       }) }}
