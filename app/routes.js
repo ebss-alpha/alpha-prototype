@@ -5,8 +5,6 @@ const router = express.Router()
 
 module.exports = router
 
-const afpOptions = ['gas', 'lpg', 'bio-oil', 'oil', 'wood', 'solid-fuel', 'other']
-
 router.get(['/'], (req, res) => {
   req.session.data = {}
   res.render('index.html')
