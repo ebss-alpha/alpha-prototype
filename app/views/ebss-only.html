@@ -8,10 +8,17 @@ You can apply for the £400 Energy Bills Support Scheme payment
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
 {{ alphaPhase() }}
+{% if data['does-your-home-have-gas'] == 'yes' %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "does-your-home-have-gas-central-heating"
+  }) }}
+  {% else %}
   {{ govukBackLink({
     text: "Back",
     href: "do-you-use-one-of-these-fuels"
   }) }}
+{% endif %}
 {% endblock %}
 
 
