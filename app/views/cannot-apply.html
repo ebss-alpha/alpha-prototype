@@ -6,10 +6,17 @@ You can’t apply for energy bills support
 {% endblock %}
 
 {% block beforeContent %}
+{% if data['does-your-home-have-gas'] == 'yes' %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "does-your-home-have-gas-central-heating"
+  }) }}
+{% else %}
   {{ govukBackLink({
     text: "Back",
     href: "do-you-use-one-of-these-fuels"
   }) }}
+{% endif %}
 {% endblock %}
 
 

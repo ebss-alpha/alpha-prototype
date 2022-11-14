@@ -2,25 +2,25 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% block pageTitle %}
-Do you use one of these fuels for your main central heating in your home?
+Do you use an one of these fuels as the main source of heat in your home?
 {% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "have-you-received-a-payment-already"
+    href: "does-your-home-have-gas-central-heating"
   }) }}
 {% endblock %}
 
-{% set otherBox %}
-{{ govukInput({
-  classes: ['govuk-input--width-20'],
-  label: {
-    text: "Alternative fuel"
-  },
-  id: "other-fuel",
-  name: "other-fuel"
-}) }}
+{% set fuelList %}
+<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-2">
+  <li>tank or bottled gas</li>
+  <li>liquid petroleum gas (LPG)</li>
+  <li>oil</li>
+  <li>wood (for example logs, waste wood, or pellets)</li>
+  <li>solid fuel (for example coal)</li>
+</ul>
+<p>You will need to upload proof that you use this fuel on the next screen.</p>
 {% endset %}
 
 {% block content %}
@@ -28,52 +28,26 @@ Do you use one of these fuels for your main central heating in your home?
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
+        classes: "govuk-radios--inline",
         name: "do-you-use-one-of-these-fuels",
         hint: {
-          text: '<div class="govuk-!-margin-bottom-2">If your main form of central heating uses alternative fuels that have been affected by rising prices to heat your home, you might be eligible for the £100 alternative fuel payment.</div><div>You will need to upload proof that you use this fuel on the next screen.</div>' | safe
+          text: fuelList | safe
         },
         fieldset: {
           legend: {
-            text: "Do you use one of these fuels for your main central heating in your home?",
+            text: "Do you use an one of these fuels as the main source of heat in your home?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            value: "gas",
-            text: "Tank or bottled gas"
+            value: "yes",
+            text: "Yes"
           },
           {
-            value: "lpg",
-            text: "Liquid petroleum gas"
-          },
-          {
-            value: "oil",
-            text: "Oil"
-          },
-          {
-            value: "bio-oil",
-            text: "Bio oil"
-          },
-          {
-            value: "wood",
-            text: "Wood (for example, logs, waste wood or pellets)"
-          },
-          {
-            value: "solid-fuel",
-            text: "Solid fuel (for example, coal)"
-          },
-          {
-            value: "no-alternative-fuels",
-            text: "I don’t use any of these fuels for my main central heating"
-          },
-          {
-            value: "other",
-            text: "I use another alternative fuel",
-            conditional: {
-              html: otherBox
-            }
+            value: "no",
+            text: "No"
           }
         ]
       }) }}

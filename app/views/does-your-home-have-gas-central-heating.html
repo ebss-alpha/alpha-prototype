@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Does your home have mains gas central heating?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "have-you-received-a-payment-already"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+<form action="mains-gas-check">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!--p class="govuk-body">You address you have given is:<address>{{ data['address-line-1'] }}<br>{% if data['address-line-2'] %}{{ data['address-line-2'] }}<br>{% endif %}{{ data['address-town'] }}<br>{% if data['address-county'] %}{{ address['address-county'] }}<br>{% endif %} {{ data['address-postcode'] }}<br></address>      </p-->
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        name: "does-your-home-have-gas",
+        fieldset: {
+          legend: {
+            text: "Does your home have mains gas central heating?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+
+{% endblock %}
