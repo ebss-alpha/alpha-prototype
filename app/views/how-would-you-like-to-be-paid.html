@@ -5,7 +5,9 @@
 How would you like to be paid?
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "/"

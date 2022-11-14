@@ -5,7 +5,9 @@
 Do you have any proof of address?
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "does-your-household-pay-council-tax"

@@ -6,7 +6,9 @@ What is your full name?
 {% endblock %}
 
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "what-is-your-full-name"

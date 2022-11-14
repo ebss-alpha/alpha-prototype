@@ -11,7 +11,9 @@ Do you have a bank or building society account in your name?
 {% set backLink = 'is-your-name-on-your-council-tax-bill' %}
 {% endif %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: backLink

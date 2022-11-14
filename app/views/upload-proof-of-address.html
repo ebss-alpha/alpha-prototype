@@ -5,7 +5,9 @@
 You need to upload proof of address
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "is-your-name-on-your-council-tax-bill"

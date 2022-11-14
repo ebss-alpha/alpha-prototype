@@ -5,7 +5,9 @@
 How do you want to receive a voucher?
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "do-you-have-a-bank-account"

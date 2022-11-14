@@ -12,7 +12,9 @@ You will get a council tax rebate
 {% set backLink = 'do-you-have-a-bank-account' %}
 {% endif %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: backLink

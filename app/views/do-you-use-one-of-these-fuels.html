@@ -5,7 +5,9 @@
 Do you use one of these fuels for your main central heating in your home?
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "have-you-received-a-payment-already"

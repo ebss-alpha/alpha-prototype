@@ -4,6 +4,11 @@
 {{ serviceName }} if you are not receiving it automatically
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+{% endblock %}
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">

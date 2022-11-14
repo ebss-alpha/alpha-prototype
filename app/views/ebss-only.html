@@ -5,7 +5,9 @@
 You can apply for the £400 Energy Bills Support Scheme payment
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "do-you-use-one-of-these-fuels"

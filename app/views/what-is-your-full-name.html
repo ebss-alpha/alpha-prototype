@@ -17,7 +17,9 @@ What is your full name?
 {% set backLink = 'cannot-apply' %}
 {% endif %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: backLink
