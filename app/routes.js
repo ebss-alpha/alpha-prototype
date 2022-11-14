@@ -5,24 +5,35 @@ const router = express.Router()
 
 module.exports = router
 
-const afpOptions = ['gas', 'lpg', 'bio-oil', 'oil', 'wood', 'solid-fuel', 'other']
-
 router.get(['/'], (req, res) => {
   req.session.data = {}
   res.render('index.html')
 })
 
+router.get(['/mains-gas-check'], (req, res) => {
+  switch (req.session.data['does-your-home-have-gas']) {
+    case 'yes':
+      res.redirect('/afp-check')
+      break
+    case 'no':
+    default:
+      res.redirect('/do-you-use-one-of-these-fuels')
+      break
+  }
+})
+
 router.get(['/afp-check'], (req, res) => {
   const receivedMainEbss = req.session.data['received-main-ebss'] === 'yes'
-  const useAlternativeFuel = afpOptions.some(option => option === req.session.data['do-you-use-one-of-these-fuels'])
-  if (useAlternativeFuel && !receivedMainEbss) {
-    res.redirect('/afp-and-ebss')
-  } else if (useAlternativeFuel && receivedMainEbss) {
-    res.redirect('/afp-only')
-  } else if (!useAlternativeFuel && receivedMainEbss) {
+  const onGasGrid = req.session.data['does-your-home-have-gas'] === 'yes'
+  const usesAlternative = req.session.data['do-you-use-one-of-these-fuels'] === 'yes'
+  if ((receivedMainEbss && onGasGrid) || (receivedMainEbss && !usesAlternative)) {
     res.redirect('/cannot-apply')
-  } else {
+  } else if ((!receivedMainEbss && onGasGrid) || (!receivedMainEbss && !usesAlternative)) {
     res.redirect('/ebss-only')
+  } else if (receivedMainEbss && !onGasGrid && usesAlternative) {
+    res.redirect('/afp-only')
+  } else if (!receivedMainEbss && !onGasGrid && usesAlternative) {
+    res.redirect('/afp-and-ebss')
   }
 })
 
