@@ -5,8 +5,9 @@
 Does your home have mains gas or electric heating?
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
-  {{ govukBackLink({
+{{ alphaPhase() }}  {{ govukBackLink({
     text: "Back",
     href: "have-you-received-a-payment-already"
   }) }}
