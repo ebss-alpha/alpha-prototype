@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you have mains gas or electric central heating?
+Does your home have mains gas or electric heating?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,13 +18,12 @@ Do you have mains gas or electric central heating?
 <form action="mains-gas-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <!--p class="govuk-body">You address you have given is:<address>{{ data['address-line-1'] }}<br>{% if data['address-line-2'] %}{{ data['address-line-2'] }}<br>{% endif %}{{ data['address-town'] }}<br>{% if data['address-county'] %}{{ address['address-county'] }}<br>{% endif %} {{ data['address-postcode'] }}<br></address>      </p-->
       {{ govukRadios({
         classes: "govuk-radios--inline",
         name: "does-your-home-have-gas",
         fieldset: {
           legend: {
-            text: "Do you have mains gas or electric central heating?",
+            text: "Does your home have mains gas or electric heating?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
