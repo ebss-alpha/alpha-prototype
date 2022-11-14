@@ -5,7 +5,9 @@
 Non-council tax branch
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "does-your-household-pay-council-tax"

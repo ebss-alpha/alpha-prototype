@@ -5,7 +5,9 @@
 Non-bank account branch
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "do-you-have-a-bank-account"

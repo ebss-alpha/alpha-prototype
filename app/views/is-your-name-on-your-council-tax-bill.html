@@ -5,7 +5,9 @@
 Is your name on your household’s council tax bill?
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "what-is-your-phone-number"

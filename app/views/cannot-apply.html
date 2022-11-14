@@ -5,7 +5,9 @@
 You can’t apply for energy bills support
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
 {% if data['does-your-home-have-gas'] == 'yes' %}
   {{ govukBackLink({
     text: "Back",

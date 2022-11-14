@@ -5,7 +5,9 @@
 How would you describe where you live?
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "is-your-name-on-your-council-tax-bill"

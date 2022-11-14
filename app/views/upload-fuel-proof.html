@@ -17,7 +17,9 @@ Upload proof that you use alternative fuels to heat your home
 {% set backLink = 'cannot-apply' %}
 {% endif %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: backLink

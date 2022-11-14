@@ -5,7 +5,9 @@
 A person in your household whose name is on the council tax bill should apply 
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "is-your-name-on-your-council-tax-bill"

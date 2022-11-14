@@ -5,7 +5,9 @@
 Are you applying for yourself or on someone else's behalf?
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "start"

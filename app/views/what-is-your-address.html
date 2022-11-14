@@ -5,7 +5,9 @@
 What is your address?
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "applying-for-yourself-or-someone-else"

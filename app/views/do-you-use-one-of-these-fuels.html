@@ -5,7 +5,9 @@
 Do you use any of these fuels as the main source of heat in your home?
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "does-your-home-have-gas-central-heating"

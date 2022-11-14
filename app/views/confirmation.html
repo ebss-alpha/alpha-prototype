@@ -5,6 +5,11 @@
 Confirmation page
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+{% endblock %}
+
 
 {% block content %}
 <div class="govuk-grid-row">

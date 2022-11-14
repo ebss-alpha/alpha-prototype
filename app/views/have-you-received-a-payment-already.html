@@ -5,7 +5,9 @@
 Have you received a payment from the Energy Bills Support Scheme already?  
 {% endblock %}
 
+{% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
     href: "is-this-your-main-home"
