@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which best describes your accommodation?
+Describe where you live
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -34,7 +34,7 @@ Which best describes your accommodation?
         },
         fieldset: {
           legend: {
-            text: "Which best describes your accommodation?",
+            text: "Describe where you live",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -59,6 +59,10 @@ Which best describes your accommodation?
           {
             value: "boat",
             text: "On a boat"
+          },
+          {
+            value: "farm",
+            text: "On a farm"
           },
           {
             value: "caravan",

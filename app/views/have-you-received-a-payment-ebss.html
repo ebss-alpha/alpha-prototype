@@ -9,7 +9,7 @@ Have you received a payment from the Energy Bills Support Scheme already?
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
 {{ alphaPhase() }}
-{% if data['describe-where-you-live'] == 'park-home' or data['describe-where-you-live'] == 'other' %}
+{% if data['describe-where-you-live'] == 'park-home' or data['describe-where-you-live'] == 'house-or-flat-owned' or data['describe-where-you-live'] == 'farm' or data['describe-where-you-live'] == 'other' %}
   {{ govukBackLink({
     text: "Back",
     href: "describe-where-you-live"
