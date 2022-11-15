@@ -2,48 +2,34 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Is this your main home?
+Is this your address?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
 {{ alphaPhase() }}
-{% if data['is-this-your-address'] == 'yes' %}
   {{ govukBackLink({
     text: "Back",
-    href: "is-this-your-address"
+    href: "find-your-address"
   }) }}
-{% elif data['is-this-your-address'] == 'no' %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "what-is-your-address"
-  }) }}
-{% else %}
-{{ govukBackLink({
-  text: "Back",
-  href: "choose-your-address"
-}) }}
-{% endif %}
 {% endblock %}
 
-
-
 {% block content %}
-<form action="home-check">
+<form action="address-confirmation-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
-        classes: "govuk-radios--inline",
-        name: "is-this-your-main-home",
+        name: "is-this-your-address",
+        hint: {
+          text: '<p class="govuk-body-l govuk-!-margin-bottom-2">1 Test Street, Test Town, TT1 1AB</p><p class="govuk-body">If this is not your address, you can enter it manually on the next page</p>' | safe
+        },
+        classes: 'govuk-radios--inline',
         fieldset: {
           legend: {
-            text: "Is this your main home?",
+            text: "Is this your address?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
-        },
-        hint: {
-          text: "If you own multiple houses, only your main home is eligible for energy bill support from these schemes."  
         },
         items: [
           {
