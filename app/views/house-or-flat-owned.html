@@ -1,0 +1,60 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Which describes your situation best?
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "describe-where-you-live"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+<form action="house-or-flat-owned-check">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukRadios({
+        name: "situation-specific",
+        fieldset: {
+          legend: {
+            text: "Which describes your situation best?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "no-electric-grid",
+            text: "I don't have a connection to the electricity grid"
+          },
+          {
+            value: "no-gas-grid",
+            text: "I don't have a connection to the gas or electricity grid"
+          },
+          {
+            value: "no-grid",
+            text: "I don't have a connection to the gas or electricity grid"
+          },
+          {
+            divider: 'or'
+          },
+          {
+            value: "other",
+            text: "I don’t fit into any of these categories"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+
+{% endblock %}

@@ -2,41 +2,47 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Does your home have mains gas or electric heating?
+Which describes your situation best?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
-{{ alphaPhase() }}  {{ govukBackLink({
+{{ alphaPhase() }}
+  {{ govukBackLink({
     text: "Back",
-    href: "have-you-received-a-payment-ebss"
+    href: "describe-where-you-live"
   }) }}
 {% endblock %}
 
 
-
 {% block content %}
-<form action="mains-gas-check">
+<form action="care-home-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
-        classes: "govuk-radios--inline",
-        name: "does-your-home-have-gas",
+        name: "situation-specific",
         fieldset: {
           legend: {
-            text: "Does your home have mains gas or electric heating?",
+            text: "Which describes your situation best?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            value: "yes",
-            text: "Yes"
+            value: "do-not-pay-for-care",
+            text: "I don't pay for my care"
           },
           {
-            value: "no",
-            text: "No"
+            value: "pay-for-care",
+            text: "I pay for some or all of my care"
+          },
+          {
+            divider: 'or'
+          },
+          {
+            value: "other",
+            text: "I don’t fit into any of these categories"
           }
         ]
       }) }}

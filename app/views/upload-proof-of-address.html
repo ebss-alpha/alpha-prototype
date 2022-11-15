@@ -8,14 +8,28 @@ You need to upload proof of address
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
 {{ alphaPhase() }}
+{% if data['do-you-have-a-bank-account'] == 'no' %}
   {{ govukBackLink({
     text: "Back",
-    href: "is-your-name-on-your-council-tax-bill"
+    href: "do-you-have-a-bank-account"
   }) }}
+{% elif data['is-your-name-on-your-council-tax-bill'] == 'no-council-tax' %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "what-is-your-phone-number"
+  }) }}
+{% endif %}
 {% endblock %}
 
+{% if data['proof-of-address-provided'] == 'yes' or data['do-you-have-a-bank-account'] == 'no' %}
+  {% set nextPage = 'final-council-tax-check' %}
+{% else %}
+  {% set nextPage = 'do-you-have-a-bank-account' %}
+{% endif %}
+
 {% block content %}
-<form action="do-you-have-a-bank-account">
+<form action="{{nextPage}}">
+  <input type="hidden" name="proof-of-address-provided" value="yes">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">You need to upload proof of address</h1>

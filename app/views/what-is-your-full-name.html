@@ -5,8 +5,8 @@
 What is your full name?
 {% endblock %}
 
-{% set gotMainEbss = data['received-main-ebss'] == 'yes' %}
-{% set useAlternativeFuel = data['do-you-use-one-of-these-fuels'] != 'no-alternative-fuels' %}
+{% set gotMainEbss = data['received-main-ebss'] == 'yes' %}-
+{% set useAlternativeFuel = data['do-you-use-one-of-these-fuels'] == 'yes' %}
 {% if gotMainEbss and useAlternativeFuel %}
 {% set backLink = 'upload-fuel-proof' %}
 {% elif not gotMainEbss and useAlternativeFuel %}
