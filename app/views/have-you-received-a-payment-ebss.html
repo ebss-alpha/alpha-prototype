@@ -1,5 +1,6 @@
 
 {% extends "layout.html" %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
 {% block pageTitle %}
 Have you received a payment from the Energy Bills Support Scheme already?  
@@ -23,7 +24,7 @@ Have you received a payment from the Energy Bills Support Scheme already?
 
 {% set preamble %}
 <p class="govuk-body">
-  Most households will be receiving the discount automatically and do not need to apply.
+  The Energy Bills Support Scheme is a £400 discount to your energy bills this winter. It is split over 6 monthly installments.
 </p>
 <p class="govuk-body">
   If you have already received the Energy Bills Support Scheme discount, you will have received either:
@@ -32,6 +33,10 @@ Have you received a payment from the Energy Bills Support Scheme already?
   <li>£66 or £67 monthly discounts to your household electricity bill; or</li>
   <li>£66 or £67 monthly vouchers to top up your prepayment meter</li>
 </ul>
+{{ govukWarningText({
+  text: "Most people will have had the discount automatically applied to their electricity bills and do not need to apply.",
+  iconFallbackText: "Important"
+}) }}
 {% endset %}
 
 
@@ -43,7 +48,7 @@ Have you received a payment from the Energy Bills Support Scheme already?
         name: "received-main-ebss",
         fieldset: {
           legend: {
-            text: "Have you received a payment from the Energy Bills Support Scheme already?",
+            text: "Are you already getting discounts to your energy bills from the Energy Bills Support Scheme?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -54,11 +59,11 @@ Have you received a payment from the Energy Bills Support Scheme already?
         items: [
           {
             value: "yes",
-            text: "I have already received a payment from the Energy Bills Support Scheme "
+            text: "I am already getting discounts from the Energy Bills Support Scheme "
           },
           {
             value: "no",
-            text: "I have not received a payment from the Energy Bills Support Scheme "
+            text: "I am not already getting discounts from the Energy Bills Support Scheme "
           }
         ]
       }) }}
