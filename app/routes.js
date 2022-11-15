@@ -29,12 +29,29 @@ router.get(['/initial-council-tax-check'], (req, res) => {
       res.redirect('/name-not-on-bill')
       break
     case 'no-council-tax':
-      res.redirect('/what-is-your-address')
+      res.redirect('/find-your-address')
       break
     case 'yes':
     default:
-      res.redirect('/what-is-your-address')
+      res.redirect('/find-your-address')
       break
+  }
+})
+
+router.get(['/address-lookup'], (req, res) => {
+  const numberProvided = req.session.data['address-housenumber'].length > 0
+  if (numberProvided) {
+    res.redirect('/is-this-your-address')
+  } else {
+    res.redirect('/choose-your-address')
+  }
+})
+
+router.get(['/address-confirmation-check'], (req, res) => {
+  if (req.session.data['is-this-your-address'] === 'yes') {
+    res.redirect('/is-this-your-main-home')
+  } else {
+    res.redirect('/what-is-your-address')
   }
 })
 
