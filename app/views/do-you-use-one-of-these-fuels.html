@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
 {% block pageTitle %}
 Do you use any of these fuels as the main source of heat in your home?
@@ -15,7 +16,12 @@ Do you use any of these fuels as the main source of heat in your home?
 {% endblock %}
 
 {% set fuelList %}
-<p>If your main form of heating uses one of these fuels to heat your home, you are eligible for the £100 alternative fuels payment.</p><p>Most people who are eligible will have already had the payment automatically applied to their electricity bills and do not need to apply.</p>
+<p>If your main form of heating uses one of these fuels to heat your home, you are eligible for the £100 alternative fuels payment.</p>
+{{ govukWarningText({
+  classes: 'govuk-!-margin-bottom-2',
+  text: "Most people who are eligible will have already had the payment automatically applied to their electricity bills and do not need to apply.",
+  iconFallbackText: "Important"
+}) }}
 <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-2">
   <li>tank or bottled gas</li>
   <li>liquid petroleum gas (LPG)</li>
