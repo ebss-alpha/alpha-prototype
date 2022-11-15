@@ -13,7 +13,7 @@ You need to upload proof of address
     text: "Back",
     href: "do-you-have-a-bank-account"
   }) }}
-{% elif data['is-your-name-on-your-council-tax-bill'] == 'no-council-tax' %}
+{% elif data['is-your-name-on-your-council-tax-bill'] != 'yes' %}
   {{ govukBackLink({
     text: "Back",
     href: "what-is-your-phone-number"

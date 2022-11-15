@@ -26,8 +26,6 @@ router.get(['/third-party-check'], (req, res) => {
 router.get(['/initial-council-tax-check'], (req, res) => {
   switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
     case 'no':
-      res.redirect('/name-not-on-bill')
-      break
     case 'no-council-tax':
       res.redirect('/find-your-address')
       break
@@ -170,6 +168,7 @@ router.get(['/contact-check'], (req, res) => {
 
 router.get(['/secondary-council-tax-check'], (req, res) => {
   switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
+    case 'no':
     case 'no-council-tax':
       res.redirect('/upload-proof-of-address')
       break
@@ -193,6 +192,7 @@ router.get(['/bank-account-check'], (req, res) => {
 
 router.get(['/final-council-tax-check'], (req, res) => {
   switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
+    case 'no':
     case 'no-council-tax':
       res.redirect('/voucher-option')
       break
