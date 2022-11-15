@@ -115,7 +115,7 @@ router.get(['/afp-check'], (req, res) => {
   const receivedMainAfp = req.session.data['received-main-afp'] === 'yes'
   const onGasGrid = req.session.data['does-your-home-have-gas'] === 'yes'
   const usesAlternative = req.session.data['do-you-use-one-of-these-fuels'] === 'yes'
-  if (!askedAboutMainAfp && !onGasGrid) {
+  if (!askedAboutMainAfp && !onGasGrid && usesAlternative) {
     res.redirect('/have-you-received-a-payment-afp')
   }
   if ((receivedMainEbss && onGasGrid) || (receivedMainEbss && !usesAlternative) || (receivedMainEbss && receivedMainAfp)) {
