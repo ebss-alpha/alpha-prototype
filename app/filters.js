@@ -7,6 +7,14 @@ module.exports = function (env) {
    */
   var filters = {}
 
+  filters.sentence = input => {
+    if (typeof input === 'string' && input.length > 1) {
+      return input.charAt(0).toUpperCase() + input.replace(/(\B[A-Z])/g, ' $1').toLowerCase().slice(1)
+    } else {
+      return input
+    }
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

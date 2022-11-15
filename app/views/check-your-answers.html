@@ -1,0 +1,404 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers before sending your application
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% set councilTax %}
+{{ data['is-your-name-on-your-council-tax-bill'] | replace("no-council-tax", "I don't pay council tax") | sentence }}
+{% endset %}
+
+
+{% set emailAddress %}
+{% if data['email-address'] %}
+{{ data['email-address'] }}
+{% else %}
+No email address provided
+{% endif %}
+{% endset %}
+
+{% set phoneNumber %}
+{% if data['telephone-number'] %}
+{{ data['telephone-number'] }}
+{% else %}
+No phone number provided
+{% endif %}
+{% endset %}
+
+{% set dob %}
+{{data['dob-day']}}/{{data['dob-month']}}/{{data['dob-year']}}
+{% endset %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+
+    <h2 class="govuk-heading-m">About you and your home</h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Are you applying for yourself or on someone else's behalf?"
+          },
+          value: {
+            html: data['applying-for-yourself-or-someone-else'] | capitalize
+          },
+          actions: {
+            items: [
+              {
+                href: "applying-for-yourself-or-someone-else",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Is your name on your household's council tax bill?"
+          },
+          value: {
+            html: councilTax
+          },
+          actions: {
+            items: [
+              {
+                href: "is-your-name-on-your-council-tax-bill",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Address"
+          },
+          value: {
+            html: '1 Test Street, Test Town TT1 1AB'
+          },
+          actions: {
+            items: [
+              {
+                href: "what-is-your-address",
+                text: "Change",
+                visuallyHiddenText: "address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Is this your main home?"
+          },
+          value: {
+            html: data['is-this-your-main-home'] | capitalize
+          },
+          actions: {
+            items: [
+              {
+                href: "is-this-your-main-home",
+                text: "Change",
+                visuallyHiddenText: "address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Your full name"
+          },
+          value: {
+            html: data['full-name']
+          },
+          actions: {
+            items: [
+              {
+                href: "what-is-your-email-address",
+                text: "Change",
+                visuallyHiddenText: "email address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Your date of birth"
+          },
+          value: {
+            html: dob
+          },
+          actions: {
+            items: [
+              {
+                href: "what-is-your-email-address",
+                text: "Change",
+                visuallyHiddenText: "email address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            html: emailAddress
+          },
+          actions: {
+            items: [
+              {
+                href: "what-is-your-email-address",
+                text: "Change",
+                visuallyHiddenText: "email address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Phone number"
+          },
+          value: {
+            html: phoneNumber
+          },
+          actions: {
+            items: [
+              {
+                href: "what-is-your-phone-number",
+                text: "Change",
+                visuallyHiddenText: "phone number"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+    <h2 class="govuk-heading-m">Previous support</h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Are you already getting discounts to your energy bills from the Energy Bills Support Scheme?"
+          },
+          value: {
+            html: data['received-main-ebss'] | capitalize
+          },
+          actions: {
+            items: [
+              {
+                href: "have-you-received-a-payment-ebss",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Have you already had the alternative fuels payment?"
+          },
+          value: {
+            html: data['received-main-afp'] | capitalize if data['received-main-afp'] else 'No'
+          },
+          actions: {
+            items: [
+              {
+                href: "have-you-received-a-payment-afp",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Future support</h2>
+    {% if data['do-you-have-a-bank-account'] == 'no' and data['is-your-name-on-your-council-tax-bill'] == 'no-council-tax' %}
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+      {
+        key: {
+          text: "Do you have a bank or building society account in your name?"
+        },
+        value: {
+          html: data['do-you-have-a-bank-account'] | capitalize
+        },
+        actions: {
+          items: [
+            {
+              href: "have-you-received-a-payment-ebss",
+              text: "Change",
+              visuallyHiddenText: "answer"
+            }
+          ]
+        }
+      },
+        {
+          key: {
+            text: "How do you want to receive a voucher?"
+          },
+          value: {
+            html: data['preferred-payment'] | capitalize
+          },
+          actions: {
+            items: [
+              {
+                href: "have-you-received-a-payment-ebss",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+    {% elif data['do-you-have-a-bank-account'] == 'no' and data['is-your-name-on-your-council-tax-bill'] == 'yes' %}
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Do you have a bank or building society account in your name?"
+          },
+          value: {
+            html: data['do-you-have-a-bank-account'] | capitalize
+          },
+          actions: {
+            items: [
+              {
+                href: "have-you-received-a-payment-ebss",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+    {% else %}
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Do you have a bank or building society account in your name?"
+          },
+          value: {
+            html: data['do-you-have-a-bank-account'] | capitalize
+          },
+          actions: {
+            items: [
+              {
+                href: "have-you-received-a-payment-ebss",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Name on the account"
+          },
+          value: {
+            html: data['name-on-the-account'] | capitalize
+          },
+          actions: {
+            items: [
+              {
+                href: "what-are-your-bank-account-details",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Sort code"
+          },
+          value: {
+            html: data['sort-code']
+          },
+          actions: {
+            items: [
+              {
+                href: "what-are-your-bank-account-details",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Account number"
+          },
+          value: {
+            html: data['account-number']
+          },
+          actions: {
+            items: [
+              {
+                href: "what-are-your-bank-account-details",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Building society roll number (if you have one)"
+          },
+          value: {
+            html: data['roll-number']
+          },
+          actions: {
+            items: [
+              {
+                href: "what-are-your-bank-account-details",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+    {% endif %}
+
+    <h2 class="govuk-heading-m">Now send your application</h2>
+
+    <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+    <form action="/confirmation" novalidate>
+
+      <input type="hidden" name="answers-checked" value="true">
+
+      {{ govukButton({
+        text: "Accept and send"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}
