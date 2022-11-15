@@ -128,11 +128,11 @@ router.get(['/caravan-check'], (req, res) => {
 
 router.get(['/afp-check'], (req, res) => {
   const receivedMainEbss = req.session.data['received-main-ebss'] === 'yes'
-  const askedAboutMainAfp = req.session.data['received-main-afp'] !== undefined
   const receivedMainAfp = req.session.data['received-main-afp'] === 'yes'
+  const askedAboutMainAfp = req.session.data['received-main-afp'] !== undefined
   const onGasGrid = req.session.data['does-your-home-have-gas'] === 'yes'
   const usesAlternative = req.session.data['do-you-use-one-of-these-fuels'] === 'yes'
-  if (!askedAboutMainAfp && !onGasGrid && usesAlternative) {
+  if (usesAlternative && !askedAboutMainAfp) {
     res.redirect('/have-you-received-a-payment-afp')
   }
   if ((receivedMainEbss && onGasGrid) || (receivedMainEbss && !usesAlternative) || (receivedMainEbss && receivedMainAfp)) {
@@ -143,6 +143,8 @@ router.get(['/afp-check'], (req, res) => {
     res.redirect('/afp-only')
   } else if (!receivedMainEbss && !onGasGrid && usesAlternative && !receivedMainAfp) {
     res.redirect('/afp-and-ebss')
+  } else {
+    res.redirect('/afp-only')
   }
 })
 
