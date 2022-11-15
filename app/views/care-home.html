@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which describes your situation best?
+Do you pay for your care?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -23,7 +23,7 @@ Which describes your situation best?
         name: "situation-specific",
         fieldset: {
           legend: {
-            text: "Which describes your situation best?",
+            text: "Do you pay for your care?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -42,7 +42,7 @@ Which describes your situation best?
           },
           {
             value: "other",
-            text: "I don’t fit into any of these categories"
+            text: "I don’t fit into either of these categories"
           }
         ]
       }) }}

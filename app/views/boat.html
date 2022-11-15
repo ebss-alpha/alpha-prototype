@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which describes your situation best?
+What kind of license does your boat have?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -23,7 +23,7 @@ Which describes your situation best?
         name: "situation-specific",
         fieldset: {
           legend: {
-            text: "Which describes your situation best?",
+            text: "What kind of licence does your boat have?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -31,18 +31,18 @@ Which describes your situation best?
         items: [
           {
             value: "residential-mooring",
-            text: "I live on a permanent residential mooring"
+            text: "My boat has a permanent residential mooring licence"
           },
           {
             value: "continuous-cruiser",
-            text: "I have no residential mooring (continuous cruiser)"
+            text: "My boat has a continuous cruising licence"
           },
           {
             divider: 'or'
           },
           {
             value: "other",
-            text: "I don’t fit into any of these categories"
+            text: "I don’t fit into either of these categories"
           }
         ]
       }) }}

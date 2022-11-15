@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which describes your situation best?
+Do you live on a permanent residential site?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -23,7 +23,7 @@ Which describes your situation best?
         name: "situation-specific",
         fieldset: {
           legend: {
-            text: "Which describes your situation best?",
+            text: "Do you live on a permanent residential site?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -31,11 +31,11 @@ Which describes your situation best?
         items: [
           {
             value: "permanent-site",
-            text: "I live on a permanent caravan site"
+            text: "Yes"
           },
           {
             value: "roadside",
-            text: "I live on the roadside or continuously move"
+            text: "No"
           },
           {
             divider: 'or'

@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which describes your situation best?
+Who do you rent your home from?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -23,7 +23,7 @@ Which describes your situation best?
         name: "situation-specific",
         fieldset: {
           legend: {
-            text: "Which describes your situation best?",
+            text: "Who do you rent your home from?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -39,7 +39,7 @@ Which describes your situation best?
           },
           {
             value: "council-or-housing-association",
-            text: "I live in purpose-built student accommodation"
+            text: "I rent purpose-built student accommodation"
           },
           {
             divider: 'or'
