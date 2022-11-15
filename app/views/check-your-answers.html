@@ -13,7 +13,7 @@ Check your answers before sending your application
 {% endblock %}
 
 {% set councilTax %}
-{{ data['is-your-name-on-your-council-tax-bill'] | replace("no-council-tax", "I don't pay council tax") | sentence }}
+{{ data['is-your-name-on-your-council-tax-bill'] | replace("no-council-tax", "I'm not registered for council tax at my address") | sentence }}
 {% endset %}
 
 
@@ -229,7 +229,7 @@ No phone number provided
     }) }}
 
     <h2 class="govuk-heading-m">Future support</h2>
-    {% if data['do-you-have-a-bank-account'] == 'no' and data['is-your-name-on-your-council-tax-bill'] == 'no-council-tax' %}
+    {% if data['do-you-have-a-bank-account'] == 'no' and data['is-your-name-on-your-council-tax-bill'] != 'yes' %}
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-9',
       rows: [
