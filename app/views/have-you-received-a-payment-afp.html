@@ -1,0 +1,66 @@
+
+{% extends "layout.html" %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+{% block pageTitle %}
+Have you already had the alternative fuels payment?
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+{{ govukBackLink({
+  text: "Back",
+  href: "do-you-use-one-of-these-fuels"
+}) }}
+{% endblock %}
+
+{% set preamble %}
+<p class="govuk-body">
+  The alternate fuels payment is a one-off payment of £100 to UK households who are not on the mains gas grid so use alternative fuels as the main way to heat their homes.
+</p>
+<p class="govuk-body">
+  If you have already getting the payment, you will have received £100 automatically on your electricity meter.
+</p>
+{{ govukWarningText({
+  text: "Most people will have had the payment automatically applied to their energy bills and do not need to apply.",
+  iconFallbackText: "Important"
+}) }}
+{% endset %}
+
+
+{% block content %}
+<form action="afp-check">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukRadios({
+        name: "received-main-afp",
+        fieldset: {
+          legend: {
+            text: "Have you already had the alternative fuels payment?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: preamble | safe  
+        },
+        items: [
+          {
+            value: "yes",
+            text: "I have already had the alternative fuels payment"
+          },
+          {
+            value: "no",
+            text: "I have not already had the alternative fuels payment"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+
+{% endblock %}

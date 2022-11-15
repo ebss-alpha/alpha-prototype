@@ -13,10 +13,15 @@ You can’t apply for energy bills support
     text: "Back",
     href: "does-your-home-have-gas-central-heating"
   }) }}
-{% else %}
+{% elif data['do-you-use-one-of-these-fuels'] == 'no' %}
   {{ govukBackLink({
     text: "Back",
     href: "do-you-use-one-of-these-fuels"
+  }) }}
+{% else %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "have-you-received-a-payment-afp"
   }) }}
 {% endif %}
 {% endblock %}

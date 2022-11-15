@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-How would you describe where you live?
+Which best describes your accommodation?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -10,7 +10,7 @@ How would you describe where you live?
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: "is-your-name-on-your-council-tax-bill"
+    href: "is-this-your-main-home"
   }) }}
 {% endblock %}
 
@@ -24,7 +24,7 @@ How would you describe where you live?
 {% endset %}
 
 {% block content %}
-<form action="upload-proof-of-address">
+<form action="user-group-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
@@ -34,53 +34,38 @@ How would you describe where you live?
         },
         fieldset: {
           legend: {
-            text: "How would you describe where you live?",
+            text: "Which best describes your accommodation?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            value: "care-home",
-            text: "I live in a care home or assisted living facility and pay for some or all of my care"
+            value: "house-or-flat-rented",
+            text: "In a house or flat owned by someone else"
+          },
+          {
+            value: "house-or-flat-owned",
+            text: "In a house or flat that I own"
           },
           {
             value: "park-home",
-            text: "I live permanently in a park home"
+            text: "In a park home"
           },
           {
-            value: "traveller-site",
-            text: "I live on a permanent Gypsy and Traveller site"
+            value: "care-home",
+            text: "In a care home"
           },
           {
             value: "boat",
-            text: "I live on a houseboat on a permanent residential mooring"
+            text: "On a boat"
           },
           {
-            value: "heat-network",
-            text: "I live in a building supplied by a heat network and I don’t have an electricity meter in my home"
+            value: "caravan",
+            text: "In a caravan or mobile home"
           },
           {
-            value: "off-grid",
-            text: "I live in a home without a connection to the electricity and/or gas grid"
-          },
-          {
-            value: "non-domestic-used-as-home",
-            text: "I live in a non-domestic property which is used as a home such as a flat above a shop "
-          },
-          {
-            divider: ''
-          },
-          {
-            value: "private-landlord",
-            text: "I rent from a private landlord and don’t fit into any of the other categories"
-          },
-          {
-            value: "social-or-housing-association",
-            text: "I rent from a social or housing association and don’t fit into any of the other categories"
-          },
-          {
-            divider: ''
+            divider: 'or'
           },
           {
             value: "other",
