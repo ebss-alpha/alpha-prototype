@@ -15,6 +15,7 @@ Do you use any of these fuels as the main source of heat in your home?
 {% endblock %}
 
 {% set fuelList %}
+<p>If your main form of heating uses one of these fuels to heat your home, you are eligible for the £100 alternative fuels payment.</p><p>Most people who are eligible will have already had the payment automatically applied to their electricity bills and do not need to apply.</p>
 <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-2">
   <li>tank or bottled gas</li>
   <li>liquid petroleum gas (LPG)</li>
@@ -22,7 +23,7 @@ Do you use any of these fuels as the main source of heat in your home?
   <li>wood (for example logs, waste wood, or pellets)</li>
   <li>solid fuel (for example coal)</li>
 </ul>
-<p>You will need to upload proof that you use this fuel on the next screen.</p>
+<p>You will need to upload proof that you use this fuel later.</p>
 {% endset %}
 
 {% block content %}
@@ -37,7 +38,7 @@ Do you use any of these fuels as the main source of heat in your home?
         },
         fieldset: {
           legend: {
-            text: "Do you use any of these fuels as the main source of heat in your home?",
+            text: "Do you use one of these fuels for the main heating in your home?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
