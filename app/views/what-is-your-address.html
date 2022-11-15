@@ -8,10 +8,17 @@ What is your address?
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
 {{ alphaPhase() }}
+{% if data['address-housenumber'] | length > 0 %}
   {{ govukBackLink({
     text: "Back",
     href: "is-this-your-address"
   }) }}
+{% else %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "choose-your-address"
+  }) }}
+{% endif%}
 {% endblock %}
 
 {% block content %}
