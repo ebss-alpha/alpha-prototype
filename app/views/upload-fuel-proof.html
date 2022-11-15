@@ -32,7 +32,7 @@ Upload proof that you use alternative fuels to heat your home
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">Upload proof that you use alternative fuels to heat your home</h1>
       <p class="govuk-body">You must upload proof that you use one of the eligible alternative fuels as the main form of heating in your home.</p> 
-      <p class="govuk-body">You must upload a document with your name and address on it that shows you have sent at least £100 on one of these fuels in the last 6 months.</p>
+      <p class="govuk-body">You must upload evidence that shows you have spent at least £100 on one of these fuels in the last 6 months. All documents must have your name and address on them.</p>
       <p class="govuk-body">This could be a: </p>
       <ul class="govuk-list govuk-list--bullet">
         <li>delivery note</li>
@@ -42,7 +42,7 @@ Upload proof that you use alternative fuels to heat your home
       <p class="govuk-body">Your document must be:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>no more than 10 MB in size</li>
-        <li>in PDF, JPG, PNG or .doc format</li>
+        <li>In PDF, .jpeg or .doc format</li>
       </ul>
       <p class="govuk-body">You can upload multiple documents.</p>
       
@@ -53,16 +53,10 @@ Upload proof that you use alternative fuels to heat your home
           text: "Upload a file"
         }
       }) }}
-      <div class="govuk-button-group">
-        {{ govukButton({
-          text: "Confirm and continue"
-        }) }}
-      
-        {{ govukButton({
-          text: "I will apply for this payment later",
-          classes: "govuk-button--secondary"
-        }) }}
-      </div>
+      <p class="govuk-body">If you don't have this evidence now, you can upload it later.</p>
+      {{ govukButton({
+        text: "Confirm and continue"
+      }) }}
     </div>
   </div>
 </form>
