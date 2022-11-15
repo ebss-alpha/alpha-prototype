@@ -69,7 +69,7 @@ router.get(['/user-group-check'], (req, res) => {
       res.redirect('/house-or-flat-rented')
       break
     case 'house-or-flat-owned':
-      res.redirect('/house-or-flat-owned')
+      res.redirect('/have-you-received-a-payment-ebss')
       break
     case 'park-home':
       res.redirect('/have-you-received-a-payment-ebss')
