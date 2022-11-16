@@ -200,10 +200,8 @@ router.get(['/final-council-tax-check'], (req, res) => {
   switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
     case 'no':
     case 'no-council-tax':
-      res.redirect('/voucher-option')
-      break
     default:
-      res.redirect('/council-tax-rebate')
+      res.redirect('/voucher-option')
       break
   }
 })

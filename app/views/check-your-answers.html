@@ -229,7 +229,7 @@ No phone number provided
     }) }}
 
     <h2 class="govuk-heading-m">Future support</h2>
-    {% if data['do-you-have-a-bank-account'] == 'no' and data['is-your-name-on-your-council-tax-bill'] != 'yes' %}
+    {% if data['do-you-have-a-bank-account'] == 'no' %}
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-9',
       rows: [
@@ -255,30 +255,7 @@ No phone number provided
             text: "How do you want to receive a voucher?"
           },
           value: {
-            html: data['preferred-payment'] | capitalize
-          },
-          actions: {
-            items: [
-              {
-                href: "have-you-received-a-payment-ebss",
-                text: "Change",
-                visuallyHiddenText: "answer"
-              }
-            ]
-          }
-        }
-      ]
-    }) }}
-    {% elif data['do-you-have-a-bank-account'] == 'no' and data['is-your-name-on-your-council-tax-bill'] == 'yes' %}
-    {{ govukSummaryList({
-      classes: 'govuk-!-margin-bottom-9',
-      rows: [
-        {
-          key: {
-            text: "Do you have a bank or building society account in your name?"
-          },
-          value: {
-            html: data['do-you-have-a-bank-account'] | capitalize
+            html: data['preferred-payment'] | replace("sms", "text") | capitalize 
           },
           actions: {
             items: [
