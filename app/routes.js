@@ -76,10 +76,7 @@ router.get(['/user-group-check'], (req, res) => {
       res.redirect('/care-home')
       break
     case 'boat':
-      res.redirect('/have-you-received-a-payment-ebss')
-      break
-    case 'farm':
-      res.redirect('/have-you-received-a-payment-ebss')
+      res.redirect('/boat')
       break
     case 'farm':
       res.redirect('/have-you-received-a-payment-ebss')
