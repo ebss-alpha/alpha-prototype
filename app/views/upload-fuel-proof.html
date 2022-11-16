@@ -42,7 +42,7 @@ Upload proof that you use alternative fuels to heat your home
       <p class="govuk-body">Your document must be:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>no more than 10 MB in size</li>
-        <li>In PDF, .jpeg or .doc format</li>
+        <li>in PDF, .jpeg, .png or .doc format</li>
       </ul>
       <p class="govuk-body">You can upload multiple documents.</p>
       
@@ -54,9 +54,16 @@ Upload proof that you use alternative fuels to heat your home
         }
       }) }}
       <p class="govuk-body">If you don't have this evidence now, you can upload it later.</p>
-      {{ govukButton({
-        text: "Confirm and continue"
-      }) }}
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Confirm and continue"
+        }) }}
+      
+        {{ govukButton({
+          text: "I will apply for this payment later",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
     </div>
   </div>
 </form>
