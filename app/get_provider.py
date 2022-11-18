@@ -1,12 +1,112 @@
-from gazpacho import get, Soup
+import json
 import time
-providers = [ "Affect Energy", "Atlantic", "Boost", "British Gas", "British Gas Evolve", "Bulb Energy", "Co-op Energy", "E (Gas and Electricity)", "Ecotricity", "E.ON", "E.ON Next", "EDF", "GEUK (Green Energy UK)", "Good Energy", "London Power", "M&S Energy", "Nabuh Energy", "Octopus Energy", "Outfox the Market", "OVO", "Rebel Energy", "Sainsbury's Energy", "Scottish Gas", "Scottish Hydro", "ScottishPower", "Shell Energy Retail", "So Energy", "Southern Electric", "SSE", "Swalec", "Utilita", "Utility Warehouse" ]
+from gazpacho import get, Soup
+
+providers = [ 
+    "Affect Energy (part of Octopus)", 
+    "Ampower (part of Yu Energy)", 
+    "Arto Energy", 
+    "Atlantic (part of SSE)", 
+    "Avro energy (part of Octopus)",
+    "Beam energy",
+    "Better energy",
+    "Boost Power (part of OVO)", 
+    "Breeze Energy",
+    "Bristol Energy",
+    "British Gas", 
+    "British Gas Evolve", 
+    "Bryt Eenergy", 
+    "Bulb Energy (part of Octopus)", 
+    "Cardiff Energy", 
+    "CitizEn Energy", 
+    "Co-op Energy", 
+    "Daligas", 
+    "E (Gas and Electricity)", 
+    "Ebico", 
+    "Economy 7 Energy", 
+    "Ecotricity", 
+    "E.ON", 
+    "E.ON Next", 
+    "EDF", 
+    "Engie", 
+    "Enstroga", 
+    "Entice Energy", 
+    "ESB Energy", 
+    "Eversmart Energy", 
+    "Extra Energy", 
+    "First Utility", 
+    "Flow", 
+    "Fosse Energy", 
+    "Foxglove Energy", 
+    "Future Energy", 
+    "GB Energy",
+    "GEUK (Green Energy UK)", 
+    "GNergy Energy",
+    "Go Effortless",
+    "Good Energy", 
+    "GOTO.Energy", 
+    "Great North Energy", 
+    "Green Star Energy", 
+    "Gulf Gas and Power", 
+    "Igloo Energy", 
+    "IRESA", 
+    "iSupply Energy", 
+    "LECCY", 
+    "Lumo Energy", 
+    "London Power", 
+    "Nabuh Energy", 
+    "Northumbria Energy", 
+    "Npower", 
+    "Octopus Energy", 
+    "Our Power", 
+    "Outfox the Market", 
+    "OVO", 
+    "People", 
+    "PFP Energy", 
+    "Places For People", 
+    "Powershop", 
+    "Pure Planet", 
+    "Qwest Energy", 
+    "RAM Energy", 
+    "Rebel Energy", 
+    "Roar Power", 
+    "Robin Hood Power", 
+    "Sainsbury's Energy", 
+    "Scottish Gas", 
+    "Scottish Hydro", 
+    "Scottish Power", 
+    "Shell Energy Retail", 
+    "Simplicity Energy", 
+    "So Energy", 
+    "Solarplicity", 
+    "Southend Energy", 
+    "Southern Electric", 
+    "Spark Energy", 
+    "SSE", 
+    "Swalec", 
+    "Symbio Energy",
+    "Together Energy",
+    "Tonik Energy",
+    "TOTO Energy",
+    "Twenty Energy",
+    "Utilita", 
+    "Utility Point", 
+    "Utility Warehouse", 
+    "Wasps Energy",
+    "White Rose Energy",
+    "Wigan Warriors Energy",
+    "Yorkshire Energy",
+    "Your Energy Sussex",
+    "Zebra Power",
+    "Zog Energy" ]
+json_out = {'a':[], 'b':[], 'c': [], 'd': [], 'e': [], 'f': [], 'g': [], 'h': [], 'i': [], 'j': [], 'k': [], 'l': [], 'm': [], 'n': [], 'o': [], 'p': [], 'q': [], 'r': [], 's': [], 't': [], 'u': [], 'v': [], 'w': [], 'x': [], 'y': [], 'z': []}
 for provider in providers:
-    provider_enc = provider.replace(' ', '%20')
-    url = f"http://www.google.com/search?q={provider_enc}%20energy%20bill%20support%20scheme&btnI"
+    provider_enc = provider.replace(' ', '+')
+    url = f"http://www.google.com/search?q={provider_enc}+energy+bill+support+scheme+ebss&btnI"
     html = get(url)
     soup = Soup(html)
-    print(provider)
-    print(soup.find('a')[0].attrs.get('href').encode('utf-8').strip())
-    print('----')
+    link = soup.find('a')[0].attrs.get('href').strip()
+    json_out.get(provider[0].lower()).append({provider: link})
     time.sleep(1)
+with open('providers.json', 'w') as file:
+    json.dump(json_out, file)

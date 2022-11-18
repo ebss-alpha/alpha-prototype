@@ -202,3 +202,10 @@ router.get(['/final-council-tax-check'], (req, res) => {
       break
   }
 })
+
+router.get(['/find-my-energy-provider'], (req, res) => {
+  const providers = require('./data/providers.json')
+  res.render('find-my-energy-provider.html', {
+    providers: providers
+  })
+})
