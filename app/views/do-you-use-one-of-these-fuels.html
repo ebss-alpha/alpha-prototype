@@ -11,52 +11,76 @@ Do you use any of these fuels as the main source of heat in your home?
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: "does-your-home-have-gas-central-heating"
+    href: "have-you-received-a-payment-ebss"
   }) }}
 {% endblock %}
 
-{% set fuelList %}
+{% set preamble %}
 <p>If your main form of heating uses one of these fuels to heat your home, you are eligible for the £100 alternative fuels payment.</p>
+<p>Regular use is when you use this most days of the week during the winter.</p>
 {{ govukWarningText({
   classes: 'govuk-!-margin-bottom-2',
   text: "Most people who are eligible will have already had the payment automatically applied to their electricity bills and do not need to apply.",
   iconFallbackText: "Important"
 }) }}
-<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-2">
-  <li>tank or bottled gas</li>
-  <li>liquid petroleum gas (LPG)</li>
-  <li>oil</li>
-  <li>wood (for example logs, waste wood, or pellets)</li>
-  <li>solid fuel (for example coal)</li>
-</ul>
 <p>You will need to upload proof that you use this fuel later.</p>
 {% endset %}
 
 {% block content %}
-<form action="afp-check">
+<form action="fuel-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {{ govukRadios({
-        classes: "govuk-radios--inline",
+      {{ govukCheckboxes({
         name: "do-you-use-one-of-these-fuels",
         hint: {
-          text: fuelList | safe
+          text: preamble | safe
         },
         fieldset: {
           legend: {
-            text: "Do you use one of these fuels for the main heating in your home?",
+            text: "How is your home mainly heated?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            value: "yes",
-            text: "Yes"
+            text: 'mains gas central heating',
+            value: 'mains-gas'
           },
           {
-            value: "no",
-            text: "No"
+            text: 'electric storage heaters',
+            value: 'electric'
+          },
+          {
+            text: 'heat network or communal heat source',
+            value: 'heat-network'
+          },
+          {
+            text: 'tank or bottled gas',
+            value: 'bottled-gas'
+          },
+          {
+            text: 'liquid petroleum gas (LPG)',
+            value: 'lpg'
+          },
+          {
+            text: 'oil',
+            value: 'oil'
+          },
+          {
+            text: 'wood (for example logs, waste wood, or pellets)',
+            value: 'wood'
+          },
+          {
+            text: 'solid fuel (for example coal)',
+            value: 'solid-fuel'
+          },
+          {
+            divider: "or"
+          },
+          {
+            text: 'none of the above',
+            value: 'other'
           }
         ]
       }) }}

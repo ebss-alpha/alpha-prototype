@@ -127,37 +127,30 @@ router.get(['/caravan-check'], (req, res) => {
   }
 })
 
-router.get(['/afp-check'], (req, res) => {
+router.get(['/fuel-check'], (req, res) => {
+  const ineligibleFuels = ['mains-gas', 'electric', 'heat-network']
   const receivedMainEbss = req.session.data['received-main-ebss'] === 'yes'
-  const receivedMainAfp = req.session.data['received-main-afp'] === 'yes'
-  const askedAboutMainAfp = req.session.data['received-main-afp'] !== undefined
-  const onGasGrid = req.session.data['does-your-home-have-gas'] === 'yes'
-  const usesAlternative = req.session.data['do-you-use-one-of-these-fuels'] === 'yes'
-  if (usesAlternative && !askedAboutMainAfp) {
-    res.redirect('/have-you-received-a-payment-afp')
-  }
-  if ((receivedMainEbss && onGasGrid) || (receivedMainEbss && !usesAlternative) || (receivedMainEbss && receivedMainAfp)) {
-    res.redirect('/cannot-apply')
-  } else if ((!receivedMainEbss && onGasGrid) || (!receivedMainEbss && !usesAlternative)) {
+  const afpIneligible = req.session.data['do-you-use-one-of-these-fuels'].some(fuel => ineligibleFuels.includes(fuel))
+  if (afpIneligible && !receivedMainEbss) {
     res.redirect('/ebss-only')
-  } else if (receivedMainEbss && !onGasGrid && usesAlternative && !receivedMainAfp) {
-    res.redirect('/afp-only')
-  } else if (!receivedMainEbss && !onGasGrid && usesAlternative && !receivedMainAfp) {
-    res.redirect('/afp-and-ebss')
-  } else {
-    res.redirect('/afp-only')
+  } else if (afpIneligible && receivedMainEbss) {
+    res.redirect('/cannot-apply')
+  } else if (!afpIneligible) {
+    res.redirect('/have-you-received-a-payment-afp')
   }
 })
 
-router.get(['/mains-gas-check'], (req, res) => {
-  switch (req.session.data['does-your-home-have-gas']) {
-    case 'yes':
-      res.redirect('/afp-check')
-      break
-    case 'no':
-    default:
-      res.redirect('/do-you-use-one-of-these-fuels')
-      break
+router.get(['/afp-check'], (req, res) => {
+  const receivedMainEbss = req.session.data['received-main-ebss'] === 'yes'
+  const receivedAfp = req.session.data['received-main-afp'] === 'yes'
+  if (receivedAfp && !receivedMainEbss) {
+    res.redirect('/ebss-only')
+  } else if (!receivedAfp && !receivedMainEbss) {
+    res.redirect('/afp-and-ebss')
+  } else if (!receivedAfp && receivedMainEbss) {
+    res.redirect('/afp-only')
+  } else {
+    res.redirect('/cannot-apply')
   }
 })
 
