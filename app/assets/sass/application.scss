@@ -42,3 +42,8 @@ address {
     width: 1rem;
   }
 }
+
+.beis-inset-info {
+  border-color:  govuk-colour("light-blue");
+  background-color: govuk-tint(govuk-colour("light-blue"), 90);
+}
