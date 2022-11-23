@@ -44,48 +44,49 @@ Do you use any of these fuels as the main source of heat in your home?
         },
         items: [
           {
-            text: 'mains gas central heating',
+            text: 'Mains gas central heating',
             value: 'mains-gas'
           },
           {
-            text: 'electric storage heaters',
+            text: 'Electric storage heaters',
             value: 'electric'
           },
           {
-            text: 'heat network or communal heat source',
+            text: 'Heat network or communal heat source',
             value: 'heat-network'
           },
           {
-            text: 'tank or bottled gas',
+            text: 'Tank or bottled gas',
             value: 'bottled-gas'
           },
           {
-            text: 'liquid petroleum gas (LPG)',
+            text: 'Liquid petroleum gas (LPG)',
             value: 'lpg'
           },
           {
-            text: 'oil',
+            text: 'Oil',
             value: 'oil'
           },
           {
-            text: 'wood (for example logs, waste wood, or pellets)',
+            text: 'Wood (for example logs, waste wood, or pellets)',
             value: 'wood'
           },
           {
-            text: 'solid fuel (for example coal)',
+            text: 'Solid fuel (for example coal)',
             value: 'solid-fuel'
           },
           {
             divider: "or"
           },
           {
-            text: 'none of the above',
+            text: 'None of the above',
+            behaviour: "exclusive",
             value: 'other'
           }
         ]
       }) }}
       {{ govukButton({
-        text: "Continue"
+        text: "Continue",
       }) }}
     </div>
   </div>

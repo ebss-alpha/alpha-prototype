@@ -75,6 +75,18 @@ What are your bank details?
         name: "roll-number",
         spellcheck: false
       }) }}
+
+      {{ 
+        govukCheckboxes({
+          name: "business-account",
+          items: [
+          {
+            value: "yes",
+            text: "This is is a business account"
+          }
+          ]
+        })
+      }}
       
       {{ govukButton({
         text: "Continue"
