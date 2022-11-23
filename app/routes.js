@@ -90,6 +90,9 @@ router.get(['/user-group-check'], (req, res) => {
 
 router.get(['/house-or-flat-rented-check'], (req, res) => {
   switch (req.session.data['situation-specific']) {
+    case 'student':
+      res.redirect('/ineligible-home-type')
+      break
     default:
       res.redirect('/have-you-received-a-payment-ebss')
       break
@@ -104,6 +107,9 @@ router.get(['/house-or-flat-owned-check'], (req, res) => {
 })
 router.get(['/care-home-check'], (req, res) => {
   switch (req.session.data['situation-specific']) {
+    case 'do-not-pay-for-care':
+      res.redirect('/ineligible-home-type')
+      break
     default:
       res.redirect('/have-you-received-a-payment-ebss')
       break
@@ -111,6 +117,9 @@ router.get(['/care-home-check'], (req, res) => {
 })
 router.get(['/boat-check'], (req, res) => {
   switch (req.session.data['situation-specific']) {
+    case 'continuous-cruiser':
+      res.redirect('/ineligible-home-type')
+      break
     default:
       res.redirect('/have-you-received-a-payment-ebss')
       break
@@ -118,6 +127,9 @@ router.get(['/boat-check'], (req, res) => {
 })
 router.get(['/caravan-check'], (req, res) => {
   switch (req.session.data['situation-specific']) {
+    case 'no':
+      res.redirect('/ineligible-home-type')
+      break
     default:
       res.redirect('/have-you-received-a-payment-ebss')
       break
