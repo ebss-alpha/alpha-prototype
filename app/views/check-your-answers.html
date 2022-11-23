@@ -50,40 +50,6 @@ No phone number provided
       rows: [
         {
           key: {
-            text: "Are you applying for yourself or on someone else's behalf?"
-          },
-          value: {
-            html: data['applying-for-yourself-or-someone-else'] | capitalize
-          },
-          actions: {
-            items: [
-              {
-                href: "applying-for-yourself-or-someone-else",
-                text: "Change",
-                visuallyHiddenText: "answer"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Is your name on your household's council tax bill?"
-          },
-          value: {
-            html: councilTax
-          },
-          actions: {
-            items: [
-              {
-                href: "is-your-name-on-your-council-tax-bill",
-                text: "Change",
-                visuallyHiddenText: "answer"
-              }
-            ]
-          }
-        },
-        {
-          key: {
             text: "Address"
           },
           value: {
@@ -180,6 +146,23 @@ No phone number provided
                 href: "what-is-your-phone-number",
                 text: "Change",
                 visuallyHiddenText: "phone number"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Is your name on your household's council tax bill?"
+          },
+          value: {
+            html: councilTax
+          },
+          actions: {
+            items: [
+              {
+                href: "is-your-name-on-your-council-tax-bill",
+                text: "Change",
+                visuallyHiddenText: "answer"
               }
             ]
           }

@@ -20,14 +20,6 @@ router.get(['/is-your-name-on-your-council-tax-bill'], (req, res) => {
   res.render('is-your-name-on-your-council-tax-bill.html')
 })
 
-router.get(['/third-party-check'], (req, res) => {
-  if (req.session.data['applying-for-yourself-or-someone-else'] === 'myself') {
-    res.redirect('/is-your-name-on-your-council-tax-bill')
-  } else {
-    res.redirect('/third-party-route')
-  }
-})
-
 router.get(['/initial-council-tax-check'], (req, res) => {
   switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
     case 'no':
