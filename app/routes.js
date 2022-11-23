@@ -15,6 +15,11 @@ router.get(['/start'], (req, res) => {
   res.render('start.html')
 })
 
+router.get(['/is-your-name-on-your-council-tax-bill'], (req, res) => {
+  req.session.data['is-your-name-on-your-council-tax-bill'] = undefined
+  res.render('is-your-name-on-your-council-tax-bill.html')
+})
+
 router.get(['/third-party-check'], (req, res) => {
   if (req.session.data['applying-for-yourself-or-someone-else'] === 'myself') {
     res.redirect('/is-your-name-on-your-council-tax-bill')
@@ -54,10 +59,10 @@ router.get(['/address-confirmation-check'], (req, res) => {
 })
 
 router.get(['/home-check'], (req, res) => {
-  if (req.session.data['is-this-your-main-home'] === 'yes') {
-    res.redirect('/describe-where-you-live')
-  } else {
+  if (req.session.data['is-this-your-main-home'] === 'no') {
     res.redirect('/ineligible-second-home')
+  } else {
+    res.redirect('/describe-where-you-live')
   }
 })
 
@@ -158,11 +163,11 @@ router.get(['/contact-check'], (req, res) => {
   if (req.session.data['no-phone'] && req.session.data['no-email']) {
     res.redirect('/difficult-to-contact-individuals')
   } else {
-    res.redirect('/secondary-council-tax-check')
+    res.redirect('/is-your-name-on-your-council-tax-bill')
   }
 })
 
-router.get(['/secondary-council-tax-check'], (req, res) => {
+router.get(['/council-tax-check'], (req, res) => {
   switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
     case 'no':
     case 'no-council-tax':
@@ -182,17 +187,7 @@ router.get(['/bank-account-check'], (req, res) => {
   } else if (!hasBank && !proofOfAddressProvided) {
     res.redirect('/upload-proof-of-address')
   } else if (!hasBank && proofOfAddressProvided) {
-    res.redirect('/final-council-tax-check')
-  }
-})
-
-router.get(['/final-council-tax-check'], (req, res) => {
-  switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
-    case 'no':
-    case 'no-council-tax':
-    default:
-      res.redirect('/voucher-option')
-      break
+    res.redirect('/voucher-option')
   }
 })
 

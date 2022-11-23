@@ -16,13 +16,13 @@ You need to upload proof of address
 {% elif data['is-your-name-on-your-council-tax-bill'] != 'yes' %}
   {{ govukBackLink({
     text: "Back",
-    href: "what-is-your-phone-number"
+    href: "is-your-name-on-your-council-tax-bill"
   }) }}
 {% endif %}
 {% endblock %}
 
 {% if data['proof-of-address-provided'] == 'yes' or data['do-you-have-a-bank-account'] == 'no' %}
-  {% set nextPage = 'final-council-tax-check' %}
+  {% set nextPage = 'voucher-option' %}
 {% else %}
   {% set nextPage = 'do-you-have-a-bank-account' %}
 {% endif %}
