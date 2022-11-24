@@ -5,18 +5,13 @@
 What are your bank details?
 {% endblock %}
 
-{% if data['is-your-name-on-your-council-tax-bill'] == 'yes' %}
-{% set backLink = 'preferred-payment' %}
-{% else %}
-{% set backLink = 'do-you-have-a-bank-account' %}
-{% endif %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: backLink
+    href: 'do-you-have-a-bank-account'
   }) }}
 {% endblock %}
 

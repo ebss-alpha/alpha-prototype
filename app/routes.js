@@ -184,14 +184,14 @@ router.get(['/council-tax-check'], (req, res) => {
 })
 
 router.get(['/bank-account-check'], (req, res) => {
-  const hasBank = req.session.data['do-you-have-a-bank-account'] === 'yes'
-  const proofOfAddressProvided = req.session.data['proof-of-address-provided'] === 'yes'
-  if (hasBank) {
-    res.redirect('/what-are-your-bank-account-details')
-  } else if (!hasBank && !proofOfAddressProvided) {
-    res.redirect('/upload-proof-of-address')
-  } else if (!hasBank && proofOfAddressProvided) {
-    res.redirect('/voucher-option')
+  switch (req.session.data['do-you-have-a-bank-account']) {
+    case 'yes':
+      res.redirect('/what-are-your-bank-account-details')
+      break
+    case 'no':
+    default:
+      res.redirect('/upload-proof-of-id')
+      break
   }
 })
 

@@ -2,26 +2,24 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-You need to upload proof of address
+You need to upload proof of identification
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
 {{ alphaPhase() }}
-
   {{ govukBackLink({
     text: "Back",
-    href: "is-your-name-on-your-council-tax-bill"
+    href: "do-you-have-a-bank-account"
   }) }}
-  
 {% endblock %}
 
 {% block content %}
-<form action="do-you-have-a-bank-account">
+<form action="voucher-option">
   <input type="hidden" name="proof-of-address-provided" value="yes">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">You need to upload proof of address</h1>
+      <h1 class="govuk-heading-l">You need to upload proof of identification</h1>
       <p>We need proof that you live at this address.</p> 
       <p>You must upload a document with your name and address on it. You could upload a:</p>
       <ul class="govuk-list govuk-list--bullet">
