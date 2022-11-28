@@ -21,7 +21,9 @@ Is your name on your household’s council tax bill?
       {{ govukRadios({
         name: "is-your-name-on-your-council-tax-bill",
         hint: {
-          text: '<div class="govuk-!-margin-bottom-2">Your local council will use council tax records to check you live at this address. They will be able to do this even if you are registered for council tax but you do not have to pay the bill.</div><div class="govuk-!-margin-bottom-2">If your name is not on the council tax bill, you should ask someone in your household whose name is on the bill to make this application.</div><div>If no one in your household pays council tax, you will need to upload proof of address on the next screen.</div>' | safe
+          text: '<div class="govuk-!-margin-bottom-2">Your local council will use council tax records to check you live at the address you are applying for. They will be able to do this if you are registered for council tax but you do not have to pay the bill. For example, you might have a council tax exemption certificate.</div>
+      <div class="govuk-!-margin-bottom-2">If your name is not on the council tax bill, ask someone in your household whose name is on the bill to make this application.</div>
+      <div>If no one in your household pays council tax, you will need to upload proof of address.</div>' | safe
         },
         fieldset: {
           legend: {
@@ -39,10 +41,6 @@ Is your name on your household’s council tax bill?
             value: "no",
             text: "No"
           },
-          {
-            value: "no-council-tax",
-            text: "I'm not registered for council tax at my address"
-          }
         ]
       }) }}
       {{ govukButton({
