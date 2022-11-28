@@ -141,9 +141,9 @@ router.get(['/fuel-check'], (req, res) => {
   const receivedMainEbss = req.session.data['received-main-ebss'] === 'yes'
   const afpIneligible = req.session.data['do-you-use-one-of-these-fuels'].some(fuel => ineligibleFuels.includes(fuel))
   if (afpIneligible && !receivedMainEbss) {
-    res.redirect('/ebss-only')
+    res.redirect('/ebss-only-afp-ineligible')
   } else if (afpIneligible && receivedMainEbss) {
-    res.redirect('/cannot-apply')
+    res.redirect('/cannot-apply-afp-ineligible')
   } else if (!afpIneligible) {
     res.redirect('/have-you-received-a-payment-afp')
   }
@@ -153,13 +153,13 @@ router.get(['/afp-check'], (req, res) => {
   const receivedMainEbss = req.session.data['received-main-ebss'] === 'yes'
   const receivedAfp = req.session.data['received-main-afp'] === 'yes'
   if (receivedAfp && !receivedMainEbss) {
-    res.redirect('/ebss-only')
+    res.redirect('/ebss-only-had-afp')
   } else if (!receivedAfp && !receivedMainEbss) {
     res.redirect('/afp-and-ebss')
   } else if (!receivedAfp && receivedMainEbss) {
     res.redirect('/afp-only')
   } else {
-    res.redirect('/cannot-apply')
+    res.redirect('/cannot-apply-had-afp')
   }
 })
 
