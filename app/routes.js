@@ -11,8 +11,16 @@ router.get(['/'], (req, res) => {
 })
 
 router.get(['/start'], (req, res) => {
-  req.session.data = {}
+  const ni = req.session.data.locale === 'ni'
+  req.session.data = {
+    locale: ni ? 'ni' : 'gb'
+  }
   res.render('start.html')
+})
+
+router.get(['/ni'], (req, res) => {
+  req.session.data.locale = 'ni'
+  res.redirect('/start')
 })
 
 router.get(['/is-your-name-on-your-council-tax-bill'], (req, res) => {
