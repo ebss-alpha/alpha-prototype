@@ -190,7 +190,7 @@ router.get(['/bank-account-check'], (req, res) => {
       break
     case 'no':
     default:
-      res.redirect('/upload-proof-of-id')
+      res.redirect('/get-a-bank-account')
       break
   }
 })
