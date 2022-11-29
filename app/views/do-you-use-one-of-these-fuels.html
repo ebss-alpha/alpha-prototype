@@ -16,14 +16,9 @@ Do you use any of these fuels as the main source of heat in your home?
 {% endblock %}
 
 {% set preamble %}
-<p>If your main form of heating uses one of these fuels to heat your home, you are eligible for the £200 alternative fuels payment.</p>
-<p>Regular use is when you use this most days of the week during the winter.</p>
-{{ govukWarningText({
-  classes: 'govuk-!-margin-bottom-2',
-  text: "Most people who are eligible will have already had the payment automatically applied to their electricity bills and do not need to apply.",
-  iconFallbackText: "Important"
-}) }}
-<p>You will need to upload proof that you use this fuel later.</p>
+<p>Your main form of heating is what you use most days of the week this winter.</p>
+<p>If you mainly use alternative fuels you might be eligible for the £200 alternative fuels payment. You will need to upload proof that you use them later.</p>
+<p>You can select more than one option.</p>
 {% endset %}
 
 {% block content %}
@@ -37,30 +32,26 @@ Do you use any of these fuels as the main source of heat in your home?
         },
         fieldset: {
           legend: {
-            text: "How is your home mainly heated?",
+            text: "How is your home mainly heated this winter?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
-          {
-            text: 'Mains gas central heating',
+           {
+            text: 'Electric radiators or storage heaters',
+            value: 'electric'
+          },    
+      {
+            text: 'Gas central heating using mains gas',
             value: 'mains-gas'
           },
           {
-            text: 'Electric storage heaters',
-            value: 'electric'
-          },
-          {
-            text: 'Heat network or communal heat source',
-            value: 'heat-network'
-          },
-          {
-            text: 'Tank or bottled gas',
+            text: 'Gas heating using bottled gas',
             value: 'bottled-gas'
           },
           {
-            text: 'Liquid petroleum gas (LPG)',
+            text: 'Gas heating using tank or liquid petroleum gas (LPG)',
             value: 'lpg'
           },
           {
@@ -68,12 +59,16 @@ Do you use any of these fuels as the main source of heat in your home?
             value: 'oil'
           },
           {
-            text: 'Wood (for example logs, waste wood, or pellets)',
+            text: 'Wood such as logs, waste wood, or pellets',
             value: 'wood'
           },
           {
-            text: 'Solid fuel (for example coal)',
+            text: 'Solid fuel such as coal',
             value: 'solid-fuel'
+          },
+          {
+            text: 'Heat network or communal heat source',
+            value: 'heat-network'
           },
           {
             divider: "or"
