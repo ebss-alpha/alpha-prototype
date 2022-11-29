@@ -18,8 +18,8 @@ Check your answers before sending your application
 
 
 {% set emailAddress %}
-{% if data['email-address'] %}
-{{ data['email-address'] }}
+{% if data['email'] %}
+{{ data['email'] }}
 {% else %}
 No email address provided
 {% endif %}
@@ -92,9 +92,9 @@ No phone number provided
           actions: {
             items: [
               {
-                href: "what-is-your-email-address",
+                href: "what-is-your-full-name",
                 text: "Change",
-                visuallyHiddenText: "email address"
+                visuallyHiddenText: "name"
               }
             ]
           }
@@ -109,9 +109,9 @@ No phone number provided
           actions: {
             items: [
               {
-                href: "what-is-your-email-address",
+                href: "what-is-your-date-of-birth",
                 text: "Change",
-                visuallyHiddenText: "email address"
+                visuallyHiddenText: "date of birth"
               }
             ]
           }
@@ -185,23 +185,6 @@ No phone number provided
             items: [
               {
                 href: "have-you-received-a-payment-ebss",
-                text: "Change",
-                visuallyHiddenText: "answer"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Have you already had the alternative fuels payment?"
-          },
-          value: {
-            html: data['received-main-afp'] | capitalize if data['received-main-afp'] else 'No'
-          },
-          actions: {
-            items: [
-              {
-                href: "have-you-received-a-payment-afp",
                 text: "Change",
                 visuallyHiddenText: "answer"
               }

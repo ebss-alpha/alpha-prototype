@@ -157,6 +157,18 @@ router.get(['/fuel-check'], (req, res) => {
   }
 })
 
+router.get(['/ebss-check'], (req, res) => {
+  switch (req.session.data['received-main-ebss']) {
+    case 'yes':
+      res.redirect('/ineligible-for-ebss-af')
+      break
+    case 'no':
+    default:
+      res.redirect('/eligible-for-ebss-af')
+      break
+  }
+})
+
 router.get(['/afp-check'], (req, res) => {
   const receivedMainEbss = req.session.data['received-main-ebss'] === 'yes'
   const receivedAfp = req.session.data['received-main-afp'] === 'yes'
