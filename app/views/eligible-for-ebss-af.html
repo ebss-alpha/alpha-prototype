@@ -1,0 +1,31 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You can apply for the £400 Energy Bills Support Scheme payment
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+{{ govukBackLink({
+  text: "Back",
+  href: "have-you-received-a-payment-ebss"
+}) }}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You can apply for the £400 Energy Bills Support Scheme payment</h1>
+    <p class="govuk-body">We need to ask you additional questions so we can check you are eligible.</p>
+    {{ govukButton({
+      text: "Continue",
+      href: "what-is-your-full-name"
+    }) }}
+  </div>
+</div>
+
+{% endblock %}
