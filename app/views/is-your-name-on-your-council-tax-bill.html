@@ -26,6 +26,7 @@ Is your name on your household’s council tax bill?
       <div>If no one in your household pays council tax, you will need to upload proof of address.</div>' | safe
         },
         fieldset: {
+          classes: "govuk-radios--inline",
           legend: {
             text: "Is your name on your household’s council tax bill?",
             isPageHeading: true,
@@ -40,7 +41,7 @@ Is your name on your household’s council tax bill?
           {
             value: "no",
             text: "No"
-          },
+          }
         ]
       }) }}
       {{ govukButton({
