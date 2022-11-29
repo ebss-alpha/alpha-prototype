@@ -15,6 +15,11 @@ module.exports = function (env) {
     }
   }
 
+  filters.localise = (input, locale) => {
+    const localisedTaxString = locale === 'ni' ? 'rates' : 'council tax'
+    return env.filters.safe(input.replaceAll(/council tax/ig, localisedTaxString))
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

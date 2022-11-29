@@ -2,7 +2,9 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
+{% filter localise(data.locale) %}
 Non-council tax branch
+{% endfilter %}
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -17,6 +19,7 @@ Non-council tax branch
 
 
 {% block content %}
+{% filter localise(data.locale) %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">Non-council tax branch</h1>
@@ -28,4 +31,5 @@ Non-council tax branch
     }) }}
   </div>
 </div>
+{% endfilter %}
 {% endblock %}

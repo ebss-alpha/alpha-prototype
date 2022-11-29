@@ -17,6 +17,7 @@ You need to upload proof of address
 {% endblock %}
 
 {% block content %}
+{% filter localise(data.locale) %}
 <form action="do-you-have-a-bank-account">
   <input type="hidden" name="proof-of-address-provided" value="yes">
   <div class="govuk-grid-row">
@@ -50,5 +51,5 @@ You need to upload proof of address
     </div>
   </div>
 </form>
-
+{% endfilter %}
 {% endblock %}
