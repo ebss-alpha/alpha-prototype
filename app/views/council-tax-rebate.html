@@ -2,7 +2,9 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
+{% filter localise(data.locale) %}
 You will get a council tax rebate
+{% endfilter %}
 {% endblock %}
 
 {% set hasBank = data['do-you-have-a-bank-account'] === 'yes' %}
@@ -24,6 +26,7 @@ You will get a council tax rebate
 
 
 {% block content %}
+{% filter localise(data.locale) %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">You will get a council tax rebate</h1>
@@ -34,5 +37,5 @@ You will get a council tax rebate
     }) }}
   </div>
 </div>
-
+{% endfilter %}
 {% endblock %}
