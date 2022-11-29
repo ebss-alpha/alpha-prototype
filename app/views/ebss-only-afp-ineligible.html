@@ -1,0 +1,39 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You can apply for the £400 Energy Bills Support Scheme payment
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+{% if data['does-your-home-have-gas'] == 'yes' %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "does-your-home-have-gas-central-heating"
+  }) }}
+  {% else %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "do-you-use-one-of-these-fuels"
+  }) }}
+{% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You can apply for the £400 Energy Bills Support Scheme payment</h1>
+    <p class="govuk-body">We need to ask you additional questions so we can check you are eligible.</p>
+    <p class="govuk-body">You cannot apply for the £200 alternative fuels payment because you use mains gas or electricity to heat your home.</p>
+    {{ govukButton({
+      text: "Continue",
+      href: "what-is-your-full-name"
+    }) }}
+  </div>
+</div>
+
+{% endblock %}
