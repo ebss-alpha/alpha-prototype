@@ -16,9 +16,6 @@ Describe where you live
 
 {% set preamble %}
 <p class="govuk-hint">
-  We are asking this question so we can check what energy bill support you are eligible for. 
-</p>
-<p class="govuk-hint">
   Select the option that describes your home best if you fit into more than one category. 
 </p>
 {% endset %}
@@ -47,6 +44,10 @@ Describe where you live
           {
             value: "house-or-flat-owned",
             text: "I live in a house or flat that I own"
+          },
+                {
+            value: "heat-network",
+            text: "I live in a home that has a heat network, communal or district heating"
           },
           {
             value: "park-home",
