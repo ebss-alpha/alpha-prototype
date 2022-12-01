@@ -2,7 +2,9 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
+{% filter localise(data.locale) %}
 A person in your household whose name is on the council tax bill should apply 
+{% endfilter %}
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -17,6 +19,7 @@ A person in your household whose name is on the council tax bill should apply
 
 
 {% block content %}
+{% filter localise(data.locale) %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">A person in your household whose name is on the council tax bill should apply </h1>
@@ -24,4 +27,5 @@ A person in your household whose name is on the council tax bill should apply
     <p class="govuk-body">This is so that your local council can check they live at the address.</p>
   </div>
 </div>
+{% endfilter %}
 {% endblock %}

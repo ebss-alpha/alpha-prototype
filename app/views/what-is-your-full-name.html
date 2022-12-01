@@ -27,7 +27,7 @@ What is your full name?
 {% endblock %}
 
 {% block content %}
-<!--{{ afpAndEbss }}-->
+{% filter localise(data.locale) %}
 <form action="what-is-your-date-of-birth">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -51,4 +51,5 @@ What is your full name?
     </div>
   </div>
 </form>
+{% endfilter %}
 {% endblock %}

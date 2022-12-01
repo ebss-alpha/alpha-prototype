@@ -38,6 +38,7 @@ No phone number provided
 {% endset %}
 
 {% block content %}
+{% filter localise(data.locale) %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
@@ -344,4 +345,5 @@ No phone number provided
 
   </div>
 </div>
+{% endfilter %}
 {% endblock %}
