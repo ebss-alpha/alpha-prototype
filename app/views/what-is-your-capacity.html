@@ -1,0 +1,43 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the overall capacity of your home?
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "what-is-your-provider-number"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<!--{{ afpAndEbss }}-->
+<form action="what-is-your-full-name-applicant">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukInput({
+        label: {
+          text: "What is the overall capacity of your home?",
+          isPageHeading: true,
+          classes: "govuk-label--l"
+        },
+        hint: {
+          text: "Enter the total number of beds in your home"
+        },
+        id: "home-capacity",
+        name: "home-capacity",
+        inputmode: "numeric",
+        spellcheck: false,
+        classes: "govuk-input--width-5"
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+{% endblock %}

@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Choose your address
+Choose your care home's address
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -10,17 +10,17 @@ Choose your address
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: "find-your-address"
+    href: "find-care-home"
   }) }}
 {% endblock %}
 
 {% block content %}
-<form action="is-this-your-main-home">
+<form action="what-is-your-provider-number">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {% call govukFieldset({
         legend: {
-          text: "Choose your address",
+          text: "Choose your care home's address",
           classes: "govuk-fieldset__legend--l",
           isPageHeading: true
         }
@@ -43,12 +43,8 @@ Choose your address
             text: "2 Test Street, Test Town TT1 1AB"
           },
           {
-            value: "3 Test Street, Test Town TT1 1AB",
-            text: "4 Test Street, Test Town TT1 1AB"
-          },
-          {
-            value: "3 Test Street, Test Town TT1 1AB",
-            text: "3 Test Street, Test Town TT1 1AB"
+            value: "Birch House, 3 Test Street, Test Town TT1 1AB",
+            text: "Birch House, 3 Test Street, Test Town TT1 1AB"
           },
           {
             value: "4 Test Street, Test Town TT1 1AB",
@@ -89,7 +85,7 @@ Choose your address
   </div>
   <div class="govuk-grid-row govuk-!-margin-bottom-4 ">
     <div class="govuk-grid-column-two-thirds">
-      <a href="/what-is-your-address" class="govuk-link govuk-link--no-visited-state">My address isn't listed</a>
+      <a href="/what-is-your-care-home-address" class="govuk-link govuk-link--no-visited-state">My address isn't listed</a>
     </div>
   </div>
   <div class="govuk-grid-row">
