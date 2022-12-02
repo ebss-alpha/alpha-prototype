@@ -1,0 +1,40 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is your email address?
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "what-is-your-full-name-applicant"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<form action="what-is-your-phone-number-applicant">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukInput({
+        label: {
+          text: "What is your email address?",
+          isPageHeading: true,
+          classes: "govuk-label--l"
+        },
+        hint: {
+          text: "The Department for Business, Energy and Industrial Strategy or your local council will use your email address to contact you about your application"
+        },
+        id: "email",
+        name: "email",
+        autocomplete: "name"
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+{% endblock %}

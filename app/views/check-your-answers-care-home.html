@@ -1,0 +1,208 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers before sending your application
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "what-are-your-bank-details-business"
+  }) }}
+{% endblock %}
+
+
+
+{% set emailAddress %}
+{% if data['email'] %}
+{{ data['email'] }}
+{% else %}
+No email address provided
+{% endif %}
+{% endset %}
+
+{% set phoneNumber %}
+{% if data['telephone-number'] %}
+{{ data['telephone-number'] }}
+{% else %}
+No phone number provided
+{% endif %}
+{% endset %}
+
+
+{% block content %}
+{% filter localise(data.locale) %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+
+    <h2 class="govuk-heading-m">About you and your care home</h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Address"
+          },
+          value: {
+            html: 'Birch House, 3 Test Street, Test Town TT1 1AB'
+          },
+          actions: {
+            items: [
+              {
+                href: "what-is-your-address",
+                text: "Change",
+                visuallyHiddenText: "address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Your full name"
+          },
+          value: {
+            html: data['full-name']
+          },
+          actions: {
+            items: [
+              {
+                href: "what-is-your-full-name",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            html: emailAddress
+          },
+          actions: {
+            items: [
+              {
+                href: "what-is-your-email-address",
+                text: "Change",
+                visuallyHiddenText: "email address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Phone number"
+          },
+          value: {
+            html: phoneNumber
+          },
+          actions: {
+            items: [
+              {
+                href: "what-is-your-phone-number",
+                text: "Change",
+                visuallyHiddenText: "phone number"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+    
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Name on the account"
+          },
+          value: {
+            html: data['name-on-the-account'] | capitalize
+          },
+          actions: {
+            items: [
+              {
+                href: "what-are-your-bank-account-details",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Sort code"
+          },
+          value: {
+            html: data['sort-code']
+          },
+          actions: {
+            items: [
+              {
+                href: "what-are-your-bank-account-details",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Account number"
+          },
+          value: {
+            html: data['account-number']
+          },
+          actions: {
+            items: [
+              {
+                href: "what-are-your-bank-account-details",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Building society roll number (if you have one)"
+          },
+          value: {
+            html: data['roll-number']
+          },
+          actions: {
+            items: [
+              {
+                href: "what-are-your-bank-account-details-care-hpme",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Now send your application</h2>
+
+    <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+    <form action="/confirmation" novalidate>
+
+      <input type="hidden" name="answers-checked" value="true">
+
+      {{ govukButton({
+        text: "Accept and send"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+{% endfilter %}
+{% endblock %}

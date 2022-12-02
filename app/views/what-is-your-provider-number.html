@@ -1,0 +1,63 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is your registered provider number?
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+{% if data['is-this-your-address'] == 'yes' %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "is-this-your-home"
+  }) }}
+{% elif data['is-this-your-address'] == 'no' %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "what-is-your-care-home-address"
+  }) }}
+{% else %}
+{{ govukBackLink({
+  text: "Back",
+  href: "choose-home-address"
+}) }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<!--{{ afpAndEbss }}-->
+<form action="what-is-your-capacity">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukInput({
+        label: {
+          text: "What is your registered provider number?",
+          isPageHeading: true,
+          classes: "govuk-label--l"
+        },
+        hint: {
+          text: "Your registered provider number helps us verify your home's overall capacity"
+        },
+        id: "provider-number",
+        name: "provider-number",
+        classes: "govuk-input--width-10"
+      }) }}
+      {{ govukCheckboxes({
+        name: "no-provider",
+        items: [
+          {
+            value: "no-provider",
+            text: "My home doesn't have a provider number",
+            behaviour: "exclusive"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+{% endblock %}

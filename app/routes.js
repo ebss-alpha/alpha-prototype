@@ -42,19 +42,49 @@ router.get(['/initial-council-tax-check'], (req, res) => {
 })
 
 router.get(['/address-lookup'], (req, res) => {
+  const homeType = req.session.data['home-type']
   const numberProvided = req.session.data['address-housenumber'].length > 0
   if (numberProvided) {
-    res.redirect('/is-this-your-address')
+    switch (homeType) {
+      case 'care-home':
+        res.redirect('/is-this-your-home')
+        break
+      default:
+        res.redirect('/is-this-your-address')
+        break
+    }
   } else {
-    res.redirect('/choose-your-address')
+    switch (homeType) {
+      case 'care-home':
+        res.redirect('/choose-home-address')
+        break
+      default:
+        res.redirect('/choose-your-address')
+        break
+    }
   }
 })
 
 router.get(['/address-confirmation-check'], (req, res) => {
+  const homeType = req.session.data['home-type']
   if (req.session.data['is-this-your-address'] === 'yes') {
-    res.redirect('/is-this-your-main-home')
+    switch (homeType) {
+      case 'care-home':
+        res.redirect('/what-is-your-provider-number')
+        break
+      default:
+        res.redirect('/is-this-your-main-home')
+        break
+    }
   } else {
-    res.redirect('/what-is-your-address')
+    switch (homeType) {
+      case 'care-home':
+        res.redirect('/what-is-your-care-home-address')
+        break
+      default:
+        res.redirect('/what-is-your-address')
+        break
+    }
   }
 })
 
