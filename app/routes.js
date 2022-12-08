@@ -12,10 +12,22 @@ router.get(['/'], (req, res) => {
 
 router.get(['/start'], (req, res) => {
   const ni = req.session.data.locale === 'ni'
+  const ch = req.session.data.variation === 'ch'
   req.session.data = {
-    locale: ni ? 'ni' : 'gb'
+    locale: ni ? 'ni' : 'gb',
+    variation: ch ? 'ch' : 'in'
   }
   res.render('start.html')
+})
+
+router.get(['/ni'], (req, res) => {
+  req.session.data.locale = 'ni'
+  res.redirect('/start')
+})
+
+router.get(['/ch'], (req, res) => {
+  req.session.data.variation = 'ch'
+  res.redirect('/start')
 })
 
 router.get(['/ni'], (req, res) => {
@@ -79,7 +91,7 @@ router.get(['/address-confirmation-check'], (req, res) => {
   } else {
     switch (homeType) {
       case 'care-home':
-        res.redirect('/what-is-your-care-home-address')
+        res.redirect('/what-is-your-home-address')
         break
       default:
         res.redirect('/what-is-your-address')
@@ -250,4 +262,39 @@ router.get(['/find-my-energy-provider'], (req, res) => {
   res.render('find-my-energy-provider.html', {
     providers: providers
   })
+})
+
+router.get(['/applying-for-residents-check'], (req, res) => {
+  const applyingForResidents = req.session.data['applying-for-residents'] === 'yes'
+  if (applyingForResidents) {
+    req.session.data.residents = []
+    res.redirect('/you-will-need-consent')
+  } else {
+    res.redirect('/find-your-address')
+  }
+})
+
+router.get(['/add-resident'], (req, res) => {
+  const y = req.session.data['resident-dob-year'].length > 0 ? parseInt(req.session.data['resident-dob-year']) : 1930
+  const m = req.session.data['resident-dob-month'].length > 0 ? parseInt(req.session.data['resident-dob-month']) - 1 : 0
+  const d = req.session.data['resident-dob-day'].length > 0 ? parseInt(req.session.data['resident-dob-day']) : 1
+  const newResident = {
+    name: req.session.data['name-of-resident'],
+    dob: new Date(y, m, d)
+  }
+  if (req.session.data.residents === undefined) req.session.data.residents = []
+  req.session.data.residents.push(newResident)
+  res.redirect('/resident-bank-details')
+})
+
+router.get(['/add-another'], (req, res) => {
+  switch (req.session.data['add-another']) {
+    case 'yes':
+      res.redirect('/resident-details')
+      break
+    case 'no':
+    default:
+      res.redirect('/check-your-residents')
+      break
+  }
 })

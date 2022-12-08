@@ -1,0 +1,97 @@
+
+{% extends "layout.html" %}
+
+{% if data['residents'] | length > 0 %}
+{% set numberOfResidents  %}
+{{ (data.residents | length) + 1 }}
+{% endset %}
+{% else %}
+{% set numberOfResidents = 1 %}
+{% endif %}
+
+{% block pageTitle %}
+Resident {{ numberOfResidents }} details
+{% endblock %}
+
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+  {{ govukBackLink({
+    text: "Back",
+    href: 'do-you-have-a-bank-account'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-caption-l">Resident {{numberOfResidents}} of {{numberOfResidents}}</div>
+<h1 class="govuk-heading-l">Resident details</h1>
+<form action="add-resident" novalidate>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukInput({
+        label: {
+          text: "Resident's name"
+        },
+        id: "name-of-resident",
+        name: "name-of-resident",
+        autocomplete: "name",
+        spellcheck: false
+      }) }}
+      
+      {{ govukDateInput({
+          id: "resident-dob",
+          namePrefix: "resident-dob",
+          fieldset: {
+            legend: {
+              text: "Resident's date of birth",
+              isPageHeading: true,
+              classes: "govuk-label"
+            }
+          },
+          hint: {
+            text: "For example, 31 03 1980"
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              autocomplete: "bday-day"
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              autocomplete: "bday-month"
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              autocomplete: "bday-year"
+            }
+          ]
+        }) }}
+
+
+      {{ 
+        govukCheckboxes({
+          name: "resident-details",
+          items: [
+          {
+            value: "permanent-resident",
+            text: "This is their permanent residence"
+          },
+          {
+            value: "consent-given",
+            text: "This resident has given their consent"
+          }
+          ]
+        })
+      }}
+      
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+{% endblock %}

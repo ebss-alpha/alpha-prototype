@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Is this your home?
+Are you applying for multiple home residents?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -10,23 +10,23 @@ Is this your home?
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: "find-home"
+    href: "start"
   }) }}
 {% endblock %}
 
 {% block content %}
-<form action="address-confirmation-check">
+<form action="applying-for-residents-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
-        name: "is-this-your-address",
+        name: "applying-for-residents",
         hint: {
-          text: '<p class="govuk-body-l govuk-!-margin-bottom-2">Birch House, 3 Test Street, Test Town, TT1 1AB</p><p class="govuk-body">If this is not the address, you can enter it manually on the next page</p>' | safe
+          text: '<p class="govuk-body">Managers of care homes, sheltered, and supported accommodation can apply on behalf of multiple residents at once.</p>' | safe
         },
         classes: 'govuk-radios--inline',
         fieldset: {
           legend: {
-            text: "Is this your home?",
+            text: "Are you applying for multiple home residents?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }

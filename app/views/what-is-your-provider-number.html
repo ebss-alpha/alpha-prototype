@@ -16,7 +16,7 @@ What is your registered provider number?
 {% elif data['is-this-your-address'] == 'no' %}
   {{ govukBackLink({
     text: "Back",
-    href: "what-is-your-care-home-address"
+    href: "what-is-your-home-address"
   }) }}
 {% else %}
 {{ govukBackLink({
@@ -28,7 +28,7 @@ What is your registered provider number?
 
 {% block content %}
 <!--{{ afpAndEbss }}-->
-<form action="what-is-your-capacity">
+<form action="what-is-your-full-name-applicant">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukInput({
@@ -43,16 +43,6 @@ What is your registered provider number?
         id: "provider-number",
         name: "provider-number",
         classes: "govuk-input--width-10"
-      }) }}
-      {{ govukCheckboxes({
-        name: "no-provider",
-        items: [
-          {
-            value: "no-provider",
-            text: "My home doesn't have a provider number",
-            behaviour: "exclusive"
-          }
-        ]
       }) }}
       {{ govukButton({
         text: "Continue"

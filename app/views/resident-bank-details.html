@@ -1,0 +1,98 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Resident's bank details
+{% endblock %}
+
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+  {{ govukBackLink({
+    text: "Back",
+    href: 'do-you-have-a-bank-account'
+  }) }}
+{% endblock %}
+
+{% if data['residents'] | length > 0 %}
+{% set numberOfResidents  %}
+{{ (data.residents | length) }}
+{% endset %}
+{% else %}
+{% set numberOfResidents = 1 %}
+{% endif %}
+
+{% block content %}
+<div class="govuk-caption-l">Resident {{numberOfResidents}} of {{numberOfResidents}}</div>
+<h1 class="govuk-heading-l">Resident's bank details</h1>
+<form action="add-another" novalidate>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukInput({
+        label: {
+          text: "Name on the account"
+        },
+        id: "name-on-the-account",
+        name: "name-on-the-account",
+        autocomplete: "name",
+        spellcheck: false
+      }) }}
+      
+      {{ govukInput({
+        label: {
+          text: "Sort code"
+        },
+        classes: "govuk-input--width-5",
+        hint: {
+          text: "Must be 6 digits long"
+        },
+        id: "sort-code",
+        name: "sort-code",
+        inputmode: "numeric",
+        spellcheck: false
+      }) }}
+      
+      {{ govukInput({
+        label: {
+          text: "Account number"
+        },
+        classes: "govuk-input--width-10",
+        hint: {
+          text: "Must be between 6 and 8 digits long"
+        },
+        id: "account-number",
+        name: "account-number",
+        inputmode: "numeric",
+        spellcheck: false
+      }) }}
+      
+      {{ govukInput({
+        label: {
+          text: "Building society roll number (if you have one)"
+        },
+        classes: "govuk-input--width-10",
+        hint: {
+          text: "You can find it on your card, statement or passbook"
+        },
+        id: "roll-number",
+        name: "roll-number",
+        spellcheck: false
+      }) }}
+      <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Continue",
+        name: 'add-another',
+        value: 'no'
+      }) }}
+      {{ govukButton({
+        text: "Add another resident",
+        name: 'add-another',
+        value: 'yes',
+        classes: 'govuk-button--secondary'
+      }) }}
+    </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
