@@ -5,18 +5,12 @@
 Do you have a bank or building society account in your name?
 {% endblock %}
 
-{% if data['do-you-have-any-proof-of-address'] == 'yes' %}
-{% set backLink = 'upload-proof-of-address' %}
-{% else %}
-{% set backLink = 'is-your-name-on-your-council-tax-bill' %}
-{% endif %}
-
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: backLink
+    href: "have-you-received-a-payment-ebss"
   }) }}
 {% endblock %}
 

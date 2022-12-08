@@ -16,7 +16,7 @@ Do you live on a permanent residential site?
 
 
 {% block content %}
-<form action="caravan-check">
+<form action="situation-specific-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
@@ -30,11 +30,11 @@ Do you live on a permanent residential site?
         },
         items: [
           {
-            value: "yes",
+            value: "permanent-residential",
             text: "Yes"
           },
           {
-            value: "no",
+            value: "not-fixed",
             text: "No"
           },
           {

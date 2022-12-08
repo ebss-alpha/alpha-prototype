@@ -10,9 +10,15 @@ Find your address
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: "start"
+    href: "describe-where-you-live"
   }) }}
 {% endblock %}
+
+{% set ccPreamble %}
+<p class="govuk-hint">
+  If you do not have an address, enter the address you use for things such as your bank account or driving licence.
+</p>
+{% endset %}
 
 {% block content %}
 <form action="address-lookup">
@@ -29,6 +35,9 @@ Find your address
         }
       }) %}
       <p class="govuk-hint">We will use your address to check whether you need to apply for the Energy Bills Support Scheme. Most homes are getting the support automatically.</p>
+      {% if data['situation-specific'] == 'continuous-cruiser' %}
+        {{ ccPreamble | safe }}
+      {% endif %}
         {{ govukInput({
           label: {
             text: "House number (if you have one)"
