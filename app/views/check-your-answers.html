@@ -200,23 +200,23 @@ No phone number provided
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-9',
       rows: [
-      {
-        key: {
-          text: "Do you have a bank or building society account in your name?"
+        {
+          key: {
+            text: "Do you have a bank or building society account in your name?"
+          },
+          value: {
+            html: data['do-you-have-a-bank-account'] | capitalize
+          },
+          actions: {
+            items: [
+              {
+                href: "have-you-received-a-payment-ebss",
+                text: "Change",
+                visuallyHiddenText: "answer"
+              }
+            ]
+          }
         },
-        value: {
-          html: data['do-you-have-a-bank-account'] | capitalize
-        },
-        actions: {
-          items: [
-            {
-              href: "have-you-received-a-payment-ebss",
-              text: "Change",
-              visuallyHiddenText: "answer"
-            }
-          ]
-        }
-      },
         {
           key: {
             text: "How do you want to receive a voucher?"

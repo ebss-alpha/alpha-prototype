@@ -20,6 +20,8 @@ module.exports = function (env) {
     return env.filters.safe(input.replaceAll(/council tax/ig, localisedTaxString))
   }
 
+  filters.date = require('nunjucks-date')
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

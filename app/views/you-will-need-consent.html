@@ -1,0 +1,32 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You can apply for the £400 Energy Bills Support Scheme payment
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+{{ govukBackLink({
+  text: "Back",
+  href: "applying-for-residents"
+}) }}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You will need consent to apply</h1>
+    <p class="govuk-body">By applying for multiple residents, you need to have their consent to apply.</p>
+    <p class="govuk-body">By providing residents' personal data, they are agreeing to our privacy policy. Please ensure that residents are aware of this policy and what they are consenting to.</p>
+    {{ govukButton({
+      text: "Continue",
+      href: "find-home"
+    }) }}
+  </div>
+</div>
+
+{% endblock %}

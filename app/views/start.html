@@ -119,13 +119,20 @@
       <li>bank statement from the last 3 months</li>
       <li>residential boat license</li>
     </ul>
-
     <p class="govuk-body">To apply for the £200 alternative fuels payment, you will need to upload proof that you buy alternative fuels to heat your home. You will need to upload proof of purchase with your name and address on it to the value of £200, dated in the last 6 months.</p>
+    {% if data.variation == 'ch' %}
+    {{ govukButton({
+      text: "Start now",
+      href: "applying-for-residents",
+      isStartButton: true
+    }) }}
+    {% else %}
     {{ govukButton({
       text: "Start now",
       href: "find-your-address",
       isStartButton: true
     }) }}
+    {% endif %}
   </div>
 </div>
 {% endfilter %}
