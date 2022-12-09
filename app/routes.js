@@ -104,7 +104,7 @@ router.get(['/home-check'], (req, res) => {
   if (req.session.data['is-this-your-main-home'] === 'no') {
     res.redirect('/ineligible-second-home')
   } else {
-    res.redirect('/describe-where-you-live')
+    res.redirect('/eligible-for-ebss-af')
   }
 })
 
@@ -114,10 +114,10 @@ router.get(['/user-group-check'], (req, res) => {
       res.redirect('/house-or-flat-rented')
       break
     case 'house-or-flat-owned':
-      res.redirect('/have-you-received-a-payment-ebss')
+      res.redirect('/find-your-address')
       break
     case 'park-home':
-      res.redirect('/have-you-received-a-payment-ebss')
+      res.redirect('/find-your-address')
       break
     case 'care-home':
       res.redirect('/care-home')
@@ -126,62 +126,31 @@ router.get(['/user-group-check'], (req, res) => {
       res.redirect('/boat')
       break
     case 'farm':
-      res.redirect('/have-you-received-a-payment-ebss')
+      res.redirect('/find-your-address')
       break
     case 'caravan':
       res.redirect('/caravan')
       break
     case 'other':
     default:
-      res.redirect('/have-you-received-a-payment-ebss')
+      res.redirect('/find-your-address')
       break
   }
 })
 
-router.get(['/house-or-flat-rented-check'], (req, res) => {
+router.get(['/situation-specific-check'], (req, res) => {
   switch (req.session.data['situation-specific']) {
     case 'student':
       res.redirect('/ineligible-home-type')
       break
-    default:
-      res.redirect('/have-you-received-a-payment-ebss')
-      break
-  }
-})
-router.get(['/house-or-flat-owned-check'], (req, res) => {
-  switch (req.session.data['situation-specific']) {
-    default:
-      res.redirect('/have-you-received-a-payment-ebss')
-      break
-  }
-})
-router.get(['/care-home-check'], (req, res) => {
-  switch (req.session.data['situation-specific']) {
     case 'do-not-pay-for-care':
       res.redirect('/ineligible-home-type')
       break
-    default:
-      res.redirect('/have-you-received-a-payment-ebss')
-      break
-  }
-})
-router.get(['/boat-check'], (req, res) => {
-  switch (req.session.data['situation-specific']) {
-    case 'continuous-cruiser':
+    case 'not-fixed':
       res.redirect('/ineligible-home-type')
       break
     default:
-      res.redirect('/have-you-received-a-payment-ebss')
-      break
-  }
-})
-router.get(['/caravan-check'], (req, res) => {
-  switch (req.session.data['situation-specific']) {
-    case 'no':
-      res.redirect('/ineligible-home-type')
-      break
-    default:
-      res.redirect('/have-you-received-a-payment-ebss')
+      res.redirect('/find-your-address')
       break
   }
 })
@@ -206,7 +175,7 @@ router.get(['/ebss-check'], (req, res) => {
       break
     case 'no':
     default:
-      res.redirect('/eligible-for-ebss-af')
+      res.redirect('/do-you-have-a-bank-account')
       break
   }
 })
@@ -240,7 +209,7 @@ router.get(['/council-tax-check'], (req, res) => {
       res.redirect('/upload-proof-of-address')
       break
     default:
-      res.redirect('/do-you-have-a-bank-account')
+      res.redirect('/what-are-your-bank-account-details')
       break
   }
 })
@@ -248,7 +217,7 @@ router.get(['/council-tax-check'], (req, res) => {
 router.get(['/bank-account-check'], (req, res) => {
   switch (req.session.data['do-you-have-a-bank-account']) {
     case 'yes':
-      res.redirect('/what-are-your-bank-account-details')
+      res.redirect('/describe-where-you-live')
       break
     case 'no':
     default:

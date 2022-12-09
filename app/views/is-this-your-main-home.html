@@ -26,7 +26,21 @@ Is this your main home?
 {% endif %}
 {% endblock %}
 
-
+{% if data['situation-specific'] == 'continuous-cruiser' %}
+  {% set question %}
+  Do you live permanently on your boat?
+  {% endset %}
+  {% set preamble %}
+  You can only apply for this scheme if you live permanently on your boat. If you have additional homes, only your main home is eligible for support.
+  {% endset %}
+{% else %}
+  {% set question %}
+  Do you live permanently on your boat?
+  {% endset %}
+  {% set preamble %}
+  You can only apply if you live permanently on your boat
+  {% endset %}
+{% endif %}
 
 {% block content %}
 <form action="home-check">
@@ -37,13 +51,13 @@ Is this your main home?
         name: "is-this-your-main-home",
         fieldset: {
           legend: {
-            text: "Is this your main home?",
+            text: question,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         hint: {
-          text: "If you own additional homes, only your main home is eligible for support."  
+          text: preamble  
         },
         items: [
           {
