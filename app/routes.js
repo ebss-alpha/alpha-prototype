@@ -157,11 +157,8 @@ router.get(['/situation-specific-check'], (req, res) => {
   req.session.data['dwyl-summary'] = describeWhereYouLiveSummary[req.session.data['situation-specific']]
   switch (req.session.data['situation-specific']) {
     case 'student':
-      res.redirect('/ineligible-home-type')
-      break
+    case 'continuous-cruiser':
     case 'do-not-pay-for-care':
-      res.redirect('/ineligible-home-type')
-      break
     case 'not-fixed':
       res.redirect('/ineligible-home-type')
       break
