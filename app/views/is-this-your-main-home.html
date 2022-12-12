@@ -1,8 +1,24 @@
 
 {% extends "layout.html" %}
 
+{% if data['situation-specific'] == 'continuous-cruiser' and data['describe-where-you-live'] == 'boat' %}
+  {% set question %}
+  Do you live permanently on your boat?
+  {% endset %}
+  {% set preamble %}
+  You can only apply if you live permanently on your boat.
+  {% endset %}
+  {% else %}
+  {% set question %}
+  Is this your main home?
+  {% endset %}
+  {% set preamble %}
+  If you own additional homes, only your main home is eligible for support.
+  {% endset %}
+{% endif %}
+
 {% block pageTitle %}
-Is this your main home?
+{{ question }}
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -26,21 +42,7 @@ Is this your main home?
 {% endif %}
 {% endblock %}
 
-{% if data['situation-specific'] == 'continuous-cruiser' %}
-  {% set question %}
-  Do you live permanently on your boat?
-  {% endset %}
-  {% set preamble %}
-  You can only apply for this scheme if you live permanently on your boat. If you have additional homes, only your main home is eligible for support.
-  {% endset %}
-{% else %}
-  {% set question %}
-  Do you live permanently on your boat?
-  {% endset %}
-  {% set preamble %}
-  You can only apply if you live permanently on your boat
-  {% endset %}
-{% endif %}
+
 
 {% block content %}
 <form action="home-check">

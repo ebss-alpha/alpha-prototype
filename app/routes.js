@@ -108,7 +108,22 @@ router.get(['/home-check'], (req, res) => {
   }
 })
 
+const describeWhereYouLiveSummary = {
+  'house-or-flat-owned': 'I live in a house or flat that my household owns',
+  'heat-network': 'I live in a home that has a heat network, communal or district heating',
+  'park-home': 'I live in a residential park home',
+  'residential-mooring': 'I live on a boat with a permanent residential mooring licence',
+  'continous-crusier': 'I live on a boat with a continuous cruising licence',
+  farm: 'I live on a farm',
+  'permanent-residential': 'I live in a caravan/mobile home on a permanent residential site',
+  'pay-for-care': 'I live in a care home and I pay for some or all of my care',
+  'private-landlord': 'I rent from a private landlord or agency',
+  'council-or-housing-association': 'I rent from a council or housing association',
+  other: "I don't fit into any of these categories"
+}
+
 router.get(['/user-group-check'], (req, res) => {
+  req.session.data['dwyl-summary'] = describeWhereYouLiveSummary[req.session.data['describe-where-you-live']]
   switch (req.session.data['describe-where-you-live']) {
     case 'house-or-flat-rented':
       res.redirect('/house-or-flat-rented')
@@ -139,6 +154,7 @@ router.get(['/user-group-check'], (req, res) => {
 })
 
 router.get(['/situation-specific-check'], (req, res) => {
+  req.session.data['dwyl-summary'] = describeWhereYouLiveSummary[req.session.data['situation-specific']]
   switch (req.session.data['situation-specific']) {
     case 'student':
       res.redirect('/ineligible-home-type')
@@ -195,6 +211,10 @@ router.get(['/afp-check'], (req, res) => {
 })
 
 router.get(['/contact-check'], (req, res) => {
+  const y = req.session.data['dob-year'].length > 0 ? parseInt(req.session.data['dob-year']) : 1930
+  const m = req.session.data['dob-month'].length > 0 ? parseInt(req.session.data['dob-month']) - 1 : 0
+  const d = req.session.data['dob-day'].length > 0 ? parseInt(req.session.data['dob-day']) : 1
+  req.session.data.dob = new Date(y, m, d)
   if (req.session.data['no-phone'] && req.session.data['no-email']) {
     res.redirect('/difficult-to-contact-individuals')
   } else {

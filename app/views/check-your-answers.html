@@ -33,10 +33,6 @@ No phone number provided
 {% endif %}
 {% endset %}
 
-{% set dob %}
-{{data['dob-day']}}/{{data['dob-month']}}/{{data['dob-year']}}
-{% endset %}
-
 {% block content %}
 {% filter localise(data.locale) %}
 <div class="govuk-grid-row">
@@ -44,11 +40,53 @@ No phone number provided
 
     <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
 
+    <h2 class="govuk-heading-m">Previous support</h2>
+            
+                {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-9',
+                  rows: [
+                    {
+                      key: {
+                        text: "Are you already getting discounts to your energy bills from the Energy Bills Support Scheme?"
+                      },
+                      value: {
+                        html: data['received-main-ebss'] | capitalize
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "have-you-received-a-payment-ebss",
+                            text: "Change",
+                            visuallyHiddenText: "answer"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }) }}
+
     <h2 class="govuk-heading-m">About you and your home</h2>
 
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-9',
       rows: [
+      {
+        key: {
+          text: "Describe where you live"
+        },
+        value: {
+          html: data['dwyl-summary']
+        },
+        actions: {
+          items: [
+            {
+              href: "what-is-your-address",
+              text: "Change",
+              visuallyHiddenText: "address"
+            }
+          ]
+        }
+      },
         {
           key: {
             text: "Address"
@@ -105,7 +143,7 @@ No phone number provided
             text: "Your date of birth"
           },
           value: {
-            html: dob
+            html: data.dob | date('Do MMMM YYYY')
           },
           actions: {
             items: [
@@ -170,73 +208,8 @@ No phone number provided
         }
       ]
     }) }}
-    <h2 class="govuk-heading-m">Previous support</h2>
-
-    {{ govukSummaryList({
-      classes: 'govuk-!-margin-bottom-9',
-      rows: [
-        {
-          key: {
-            text: "Are you already getting discounts to your energy bills from the Energy Bills Support Scheme?"
-          },
-          value: {
-            html: data['received-main-ebss'] | capitalize
-          },
-          actions: {
-            items: [
-              {
-                href: "have-you-received-a-payment-ebss",
-                text: "Change",
-                visuallyHiddenText: "answer"
-              }
-            ]
-          }
-        }
-      ]
-    }) }}
 
     <h2 class="govuk-heading-m">Future support</h2>
-    {% if data['do-you-have-a-bank-account'] == 'no' %}
-    {{ govukSummaryList({
-      classes: 'govuk-!-margin-bottom-9',
-      rows: [
-        {
-          key: {
-            text: "Do you have a bank or building society account in your name?"
-          },
-          value: {
-            html: data['do-you-have-a-bank-account'] | capitalize
-          },
-          actions: {
-            items: [
-              {
-                href: "have-you-received-a-payment-ebss",
-                text: "Change",
-                visuallyHiddenText: "answer"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "How do you want to receive a voucher?"
-          },
-          value: {
-            html: data['preferred-payment'] | replace("sms", "text") | capitalize 
-          },
-          actions: {
-            items: [
-              {
-                href: "have-you-received-a-payment-ebss",
-                text: "Change",
-                visuallyHiddenText: "answer"
-              }
-            ]
-          }
-        }
-      ]
-    }) }}
-    {% else %}
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-9',
       rows: [
@@ -262,7 +235,7 @@ No phone number provided
             text: "Name on the account"
           },
           value: {
-            html: data['name-on-the-account'] | capitalize
+            html: data['name-on-the-account'] 
           },
           actions: {
             items: [
@@ -327,7 +300,6 @@ No phone number provided
         }
       ]
     }) }}
-    {% endif %}
 
     <h2 class="govuk-heading-m">Now send your application</h2>
 
