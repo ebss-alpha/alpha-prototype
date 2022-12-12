@@ -20,6 +20,8 @@ module.exports = function (env) {
     return env.filters.safe(input.replaceAll(/council tax/ig, localisedTaxString))
   }
 
+  filters.padDate = input => input.toString().padStart(2, '0')
+
   filters.date = require('nunjucks-date')
 
   /* ------------------------------------------------------------------
