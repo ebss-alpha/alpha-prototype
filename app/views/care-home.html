@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you pay for your care?
+Do you pay for your care home fees?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -12,8 +12,13 @@ Do you pay for your care?
     text: "Back",
     href: "describe-where-you-live"
   }) }}
-{% endblock %}
 
+{% endblock %}
+{% set preamble %}
+<p class="govuk-hint">
+  Select 'I pay for some or all of my care home fees myself' if a family member or friend pays on your behalf. 
+</p>
+{% endset %}
 
 {% block content %}
 <form action="situation-specific-check">
@@ -23,7 +28,7 @@ Do you pay for your care?
         name: "situation-specific",
         fieldset: {
           legend: {
-            text: "Do you pay for your care?",
+            text: "Do you pay for your care home fees?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -31,11 +36,11 @@ Do you pay for your care?
         items: [
           {
             value: "pay-for-care",
-            text: "I pay for some or all of my care"
+            text: "I pay for some or all of my care home fees myself"
           },
           {
             value: "do-not-pay-for-care",
-            text: "I don't pay for my care"
+            text: "All of my care home fees are paid for by my local council or NHS"
           },
           {
             divider: 'or'

@@ -2,7 +2,18 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Second home termination point{% endblock %}
+Your home is not eligible for a payment from the Energy Bills Support Scheme
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+{{ govukBackLink({
+  text: "Back",
+  href: "describe-where-you-live"
+}) }}
+{% endblock %}
+
 
 {% block content %}
 <div class="govuk-grid-row">
