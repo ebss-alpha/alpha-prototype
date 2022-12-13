@@ -3,7 +3,7 @@
 
 {% block pageTitle %}
 {% filter localise(data.locale) %}
-Is your name on your household’s council tax bill?
+Are you registered for council tax at the address you are applying for?
 {% endfilter %}
 {% endblock %}
 
@@ -12,7 +12,7 @@ Is your name on your household’s council tax bill?
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: "what-is-your-phone-number"
+    href: "eligible-for-ebss-af"
   }) }}
 {% endblock %}
 
@@ -22,7 +22,7 @@ Is your name on your household’s council tax bill?
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
-        name: "is-your-name-on-your-council-tax-bill",
+        name: "are-you-registered-for-council-tax",
         hint: {
           text: '<div class="govuk-!-margin-bottom-2">Your local council will use council tax records to check you live at the address you are applying for. They will be able to do this if you are registered for council tax but you do not have to pay a bill. For example, you might have a council tax exemption certificate.</div>
       <div class="govuk-!-margin-bottom-2">If your name is not registered for council tax, ask someone in your household whose name is on the bill to apply.</div>

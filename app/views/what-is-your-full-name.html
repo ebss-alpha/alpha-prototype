@@ -17,12 +17,18 @@ What is your full name?
 {% set backLink = 'cannot-apply' %}
 {% endif %}
 
+{% if data['proof-of-address-provided'] == 'yes' %}
+{% set backLink = 'upload-proof-of-address' %}
+{% else %}
+{% set backLink = 'are-you-registered-for-council-tax' %}
+{% endif %}
+
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: 'eligible-for-ebss-af'
+    href: backLink
   }) }}
 {% endblock %}
 
