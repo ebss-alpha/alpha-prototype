@@ -2,7 +2,16 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-No bank termination point
+You need a bank account to apply for this scheme
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "do-you-have-a-bank-account"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -11,10 +20,6 @@ No bank termination point
     <h1 class="govuk-heading-l">You need a bank account to apply for this scheme</h1>
     <p>You need a bank account in your name to apply for this scheme so that we can check your identity and make the payment.</p>
     <p>If you do not have a bank account in your name, find out <a href="https://www.citizensadvice.org.uk/debt-and-money/banking/getting-a-bank-account/">how to open a basic bank account from Citizens Advice</a>.</p>
-    {{ govukButton({
-      text: "Continue",
-      href: "what-are-your-bank-account-details"
-    }) }}
   </div>
 </div>
 {% endblock %}
