@@ -2,7 +2,17 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Second home termination point{% endblock %}
+You can only apply for this scheme for your main home
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "is-this-your-main-home"
+  }) }}
+{% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
@@ -10,10 +20,6 @@ Second home termination point{% endblock %}
     <h1 class="govuk-heading-l">You can only apply for this scheme for your main home</h1>
     <p>The Energy Bills Support Scheme is only available for your main home.</p> 
     <p>Check whether you are already getting the discount for your main home. Most people are getting the discount and do not need to apply</p>
-    {{ govukButton({
-      text: "Continue",
-      href: "describe-where-you-live"
-    }) }}
   </div>
 </div>
 {% endblock %}
