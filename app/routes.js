@@ -35,13 +35,13 @@ router.get(['/ni'], (req, res) => {
   res.redirect('/start')
 })
 
-router.get(['/is-your-name-on-your-council-tax-bill'], (req, res) => {
-  req.session.data['is-your-name-on-your-council-tax-bill'] = undefined
-  res.render('is-your-name-on-your-council-tax-bill.html')
+router.get(['/are-you-registered-for-council-tax'], (req, res) => {
+  req.session.data['are-you-registered-for-council-tax'] = undefined
+  res.render('are-you-registered-for-council-tax.html')
 })
 
 router.get(['/initial-council-tax-check'], (req, res) => {
-  switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
+  switch (req.session.data['are-you-registered-for-council-tax']) {
     case 'no':
     case 'no-council-tax':
       res.redirect('/find-your-address')
@@ -212,21 +212,17 @@ router.get(['/contact-check'], (req, res) => {
   const m = req.session.data['dob-month'].length > 0 ? parseInt(req.session.data['dob-month']) - 1 : 0
   const d = req.session.data['dob-day'].length > 0 ? parseInt(req.session.data['dob-day']) : 1
   req.session.data.dob = new Date(y, m, d)
-  if (req.session.data['no-phone'] && req.session.data['no-email']) {
-    res.redirect('/difficult-to-contact-individuals')
-  } else {
-    res.redirect('/is-your-name-on-your-council-tax-bill')
-  }
+  res.redirect('/what-are-your-bank-account-details')
 })
 
 router.get(['/council-tax-check'], (req, res) => {
-  switch (req.session.data['is-your-name-on-your-council-tax-bill']) {
+  switch (req.session.data['are-you-registered-for-council-tax']) {
     case 'no':
     case 'no-council-tax':
       res.redirect('/upload-proof-of-address')
       break
     default:
-      res.redirect('/what-are-your-bank-account-details')
+      res.redirect('/what-is-your-full-name')
       break
   }
 })

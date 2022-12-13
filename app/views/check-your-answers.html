@@ -13,7 +13,7 @@ Check your answers before sending your application
 {% endblock %}
 
 {% set councilTax %}
-{{ data['is-your-name-on-your-council-tax-bill'] | replace("no-council-tax", "I'm not registered for council tax at my address") | sentence }}
+{{ data['are-you-registered-for-council-tax'] | replace("no-council-tax", "I'm not registered for council tax at my address") | sentence }}
 {% endset %}
 
 
@@ -199,7 +199,7 @@ No phone number provided
           actions: {
             items: [
               {
-                href: "is-your-name-on-your-council-tax-bill",
+                href: "are-you-registered-for-council-tax",
                 text: "Change",
                 visuallyHiddenText: "your answer to 'Is your name on your household's council tax bill?'"
               }

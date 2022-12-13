@@ -11,14 +11,14 @@ You need to upload proof of address
 
   {{ govukBackLink({
     text: "Back",
-    href: "is-your-name-on-your-council-tax-bill"
+    href: "are-you-registered-for-council-tax"
   }) }}
   
 {% endblock %}
 
 {% block content %}
 {% filter localise(data.locale) %}
-<form action="what-are-your-bank-account-details">
+<form action="what-is-your-full-name">
   <input type="hidden" name="proof-of-address-provided" value="yes">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
