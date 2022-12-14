@@ -15,10 +15,14 @@ What are your bank details?
 {% endblock %}
 
 {% block content %}
-<h1 class="govuk-heading-l">What are your bank details?</h1>
-<form action="check-your-answers" novalidate>
+<form action="live-bank-check" novalidate>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">What are your bank details?</h1>
+      {{ govukWarningText({
+        text: "You must enter your personal bank account, not a business account.",
+        iconFallbackText: "Warning"
+      }) }}
       {{ govukInput({
         label: {
           text: "Name on the account"
@@ -56,31 +60,6 @@ What are your bank details?
         inputmode: "numeric",
         spellcheck: false
       }) }}
-      
-      {{ govukInput({
-        label: {
-          text: "Building society roll number (if you have one)"
-        },
-        classes: "govuk-input--width-10",
-        hint: {
-          text: "You can find it on your card, statement or passbook"
-        },
-        id: "roll-number",
-        name: "roll-number",
-        spellcheck: false
-      }) }}
-
-      {{ 
-        govukCheckboxes({
-          name: "business-account",
-          items: [
-          {
-            value: "yes",
-            text: "This is is a business account"
-          }
-          ]
-        })
-      }}
       
       {{ govukButton({
         text: "Continue"
