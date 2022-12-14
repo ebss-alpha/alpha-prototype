@@ -239,6 +239,16 @@ router.get(['/bank-account-check'], (req, res) => {
   }
 })
 
+router.get(['/live-bank-check'], (req, res) => {
+  switch (req.session.data['sort-code'].trim().replaceAll('-', '')) {
+    case '999999':
+      res.redirect('/check-your-bank-details')
+      break
+    default:
+      res.redirect('/check-your-answers')
+  }
+})
+
 router.get(['/find-my-energy-provider'], (req, res) => {
   const providers = require('./data/providers.json')
   res.render('find-my-energy-provider.html', {
