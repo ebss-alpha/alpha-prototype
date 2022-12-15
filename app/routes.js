@@ -35,6 +35,17 @@ router.get(['/ni'], (req, res) => {
   res.redirect('/start')
 })
 
+router.get(['/location-check'], (req, res) => {
+  switch (req.session.data['where-do-you-live']) {
+    case 'northern-ireland':
+      res.redirect('/ni-not-eligible-yet')
+      break
+    default:
+      res.redirect('/have-you-received-a-payment-ebss')
+      break
+  }
+})
+
 router.get(['/are-you-registered-for-council-tax'], (req, res) => {
   req.session.data['are-you-registered-for-council-tax'] = undefined
   res.render('are-you-registered-for-council-tax.html')
