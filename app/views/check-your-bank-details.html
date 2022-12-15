@@ -12,6 +12,11 @@ Check your bank details before continuing
   }) }}
 {% endblock %}
 
+{% set availableRows = [ { key: { text: "Name on the account" }, value: { html: data['name-on-the-account'] } }, { key: { text: "Sort code" }, value: { html: data['sort-code'] } }, { key: { text: "Account number" }, value: { html: data['account-number'] } }, { key: { text: "Building society roll number (if you have one)" }, value: { html: data['roll-number'] } } ] %}
+{% if (data['roll-number'] | length) < 1 %}
+{% set availableRows = availableRows.slice(0, 3) %}
+{% endif %}
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -20,32 +25,7 @@ Check your bank details before continuing
     <p class="govuk-body">Check the details below are correct before continuing.</p>
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-9',
-      rows: [
-        {
-          key: {
-            text: "Name on the account"
-          },
-          value: {
-            html: data['name-on-the-account'] 
-          }
-        },
-        {
-          key: {
-            text: "Sort code"
-          },
-          value: {
-            html: data['sort-code']
-          }
-        },
-        {
-          key: {
-            text: "Account number"
-          },
-          value: {
-            html: data['account-number']
-          }
-        }
-      ]
+      rows: availableRows
     }) }}
     <div class="govuk-button-group">
       {{ govukButton({

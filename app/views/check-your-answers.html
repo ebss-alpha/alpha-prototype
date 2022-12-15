@@ -33,6 +33,11 @@ No phone number provided
 {% endif %}
 {% endset %}
 
+{% set availableRows = [ { key: { text: "Name on the account" }, value: { html: data['name-on-the-account'] } }, { key: { text: "Sort code" }, value: { html: data['sort-code'] } }, { key: { text: "Account number" }, value: { html: data['account-number'] } }, { key: { text: "Building society roll number (if you have one)" }, value: { html: data['roll-number'] } } ] %}
+{% if (data['roll-number'] | length) < 1 %}
+{% set availableRows = availableRows.slice(0, 3) %}
+{% endif %}
+
 {% block content %}
 {% filter localise(data.locale) %}
 <div class="govuk-grid-row">
@@ -212,76 +217,7 @@ No phone number provided
     <h2 class="govuk-heading-m">Future support</h2>
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-9',
-      rows: [
-        {
-          key: {
-            text: "Do you have a bank or building society account in your name?"
-          },
-          value: {
-            html: data['do-you-have-a-bank-account'] | capitalize
-          },
-          actions: {
-            items: [
-              {
-                href: "have-you-received-a-payment-ebss",
-                text: "Change",
-                visuallyHiddenText: "your answer to 'Do you have a bank or building society account in your name?'"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Name on the account"
-          },
-          value: {
-            html: data['name-on-the-account'] 
-          },
-          actions: {
-            items: [
-              {
-                href: "what-are-your-bank-account-details",
-                text: "Change",
-                visuallyHiddenText: "name on your account"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Sort code"
-          },
-          value: {
-            html: data['sort-code']
-          },
-          actions: {
-            items: [
-              {
-                href: "what-are-your-bank-account-details",
-                text: "Change",
-                visuallyHiddenText: "your sort code"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Account number"
-          },
-          value: {
-            html: data['account-number']
-          },
-          actions: {
-            items: [
-              {
-                href: "what-are-your-bank-account-details",
-                text: "Change",
-                visuallyHiddenText: "your account number"
-              }
-            ]
-          }
-        }
-      ]
+      rows: availableRows
     }) }}
 
     <h2 class="govuk-heading-m">Now send your application</h2>
