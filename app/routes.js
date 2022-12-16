@@ -227,14 +227,11 @@ router.get(['/contact-check'], (req, res) => {
 })
 
 router.get(['/council-tax-check'], (req, res) => {
-  switch (req.session.data['are-you-registered-for-council-tax']) {
-    case 'no':
-    case 'no-council-tax':
-      res.redirect('/upload-proof-of-address')
-      break
-    default:
-      res.redirect('/what-is-your-full-name')
-      break
+  const proofRequired = req.session.data['describe-where-you-live'] === 'care-home' || req.session.data['are-you-registered-for-council-tax'] === 'no'
+  if (proofRequired) {
+    res.redirect('/upload-proof-of-address')
+  } else {
+    res.redirect('/what-is-your-full-name')
   }
 })
 
