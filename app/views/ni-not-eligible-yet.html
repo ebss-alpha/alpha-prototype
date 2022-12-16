@@ -1,0 +1,26 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+The Energy Bills Support Scheme is not open in Northern Ireland yet
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+{{ govukBackLink({
+  text: "Back",
+  href: "where-do-you-live"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">The Energy Bills Support Scheme is not open in Northern Ireland yet</h1>
+    <h2 class="govuk-heading-m">Find other support</h2>
+    <p class="govuk-body">Check what other help you could get from <a href="https://www.gov.uk/cost-of-living" class="govuk-link">cost of living support.</a></p>
+  </div>
+</div>
+{% endblock %}
