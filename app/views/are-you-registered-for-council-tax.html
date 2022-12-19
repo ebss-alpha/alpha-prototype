@@ -24,14 +24,14 @@ Are you registered for council tax at the address you are applying for?
       {{ govukRadios({
         name: "are-you-registered-for-council-tax",
         hint: {
-          text: '<div class="govuk-!-margin-bottom-2">Your local council will use council tax records to check you live at the address you are applying for. They will be able to do this if you are registered for council tax but you do not have to pay a bill. For example, you might have a council tax exemption certificate.</div>
-      <div class="govuk-!-margin-bottom-2">If your name is not registered for council tax, ask someone in your household whose name is on the bill to apply.</div>
-      <div>If no one in your household is registered for council tax, you will need to upload proof of address.</div>' | safe
+          text: '<div class="govuk-!-margin-bottom-2">We share this information with your council to check you live at this address.</div>
+      <div class="govuk-!-margin-bottom-2">The person named on the council tax bill, or council tax exemption, should apply.</div>
+      <div>If no one in your household is registered, you will need to upload proof of address.</div>' | safe
         },
         fieldset: {
           classes: "govuk-radios--inline",
           legend: {
-            text: "Are you registered for council tax at the address you are applying for?",
+            text: "Are you registered for council tax at the address you're applying for?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
