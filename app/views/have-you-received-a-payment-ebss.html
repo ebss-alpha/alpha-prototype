@@ -17,10 +17,10 @@ Have you received a payment from the Energy Bills Support Scheme already?
 
 {% set preamble %}
 <p class="govuk-body">
-  The Energy Bills Support Scheme is a £400 discount to your energy bills this winter. It is split over 6 monthly installments.
+  The Energy Bills Support Scheme is a £400 discount to your energy bills for winter 2022 to 2023. It is split over 6 monthly installments.
 </p>
 {{ govukWarningText({
-  text: "Most people will have had the discount automatically and do not need to apply.",
+  text: "Most people get the discount automatically and do not need to apply.",
   iconFallbackText: "Important"
 }) }}
 <p class="govuk-body">
@@ -31,7 +31,7 @@ Have you received a payment from the Energy Bills Support Scheme already?
   <li>£66 or £67 monthly vouchers to top up your prepayment meter</li>
 </ul>
 <p class="govuk-body">
-  If you are unsure whether you are already getting the discount, <a target="_blank" href="/find-my-energy-provider">check how your energy provider is giving it out (opens in a new window).</a>
+  If you are not sure if you are getting the discount, <a target="_blank" href="/find-my-energy-provider">check how your energy provider is providing it (opens in a new window).</a>
 </p>
 {% endset %}
 
@@ -58,11 +58,11 @@ Have you received a payment from the Energy Bills Support Scheme already?
         items: [
           {
             value: "yes",
-            text: "I am already getting discounts from the Energy Bills Support Scheme "
+            text: "I am getting the discount "
           },
           {
             value: "no",
-            text: "I am not already getting discounts from the Energy Bills Support Scheme "
+            text: "I am not getting the discount "
           }
         ]
       }) }}
