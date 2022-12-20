@@ -16,8 +16,8 @@ Describe where you live
 
 {% set preamble %}
 <p class="govuk-hint">
-  Select the option that describes your home best if you fit into more than one category. 
-</p>
+  Select the option that describes your home best if you fit into more than one category.</p> 
+<p>I live:</p>
 {% endset %}
 
 {% block content %}
@@ -39,42 +39,42 @@ Describe where you live
         items: [
           {
             value: "house-or-flat-rented",
-            text: "I live in a rented house or flat"
+            text: "in a rented property"
           },
           {
             value: "house-or-flat-owned",
-            text: "I live in a house or flat that my household owns"
+            text: "in a property owned by me or someone else in my household"
           },
                 {
             value: "heat-network",
-            text: "I live in a home that has a heat network, communal or district heating"
+            text: "in a home that has a heat network, communal or district heating"
           },
           {
             value: "park-home",
-            text: "I live in a residential park home"
+            text: "in a residential park home"
           },
           {
             value: "care-home",
-            text: "I live in a care home"
+            text: "in a care home"
           },
           {
             value: "boat",
-            text: "I live on a boat"
+            text: "on a boat"
           },
           {
             value: "farm",
-            text: "I live on a farm"
+            text: "on a farm"
           },
           {
             value: "caravan",
-            text: "I live in a caravan or mobile home"
+            text: "in a caravan or mobile home"
           },
           {
             divider: 'or'
           },
           {
             value: "other",
-            text: "I don’t fit into any of these categories"
+            text: "I do not fit into any of these categories"
           }
         ]
       }) }}

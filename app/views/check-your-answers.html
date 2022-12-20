@@ -45,14 +45,14 @@ No phone number provided
 
     <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
 
-    <h2 class="govuk-heading-m">Previous support</h2>
+    <h2 class="govuk-heading-m">Eligibility</h2>
             
                 {{ govukSummaryList({
                   classes: 'govuk-!-margin-bottom-9',
                   rows: [
                     {
                       key: {
-                        text: "Are you already getting discounts to your energy bills from the Energy Bills Support Scheme?"
+                        text: "Are you getting discounts to your energy bills from the Energy Bills Support Scheme?"
                       },
                       value: {
                         html: data['received-main-ebss'] | capitalize
@@ -128,7 +128,7 @@ No phone number provided
         },
         {
           key: {
-            text: "Your full name"
+            text: "Full name"
           },
           value: {
             html: data['full-name']
@@ -145,7 +145,7 @@ No phone number provided
         },
         {
           key: {
-            text: "Your date of birth"
+            text: "Date of birth"
           },
           value: {
             html: data.dob | date('Do MMMM YYYY')
@@ -214,7 +214,7 @@ No phone number provided
       ]
     }) }}
 
-    <h2 class="govuk-heading-m">Future support</h2>
+    <h2 class="govuk-heading-m">Bank details</h2>
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-9',
       rows: availableRows
