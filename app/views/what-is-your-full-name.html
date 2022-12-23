@@ -20,7 +20,11 @@ What is your full name?
 {% if data['proof-of-address-provided'] == 'yes' %}
 {% set backLink = 'upload-proof-of-address' %}
 {% else %}
+{% if data.locale == 'ni' %}
+{% set backLink = 'do-you-pay-rates' %}
+{% else %}
 {% set backLink = 'are-you-registered-for-council-tax' %}
+{% endif %}
 {% endif %}
 
 {% from "./alphaPhase.html" import alphaPhase %}

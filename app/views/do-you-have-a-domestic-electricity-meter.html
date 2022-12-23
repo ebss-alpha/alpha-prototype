@@ -2,9 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-{% filter localise(data.locale) %}
-Are you registered for council tax at the address you are applying for?
-{% endfilter %}
+Do you have a domestic electricity meter?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -12,26 +10,23 @@ Are you registered for council tax at the address you are applying for?
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: "eligible-for-ebss-af"
+    href: "where-do-you-live"
   }) }}
 {% endblock %}
 
 {% block content %}
-{% filter localise(data.locale) %}
-<form action="council-tax-check">
+<form action="mains-connection-check">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukRadios({
-        name: "rates-or-council-tax",
+        name: "do-you-have-a-domestic-electricity-meter",
         hint: {
-          text: '<div class="govuk-!-margin-bottom-2">We share this information with your council to check you live at this address.</div>
-      <div class="govuk-!-margin-bottom-2">The person named on the council tax bill, or council tax exemption, should apply.</div>
-      <div>If no one in your household is registered, you will need to upload proof of address.</div>' | safe
+          text: '<p class="govuk-body">You have a domestic meter if your electricity supplier directly for electricity.</p>' | safe
         },
+        classes: 'govuk-radios--inline',
         fieldset: {
-          classes: "govuk-radios--inline",
           legend: {
-            text: "Are you registered for council tax at the address you're applying for?",
+            text: "Do you have a domestic electricity meter?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -53,5 +48,5 @@ Are you registered for council tax at the address you are applying for?
     </div>
   </div>
 </form>
-{% endfilter %}
+
 {% endblock %}

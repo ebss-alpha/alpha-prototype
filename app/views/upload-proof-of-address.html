@@ -9,15 +9,19 @@ You need to upload proof of address
 {% block beforeContent %}
 {{ alphaPhase() }}
 
+{% if data.locale == 'ni' %}
+{% set backLink = "eligible-for-support" %}
+{% else %}
+{% set backLink ="are-you-registered-for-council-tax" %}
+{% endif %}
   {{ govukBackLink({
     text: "Back",
-    href: "are-you-registered-for-council-tax"
+    href: backLink
   }) }}
   
 {% endblock %}
 
 {% block content %}
-{% filter localise(data.locale) %}
 <form action="what-is-your-full-name">
   <input type="hidden" name="proof-of-address-provided" value="yes">
   <div class="govuk-grid-row">
@@ -32,6 +36,20 @@ You need to upload proof of address
         <li>the name and address of the care home</li>
       </ul>
       <h2 class="govuk-heading-m">All other applicants</h2>
+      {% if data.locale == 'ni' %}
+      <p class="govuk-body">At least one of these documents is needed:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>utility bill - for example gas or electricity bill</li>
+        <li>bank account or credit card statement (signed and stamped by bank official)</li>
+        <li>hospital appointment notice</li>
+        <li>court notice</li>
+        <li>correspondence from a United Kingdom government department for example Northern Ireland domestic rates bill or HM
+        </li>
+        <li>Revenue and Customs (HMRC) income tax notification</li>
+        <li>correspondence from a Northern Ireland university confirming that you've been on a course of study for at least
+          the last six months</li>
+      </ul>
+      {% else %}
       <p class="govuk-body">You can upload one of the following:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>full current UK driving licence (not a provisional driving licence)</li>
@@ -41,6 +59,7 @@ You need to upload proof of address
         <li>council tax exemption proof such as a bill or letter</li>
         <li>signed, dated letter with a letterhead from a boat mooring provider showing your name, address and that you live permanently on a boat on a long-term residential mooring</li>
       </ul>
+      {% endif %}
        <p>Your document must be:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>no more than 10 MB</li>
@@ -59,5 +78,4 @@ You need to upload proof of address
     </div>
   </div>
 </form>
-{% endfilter %}
 {% endblock %}
