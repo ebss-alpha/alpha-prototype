@@ -13,7 +13,7 @@ Check your answers before sending your application
 {% endblock %}
 
 {% set councilTax %}
-{{ data['are-you-registered-for-council-tax'] | replace("no-council-tax", "I'm not registered for council tax at my address") | sentence }}
+{{ data['rates-or-council-tax'] | replace("no-council-tax", "I'm not registered for council tax at my address") | sentence }}
 {% endset %}
 
 
@@ -44,7 +44,8 @@ No phone number provided
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
     <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
-
+    {% if data.locale == 'ni' %}
+    {% else %}
     <h2 class="govuk-heading-m">Eligibility</h2>
             
                 {{ govukSummaryList({
@@ -204,7 +205,7 @@ No phone number provided
           actions: {
             items: [
               {
-                href: "are-you-registered-for-council-tax",
+                href: "rates-or-council-tax",
                 text: "Change",
                 visuallyHiddenText: "your answer to 'Is your name on your household's council tax bill?'"
               }
@@ -233,7 +234,7 @@ No phone number provided
       }) }}
 
     </form>
-
+    {% endif %}
   </div>
 </div>
 {% endfilter %}

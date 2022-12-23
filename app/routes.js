@@ -11,34 +11,15 @@ router.get(['/'], (req, res) => {
 })
 
 router.get(['/start'], (req, res) => {
-  const ni = req.session.data.locale === 'ni'
-  const ch = req.session.data.variation === 'ch'
-  req.session.data = {
-    locale: ni ? 'ni' : 'gb',
-    variation: ch ? 'ch' : 'in'
-  }
+  req.session.data = {}
   res.render('start.html')
-})
-
-router.get(['/ni'], (req, res) => {
-  req.session.data.locale = 'ni'
-  res.redirect('/start')
-})
-
-router.get(['/ch'], (req, res) => {
-  req.session.data.variation = 'ch'
-  res.redirect('/start')
-})
-
-router.get(['/ni'], (req, res) => {
-  req.session.data.locale = 'ni'
-  res.redirect('/start')
 })
 
 router.get(['/location-check'], (req, res) => {
   switch (req.session.data['where-do-you-live']) {
     case 'northern-ireland':
-      res.redirect('/ni-not-eligible-yet')
+      req.session.data.locale = 'ni'
+      res.redirect('/do-you-have-a-domestic-electricity-meter')
       break
     default:
       res.redirect('/have-you-received-a-payment-ebss')
@@ -46,23 +27,17 @@ router.get(['/location-check'], (req, res) => {
   }
 })
 
-router.get(['/are-you-registered-for-council-tax'], (req, res) => {
-  req.session.data['are-you-registered-for-council-tax'] = undefined
-  res.render('are-you-registered-for-council-tax.html')
-})
-
-router.get(['/initial-council-tax-check'], (req, res) => {
-  switch (req.session.data['are-you-registered-for-council-tax']) {
-    case 'no':
-    case 'no-council-tax':
-      res.redirect('/find-your-address')
-      break
+router.get(['/mains-connection-check'], (req, res) => {
+  switch (req.session.data['do-you-have-a-domestic-electricity-meter']) {
     case 'yes':
-    default:
-      res.redirect('/find-your-address')
+      res.redirect('/ineligible-for-support-ni')
       break
+    case 'no':
+    default:
+      res.redirect('/do-you-have-a-bank-account')
   }
 })
+
 
 router.get(['/address-lookup'], (req, res) => {
   const homeType = req.session.data['home-type']
@@ -115,7 +90,11 @@ router.get(['/home-check'], (req, res) => {
   if (req.session.data['is-this-your-main-home'] === 'no') {
     res.redirect('/ineligible-second-home')
   } else {
-    res.redirect('/eligible-for-ebss-af')
+    if (req.session.data.locale === 'ni') {
+      res.redirect('/eligible-for-support')
+    } else {
+      res.redirect('/eligible-for-ebss-af')
+    }
   }
 })
 
@@ -226,8 +205,8 @@ router.get(['/contact-check'], (req, res) => {
   res.redirect('/what-are-your-bank-account-details')
 })
 
-router.get(['/council-tax-check'], (req, res) => {
-  const proofRequired = req.session.data['describe-where-you-live'] === 'care-home' || req.session.data['are-you-registered-for-council-tax'] === 'no'
+router.get(['/council-tax-check', '/rates-check'], (req, res) => {
+  const proofRequired = req.session.data['describe-where-you-live'] === 'care-home' || req.session.data['rates-or-council-tax'] === 'no'
   if (proofRequired) {
     res.redirect('/upload-proof-of-address')
   } else {
