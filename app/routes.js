@@ -15,11 +15,21 @@ router.get(['/start'], (req, res) => {
   res.render('start.html')
 })
 
+router.get(['/ni'], (req, res) => {
+  req.session.data = {
+    locale: 'ni'
+  }
+  res.redirect('/where-do-you-live')
+})
+
 router.get(['/location-check'], (req, res) => {
   switch (req.session.data['where-do-you-live']) {
     case 'northern-ireland':
-      req.session.data.locale = 'ni'
-      res.redirect('/do-you-have-a-domestic-electricity-meter')
+      if (req.session.data.locale !== 'ni') {
+        res.redirect('/ni-not-eligible-yet')
+      } else {
+        res.redirect('/do-you-have-a-domestic-electricity-meter')
+      }
       break
     default:
       res.redirect('/have-you-received-a-payment-ebss')
