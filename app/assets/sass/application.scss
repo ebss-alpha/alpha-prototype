@@ -48,4 +48,14 @@ address {
   background-color: govuk-tint(govuk-colour("light-blue"), 90);
 }
 
-@import "node_modules/nidirect-frontend/nidirect-all";
+.govspeak {
+  @extend .govuk-body;
+
+  .contact {
+    position: relative;
+    border-left: 1px solid $govuk-border-colour;
+    padding-left: govuk-spacing(3);
+    margin-top: govuk-spacing(6);
+    margin-bottom: govuk-spacing(6);
+  }
+}

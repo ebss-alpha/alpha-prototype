@@ -11,122 +11,127 @@
 
 {% block content %}
 {% filter localise(data.locale) %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">{{ serviceName }} if you do not get it automatically</h1>
-    <p class="govuk-body-l">Applies to England, Scotland and Wales</p>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{ serviceName }} if you do not get it automatically</h1>
+    </div>
   </div>
-</div>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <p class="govuk-body-s">Contents</p>
-    <ul class="govuk-list">
-      <li class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="#400-energy-bills-support">Who can apply for the £400 energy bills support</a></li>
-      <li class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="#100-alternative-fuels-payment">Who can apply for the £200 alternative fuels payment</a></li>
-      <li class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="#care-home-or-supported-accomodation">If you live in a care home or supported accommodation</a></li>
-      <li class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="#before-you-start">Before you start</a></li>
-    </ul>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body-s">Contents</p>
+      <ul class="govuk-list">
+        <li class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="#who-should-apply">Who should apply</a></li>
+        <li class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="#who-cannot-apply">Who cannot apply</a></li>
+        <li class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="#eligible-homes">Eligible homes</a></li>
+        <li class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="#check-your-eligibility">Check your eligibility and apply online</a></li>
+        <li class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="#what-you-need-to-know" class="govuk-heading-m">What you need to know</a></li>
+        <li class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="#other-ways-to-apply" class="govuk-heading-m">Other ways to apply</a></li>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="govuk-grid-row govuk-!-margin-bottom-3">
-  <div class="govuk-grid-column-full">
-    <div class="govuk-section-break govuk-section-break--visible"></div>
+  <div class="govuk-grid-row govuk-!-margin-bottom-3">
+    <div class="govuk-grid-column-full">
+      <div class="govuk-section-break govuk-section-break--visible"></div>
+    </div>
   </div>
-</div>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <p class="govuk-body">Households can apply to get support for household energy bills if they have not received it automatically.</p>
-    <p class="govuk-body">Most people will have received these payments automatically and do not need to apply.</p>
-    <p class="govuk-body">This application is for:</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>£400 to help with the rising cost of energy bills through the Energy Bills Support Scheme </li>
-      <li>£200 to help with the rising cost of alternative fuels for households who are not connected to the mains gas grid </li>
-    </ul>
-
-    <p class="govuk-body">You could be eligible for one or both payments. Only one person should apply in each household.</p>
-    <p class="govuk-body">You can apply for support from these schemes if:</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>you pay for the energy your household uses</li>
-      <li>your household has not received the payments automatically</li>
-      <li>you are applying for your main, permanent home</li>
-      <li>you have a fixed address</li>
-    </ul>
-
-    <p class="govuk-body">Students living in purpose-built student accommodation such as university halls of residence are not eligible to apply.</p>
-
-    <h2 id="400-energy-bills-support" class="govuk-heading-m">Who can apply for the £400 energy bills support</h2>
-    <p class="govuk-body">The Energy Bills Support Scheme is a £400 discount to help households with their energy bills between October 2022 and April 2023.</p>
-    <p class="govuk-body">Most households are getting this automatically as 6 monthly discounts from their energy supplier and do not need to apply.</p>
-    <p class="govuk-body">You will have received it automatically if you have a standard electricity meter and you pay your bills directly to your energy supplier (such as British Gas, EDF Energy, OVO). Your energy supplier should have contacted you to tell you that you are getting the monthly discounts.</p>
-    <p class="govuk-body">If you are already getting the discount, you will have received £66 and £67 monthly discounts to your household electricity bill or vouchers for your prepayment meter.</p>
-    <p class="govuk-body">You might not have received the discount automatically if your home:</p> 
-    <ul class="govuk-list govuk-list--bullet">
-     <li>has a communal electricity supply</li>
-     <li>has a non-domestic electricity connection</li>
-     <li>does not have a direct relationship with an electricity supplier</li>
-    </ul>
-    
-    <p class="govuk-body">This might mean that you pay for energy through a landlord, housing manager or site owner.</p> 
-    <p class="govuk-body">If you are not getting it automatically you can now apply.</p> 
-<p class="govuk-body">You may be eligible to apply if you live:</p> 
-    <ul class="govuk-list govuk-list--bullet">
-      <li>in a residential park home</li>
-      <li>on a boat on a permanent residential mooring</li>
-      <li>on a permanent Gypsy and Traveller site</li>
-      <li>in a home on a heat network without an electricity meter</li>
-      <li>in social or private rented accommodation which has a non-domestic energy connection or a communal electricity supply</li>
-      <li>in a home that is off the mains electricity or gas grid</li>
-      <li>in a care home or assisted living facility and pay for some or all of your care</li>
-      <li>in a non-domestic property which is used as a home such as a farm or a flat above a shop</li>
-    </ul>
-
-    <h2 id="100-alternative-fuels-payment" class="govuk-heading-m">Who can apply for the £200 alternative fuels payment</h2>
-    
-    <p class="govuk-body">The alternative fuels payment is a £200 payment. It is for households that are not connected to the mains gas grid and use alternative fuels as their main form of heating.</p>
-    <p class="govuk-body">Most homes that are eligible for this payment have already received it automatically as a credit to their electricity bills. You will have received it automatically if your home is in an area which is mainly not connected to the gas grid.</p>
-    <p class="govuk-body">You might not have received this payment automatically if your home is in an area which is mainly connected to the gas grid or your home is not connected to either the gas or the electricity grid.</p>
-    <p class="govuk-body">You are eligible for this payment if the main way you heat your home uses:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>tank or bottled gas</li>
-      <li>liquid petroleum gas</li>
-      <li>oil</li>
-      <li>wood</li>
-      <li>solid fuel</li>
-    </ul>
- <p class="govuk-body">If you have not received the payment automatically you can now apply. You might not have received the payment automatically if:</p>
-     <ul class="govuk-list govuk-list--bullet">
-      <li>your home is in an area which is mainly connected to the gas grid</li>
-      <li>your home is not connected to either the gas or the electricity grid</li>
-    </ul>
- 
-    <h2 id="care-home-or-supported-accomodation" class="govuk-heading-m">If you live in a care home or supported accommodation</h2>
-    
-    <p class="govuk-body">If you live in a care home or sheltered and supported accommodation and pay for some or part of your care fees you may also be eligible for one or both of these payments.</p>
-    <p class="govuk-body">Your property manager should apply on your behalf and pass on the discount. Contact them to check if they have made the application on your behalf.</p>
-    
-    <h2 id="before-you-start" class="govuk-heading-m">Before you apply</h2>
-    
-    <p class="govuk-body">You can apply for one or both of these payments if you think you are eligible.</p>
-    <p class="govuk-body">Before you start the application, check that you have not received the £400 Energy Bills Support Scheme discount or £200 alternative fuels payment automatically.</p>
-    <p class="govuk-body">Someone from your household whose name is on the council tax bill should apply for these payments. This is so that your local council can check you live at the address you apply for. If no one in your household is registered for council tax, you will need to upload proof of address.</p>
-    <p class="govuk-body">Examples of proof of address include:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>valid UK driving license</li>
-      <li>tenancy agreement</li>
-      <li>utility bill from the last 3 months</li>
-      <li>bank statement from the last 3 months</li>
-      <li>residential boat license</li>
-    </ul>
-    <p class="govuk-body">To apply for the £200 alternative fuels payment, you will need to upload proof that you buy alternative fuels to heat your home. You will need to upload proof of purchase with your name and address on it to the value of £200, dated in the last 6 months.</p>
-
-    {{ govukButton({
-      text: "Start now",
-      href: "where-do-you-live",
-      isStartButton: true
-    }) }}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body">Use this service to apply for £400 support to help pay your energy bill. You will get this support automatically and do
+      not need to apply if you:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>have a standard electricity meter</li>
+        <li>pay your bills directly to your energy supplier (such as British Gas or EDF)</li>
+      </ul>
+      <p class="govuk-body">You cannot apply if you’ve already had Energy Bill Support Scheme payments. This is 6 automatic monthly payments or
+      prepayment meter vouchers of £66 or £67 from your energy supplier, from October 2022.</p>
+    </div>
   </div>
-</div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 id="who-should-apply" class="govuk-heading-m">Who should apply</h2>
+      <p class="govuk-body">Although most households get this support automatically, you may need to apply if your home:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>has a communal electricity supply</li>
+        <li>has a non-domestic electricity connection</li>
+        <li>does not have a contract with an electricity supplier</li>
+      </ul>
+      <p class="govuk-body">This might mean that you pay for energy through a landlord, housing manager or site owner.</p>
+      <p class="govuk-body">You can apply if:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>you pay for the energy your household uses</li>
+        <li>you’re applying for your main, permanent home</li>
+        <li>you have a fixed address in England, Scotland or Wales</li>
+      </ul>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 id="who-cannot-apply" class="govuk-heading-m">Who cannot apply</h2>
+      <p class="govuk-body">You cannot apply for a discount if you’ve already had energy bill support or you live:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>in purpose-built student accommodation</li>
+        <li>in a care home and do not pay some of your fees</li>
+        <li>on a boat with a continuous cruising licence</li>
+        <li>on a non-permanent caravan or mobile home site</li>
+      </ul>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 id="eligible-homes" class="govuk-heading-m">Eligible homes</h2>
+      <p class="govuk-body">You may be eligible to apply if your main home is:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>in a residential park home</li>
+        <li>on a boat on a permanent residential mooring</li>
+        <li>on a permanent Gypsy and Traveller site</li>
+        <li>part of a heat network without an electricity meter</li>
+        <li>in social or private rented accommodation which has a business energy connection or a communal electricity supply</li>
+        <li>off the mains electricity or gas grid</li>
+        <li>in a care home or assisted living facility and pay for some or all of your care</li>
+        <li>in a non-domestic property which is used as a home (such as a farm or a flat above a shop)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 id="check-your-eligibility" class="govuk-heading-m">Check your eligibility and apply online</h2>
+      <p class="govuk-body">You will need:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>an email address and phone number (if you have one)</li>
+        <li>your bank account details</li>
+      </ul>
+      <p class="govuk-body">If you’re not registered for Council Tax, you’ll need to upload proof of address (such as a bank statement or tenancy
+        agreement) as part of your application.</p>
+        <p class="govuk-body">If you’re applying on behalf of someone else, answer questions with their details rather than your own.</p>
+        {{ govukButton({
+          text: "Start now",
+          href: "where-do-you-live",
+          isStartButton: true
+        }) }}
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 id="what-you-need-to-know" class="govuk-heading-m">What you need to know</h2>
+        <p class="govuk-body">After you apply, your local council will check you live at the address you apply for.</p>
+        <p class="govuk-body">You’ll be told about the progress of your application by email or letter. You should get a response within 4 weeks.</p>
+        <p class="govuk-body">If you’re eligible, your council will arrange a one-off payment. You do not need to repay this money.</p>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 id="other-ways-to-apply" class="govuk-heading-m">Other ways to apply</h2>
+        <p class="govuk-body">If you cannot apply online, phone the EBSS customer support team.</p>
+        <div class="govspeak">
+          <div class="contact">
+            <p>EBSS customer support team<br>
+            Telephone: <a href="tel:+44800111111">xxxx xxx xxxx</a><br>
+            Monday to Friday, 8am to 6pm<br>
+            Saturday, 9am to 1pm<br>
+            <a href="#call-charges">Find out about call charges</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
 {% endfilter %}
 {% endblock %}
