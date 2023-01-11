@@ -216,7 +216,7 @@ router.get(['/contact-check'], (req, res) => {
 })
 
 router.get(['/council-tax-check', '/rates-check'], (req, res) => {
-  const proofRequired = req.session.data['describe-where-you-live'] === 'care-home' || req.session.data['rates-or-council-tax'] === 'no'
+  const proofRequired = req.session.data['describe-where-you-live'] === 'care-home' || req.session.data['rates-or-council-tax'] === 'no' || req.session.data.locale === 'ni'
   if (proofRequired) {
     res.redirect('/upload-proof-of-address')
   } else {
