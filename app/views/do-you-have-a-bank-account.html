@@ -14,6 +14,12 @@ Do you have a bank account in your name?
   }) }}
 {% endblock %}
 
+{% set localisedHint %}
+<p>You need a bank account in your name to apply.</p>
+<p>We share bank account details with {% if data.locale =='ni' %}our delivery partner{% else %}your council{% endif %}
+  so we can check your identity and make payments.</p>
+{% endset %}
+
 {% block content %}
 <form action="bank-account-check">
   <div class="govuk-grid-row">
@@ -29,8 +35,7 @@ Do you have a bank account in your name?
           }
         },
         hint: {
-          html: "<p>You need a bank account in your name to apply.</p> 
-      <p>We share bank account details with your council so we can check your identity and make payments.</p>"
+          html: localisedHint | safe
         },
         items: [
           {
