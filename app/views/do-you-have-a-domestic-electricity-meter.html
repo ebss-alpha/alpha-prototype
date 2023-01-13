@@ -21,12 +21,12 @@ Do you have a domestic electricity meter?
       {{ govukRadios({
         name: "do-you-have-a-domestic-electricity-meter",
         hint: {
-          text: '<p class="govuk-body">You have a domestic meter if your electricity supplier directly for electricity.</p>' | safe
+          text: '<p class="govuk-hint">Most homes have a domestic electricity meter, including pre-payment meters.</p><p class="govuk-hint">You are likely to have a domestic electricity meter if you pay your electricity supplier directly.</p>' | safe
         },
         classes: 'govuk-radios--inline',
         fieldset: {
           legend: {
-            text: "Do you have a domestic electricity meter?",
+            text: "Do you have a domestic electricity meter in your home?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }

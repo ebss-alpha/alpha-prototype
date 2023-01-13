@@ -31,11 +31,11 @@ Who do you rent your home from?
         items: [
           {
             value: "private-landlord",
-            text: "Private landlord or agency"
+            text: "Private landlord or agency" 
           },
           {
             value: "council-or-housing-association",
-            text: "Council or housing association"
+            text: "Social rented or housing association" if data.locale == 'ni' else "Council or housing association"
           },
           {
             value: "student",

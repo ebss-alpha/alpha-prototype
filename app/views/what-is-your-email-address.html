@@ -14,7 +14,9 @@ What is your email address?
   }) }}
 {% endblock %}
 
+
 {% block content %}
+{% filter localise(data.locale) %}
 <form action="what-is-your-phone-number">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -25,7 +27,9 @@ What is your email address?
           classes: "govuk-label--l"
         },
         hint: {
-          text: "The Department for Business, Energy and Industrial Strategy or your local council will use your email address to send you updates about your application. We might need to ask you to confirm some details."
+          text: '<div class="govuk-!-margin-bottom-2">Include a local area code for landline numbers.</div>
+          <div>The Department for Business, Energy and Industrial Strategy or your local council might use your phone number to
+            contact you about your application.</div>' | safe
         },
         id: "email",
         name: "email",
@@ -47,4 +51,5 @@ What is your email address?
     </div>
   </div>
 </form>
+{% endfilter %}
 {% endblock %}
