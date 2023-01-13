@@ -32,6 +32,7 @@ router.get(['/location-check'], (req, res) => {
       }
       break
     default:
+      req.session.data.locale = 'gb'
       res.redirect('/have-you-received-a-payment-ebss')
       break
   }
@@ -47,7 +48,6 @@ router.get(['/mains-connection-check'], (req, res) => {
       res.redirect('/do-you-have-a-bank-account')
   }
 })
-
 
 router.get(['/address-lookup'], (req, res) => {
   const homeType = req.session.data['home-type']

@@ -17,7 +17,8 @@ module.exports = function (env) {
 
   filters.localise = (input, locale) => {
     const localisedTaxString = locale === 'ni' ? 'rates' : 'council tax'
-    return env.filters.safe(input.replaceAll(/council tax/ig, localisedTaxString))
+    const localisedCouncilString = locale === 'ni' ? 'our delivery partner' : 'your local council'
+    return env.filters.safe(input.replaceAll(/council tax/ig, localisedTaxString).replaceAll(/your local council/ig, localisedCouncilString))
   }
 
   filters.padDate = input => input.toString().padStart(2, '0')

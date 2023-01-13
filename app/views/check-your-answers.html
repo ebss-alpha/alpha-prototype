@@ -44,8 +44,6 @@ No phone number provided
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
     <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
-    {% if data.locale == 'ni' %}
-    {% else %}
     <h2 class="govuk-heading-m">Eligibility</h2>
             
                 {{ govukSummaryList({
@@ -53,10 +51,10 @@ No phone number provided
                   rows: [
                     {
                       key: {
-                        text: "Are you getting discounts from the Energy Bills Support Scheme?"
+                        text: "Do you have a domestic electricity meter in your home?" if data.locale == 'ni' else "Are you getting discounts from the Energy Bills Support Scheme?"
                       },
                       value: {
-                        html: data['received-main-ebss'] | capitalize
+                        html: data['do-you-have-a-domestic-electricity-meter'] | capitalize if data.locale == 'ni' else data['received-main-ebss'] | capitalize
                       },
                       actions: {
                         items: [
@@ -81,7 +79,7 @@ No phone number provided
           text: "Describe where you live"
         },
         value: {
-          html: data['dwyl-summary']
+          html: data['dwyl-summary'] | replace('I rent from a council', 'social rented') | sentence
         },
         actions: {
           items: [
@@ -234,7 +232,6 @@ No phone number provided
       }) }}
 
     </form>
-    {% endif %}
   </div>
 </div>
 {% endfilter %}

@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you pay rates?
+Do you pay rates at your address?
 {% endblock %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
@@ -21,12 +21,12 @@ Do you pay rates?
       {{ govukRadios({
         name: "rates-or-council-tax",
         hint: {
-          text: '<p>We use this information to check you live at this address.</p>' | safe
+          text: '<p class="govuk-hint">We use this information to check you live at this address.</p><p class="govuk-hint">The person in your household named on the rates bill or rates exemption certificate should apply</p></p>' | safe
         },
         fieldset: {
           classes: "govuk-radios--inline",
           legend: {
-            text: "Do you pay rates?",
+            text: "Do you pay rates at your address?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
