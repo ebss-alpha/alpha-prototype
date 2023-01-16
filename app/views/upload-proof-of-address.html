@@ -28,34 +28,62 @@ You need to upload proof of address
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">You need to upload proof of address</h1>
       {% if data.locale == 'ni' %}
-      {% if data['describe-where-you-live'] == 'house-or-flat-owned' %}
-      {% if data['rates-or-council-tax'] == 'no' %}
-      <p class="govuk-body">
-        If you do not pay rates, also upload your rates exemption certificate.
-      </p>
+        {% if data['describe-where-you-live'] == 'care-home' %}
+        <p class="govuk-body">
+          Upload an invoice for your care home fees from the past 3 months.
+        </p>
+        <p class="govuk-body">
+          It must show:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>your name</li>
+          <li>the name and address of the care home</li>
+        </ul>
+        {% else %}
+        {% if data['rates-or-council-tax'] == 'no' %}
+        <h2 class="govuk-heading-m">
+          If you own your home
+        </h2>
+        <p class="govuk-body">
+          Upload both:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>a proof of address</li>
+          <li>your rates exemption certificate</li>
+        </ul>
+        <h2 class="govuk-heading-m">
+          If you are a tenant
+        </h2>
+        <p class="govuk-body">
+          Upload 3 documents:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>a proof of address</li>
+          <li>a photo ID</li>
+          <li>your tenancy agreement</li>
+        </ul>
+        {% else %}
+        <h2 class="govuk-heading-m">
+          If you own your home
+        </h2>
+        <p class="govuk-body">
+          Upload one proof of address.
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>a proof of address</li>
+          <li>your rates exemption certificate</li>
+        </ul>
+        <h2 class="govuk-heading-m">
+          If you are a tenant
+        </h2>
+        <p class="govuk-body">
+          Upload both:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>a proof of address</li>
+          <li>a photo ID</li>
+        </ul>
       {% endif %}
-      {% elif data['describe-where-you-live'] == 'house-or-flat-rented' %}
-      <p class="govuk-body">
-        Upload:
-      </p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>proof of address</li>
-        <li>photo ID</li>
-      </ul>
-      {% if data['rates-or-council-tax'] == 'no' %}
-      <p class="govuk-body">
-        If you do not pay rates, also upload your tenancy agreement.
-      </p>
-      {% endif %}
-      {% elif data['describe-where-you-live'] == 'care-home' %}
-      <p class="govuk-body">Upload an invoice for your care home fees from the past 3 months.</p>
-      <p class="govuk-body">It must show:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>your name</li>
-        <li>the name and address of the care home</li>
-      </ul>
-      {% endif %}
-      {% if data['describe-where-you-live'] != 'care-home' %}
       <h2 class="govuk-heading-m">Proofs of address</h2>
       <p class="govuk-body">
         The document must have your name and address on it.
