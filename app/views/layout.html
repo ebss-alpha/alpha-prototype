@@ -41,12 +41,17 @@
 
 
 {% block header %}
+{% if data.locale == 'ni' %}
+{% set headerLink = '/ni' %}
+{% else %}
+{% set headerLink = '/start' %}
+{% endif %}
 
  {# Set serviceName in config.js. #}
  {{ govukHeader({
    homepageUrl: "/",
    serviceName: serviceName,
-   serviceUrl: "/start",
+   serviceUrl: headerLink,
    containerClasses: "govuk-width-container"
   }) }}
 {% endblock %}
