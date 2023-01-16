@@ -69,10 +69,6 @@ You need to upload proof of address
         <p class="govuk-body">
           Upload one proof of address.
         </p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>a proof of address</li>
-          <li>your rates exemption certificate</li>
-        </ul>
         <h2 class="govuk-heading-m">
           If you are a tenant
         </h2>
@@ -99,7 +95,6 @@ You need to upload proof of address
         <li>correspondence from a Northern Ireland university confirming that you've been on a course of study for at least
           the last six months</li>
       </ul>
-      {% if data['describe-where-you-live'] == 'house-or-flat-rented' %}
       <h2 class="govuk-heading-m">Proofs of ID</h2>
       <ul class="govuk-list govuk-list--bullet">
         <li>a UK, Irish or EEA driving licence (photographic part) (provisional accepted)</li>
@@ -110,7 +105,6 @@ You need to upload proof of address
         <li>a Translink War Disabled SmartPass</li>
         <li>a Translink Blind Person’s SmartPass</li>
       </ul>
-      {% endif %}
       {% endif %}
       {% else %}
       <p>You must upload a document with your name and address on it.</p>
