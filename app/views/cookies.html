@@ -43,6 +43,33 @@ Cookies
                 </tr>
             </tbody>
         </table>
+        <form action="cookie-choice">
+            {{ govukRadios({
+            name: "choice",
+            classes: 'govuk-radios--inline',
+            fieldset: {
+                legend: {
+                    text: "Do you want to accept analytics cookies?",
+                    classes: "govuk-fieldset__legend--s"
+                }
+            },
+            items: [
+                {
+                    value: "accept",
+                    text: "Yes",
+                    checked: data.cookies == true
+                },
+                {
+                    value: "reject",
+                    text: "No",
+                    checked: data.cookies == false
+                }
+            ]
+            }) }}
+            {{ govukButton({
+            text: "Save cookie settings"
+            }) }}
+        </form>
     </div>
 </div>
 {% endblock %}
