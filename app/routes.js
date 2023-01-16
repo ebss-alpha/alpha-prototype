@@ -19,7 +19,7 @@ router.get(['/ni'], (req, res) => {
   req.session.data = {
     locale: 'ni'
   }
-  res.redirect('/where-do-you-live')
+  res.render('ni.html')
 })
 
 router.get(['/location-check'], (req, res) => {
