@@ -11,15 +11,24 @@ router.get(['/'], (req, res) => {
 })
 
 router.get(['/start'], (req, res) => {
-  req.session.data = {}
+  req.session.data = {
+    cookies: req.session.data.cookies
+  }
   res.render('start.html')
 })
 
 router.get(['/ni'], (req, res) => {
   req.session.data = {
+    cookies: req.session.data.cookies,
     locale: 'ni'
   }
   res.render('ni.html')
+})
+
+router.get(['/cookie-choice'], (req, res) => {
+  const cookieChoice = req.query.choice === 'accept'
+  req.session.data.cookies = cookieChoice
+  res.redirect(req.headers.referer)
 })
 
 router.get(['/location-check'], (req, res) => {
