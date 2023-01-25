@@ -234,6 +234,7 @@ router.get(['/council-tax-check', '/rates-check'], (req, res) => {
 })
 
 router.get(['/upload-check'], (req, res) => {
+  req.session.data.removed = undefined
   if (req.query.continue) {
     res.redirect('/what-is-your-full-name')
   } else {
@@ -247,6 +248,13 @@ router.get(['/upload-check'], (req, res) => {
       res.redirect('/upload-proof-of-address')
     }
   }
+})
+
+router.get(['/remove-file'], (req, res) => {
+  const indexToRemove = req.session.data['proofs-of-address'].indexOf(req.query.filename)
+  req.session.data['proofs-of-address'].splice(indexToRemove, 1)
+  req.session.data.removed = req.query.filename
+  res.redirect('/upload-proof-of-address')
 })
 
 router.get(['/bank-account-check'], (req, res) => {
