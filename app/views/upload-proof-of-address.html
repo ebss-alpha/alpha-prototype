@@ -131,13 +131,12 @@ You need to upload proof of address
         <li>no more than 10 MB</li>
         <li>in PDF, .jpeg, .png or .doc format</li>
       </ul>
-      {{ govukFileUpload({
-        id: "proof-of-address",
-        name: "proof-of-address",
-        label: {
-          text: "Upload a file"
-        }
-      }) }}
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="proof-of-address">
+          Upload a file
+        </label>
+        <input class="govuk-file-upload" id="proof-of-address" name="proof-of-address" type="file" multiple>
+      </div>
       {{ govukButton({
         text: "Continue"
       }) }}
