@@ -25,12 +25,20 @@ You need to upload proof of address
 {% if data.locale == 'ni' %}
 {% if not data.error %}
 {% if data['proof-of-address'] | length > 0 %}
+  {% set heading %}
+    File uploaded
+  {% endset %}
   {% set message %}
-  <p>Uploaded <strong>{{ data['proof-of-address'] }}</strong>. <a class="govuk-link govuk-link--no-visited-state" href="#proof-of-address"></p>
-  <p>Upload another file.</a></p>
+  <p>Uploaded <strong>{{ data['proof-of-address'] }}</strong>.</p>
+  <p>
+    <a class="govuk-notification-banner__link" href="#proof-of-address">Upload another file.</a>
+  </p>
   {% endset %}
 {% endif %}
 {% if data.removed %}
+  {% set heading %}
+    File removed
+  {% endset %}
   {% set message %}
   <p>Removed <strong>{{ data.removed }}</strong></p>
   {% endset %}
@@ -38,10 +46,16 @@ You need to upload proof of address
 {% if message %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {{ govukNotificationBanner({
-      html: message,
-      type: 'success'
-    }) }}
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          {{ heading | safe }}
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        {{ message | safe }}
+      </div>
+    </div>
   </div>
 </div>
 {% endif %}
