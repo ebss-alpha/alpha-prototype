@@ -26,7 +26,8 @@ You need to upload proof of address
 {% if not data.error %}
 {% if data['proof-of-address'] | length > 0 %}
   {% set message %}
-  <p>Uploaded <strong>{{ data['proof-of-address'] }}</strong>. <a class="govuk-link govuk-link--no-visited-state" href="#proof-of-address">Upload another.</a></p>
+  <p>Uploaded <strong>{{ data['proof-of-address'] }}</strong>. <a class="govuk-link govuk-link--no-visited-state" href="#proof-of-address"></p>
+  <p>Upload another file.</a></p>
   {% endset %}
 {% endif %}
 {% if data.removed %}
