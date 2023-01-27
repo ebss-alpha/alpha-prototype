@@ -17,7 +17,7 @@ module.exports = function (env) {
 
   filters.localise = (input, locale) => {
     const localisedTaxString = locale === 'ni' ? 'rates' : 'council tax'
-    const localisedCouncilString = locale === 'ni' ? 'our delivery partner' : 'your local council'
+    const localisedCouncilString = locale === 'ni' ? 'our delivery partner Avarto' : 'your local council'
     return env.filters.safe(input.replaceAll(/council tax/ig, localisedTaxString).replaceAll(/your local council/ig, localisedCouncilString))
   }
 
