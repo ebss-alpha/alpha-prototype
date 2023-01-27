@@ -28,6 +28,7 @@ You need to upload proof of address
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">You need to upload proof of address</h1>
       {% if data.locale == 'ni' %}
+      <p>We will check that you live at the address you are applying for.</p>
         {% if data['describe-where-you-live'] == 'care-home' %}
         <p class="govuk-body">
           Upload an invoice for your care home fees from the past 3 months.
@@ -76,8 +77,8 @@ You need to upload proof of address
           Upload both:
         </p>
         <ul class="govuk-list govuk-list--bullet">
-          <li>a proof of address</li>
-          <li>a photo ID</li>
+          <li>one proof of address</li>
+          <li>one photo identity</li>
         </ul>
       {% endif %}
       <h2 class="govuk-heading-m">Proofs of address</h2>
@@ -95,15 +96,15 @@ You need to upload proof of address
         <li>correspondence from a Northern Ireland university confirming that you've been on a course of study for at least
           the last six months</li>
       </ul>
-      <h2 class="govuk-heading-m">Proofs of ID</h2>
+      <h2 class="govuk-heading-m">Proofs of identity</h2>
       <ul class="govuk-list govuk-list--bullet">
-        <li>a UK, Irish or EEA driving licence (photographic part) (provisional accepted)</li>
-        <li>a UK, Irish or EU passport</li>
-        <li>an Electoral Identity Card</li>
-        <li>a Translink Senior SmartPass</li>
-        <li>a Translink 60+ SmartPass</li>
-        <li>a Translink War Disabled SmartPass</li>
-        <li>a Translink Blind Person’s SmartPass</li>
+        <li>UK, Irish or EEA driving licence (photographic part) (provisional accepted)</li>
+        <li>UK, Irish or EU passport</li>
+        <li>Electoral Identity Card</li>
+        <li>Translink Senior SmartPass</li>
+        <li>Translink 60+ SmartPass</li>
+        <li>Translink War Disabled SmartPass</li>
+        <li>Translink Blind Person’s SmartPass</li>
       </ul>
       {% endif %}
       {% else %}
@@ -126,7 +127,8 @@ You need to upload proof of address
         <li>signed, dated letter with a letterhead from a boat mooring provider showing your name, address and that you live permanently on a boat on a long-term residential mooring</li>
       </ul>
       {% endif %}
-       <p>Your document must be:</p>
+       <p>You can upload a picture or scan of a paper document, or a digital document from your computer.</p> 
+      <p>Your document must be:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>no more than 10 MB</li>
         <li>in PDF, .jpeg, .png or .doc format</li>
