@@ -227,16 +227,16 @@ router.get(['/contact-check'], (req, res) => {
 router.get(['/council-tax-check', '/rates-check'], (req, res) => {
   const proofRequired = req.session.data['describe-where-you-live'] === 'care-home' || req.session.data['rates-or-council-tax'] === 'no' || req.session.data.locale === 'ni'
   if (proofRequired) {
-    res.redirect('/upload-proof-of-address?uploaded=1')
+    res.redirect('/upload-proof-of-address')
   } else {
-    res.redirect('/what-is-your-full-name')
+    res.redirect('/do-you-currently-get-benefits')
   }
 })
 
 router.get(['/upload-check'], (req, res) => {
   req.session.data.removed = undefined
   if (req.query.continue) {
-    res.redirect('/what-is-your-full-name')
+    res.redirect('/do-you-currently-get-benefits')
   } else {
     if (req.query['upload-multiple'] !== undefined && req.query['proof-of-address'].length !== 0) {
       req.session.data.error = false

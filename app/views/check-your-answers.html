@@ -195,7 +195,7 @@ No phone number provided
         },
         {
           key: {
-            text: "Is your name on your household's council tax bill?"
+            text: "Are you registered for council tax at the address you're applying for?"
           },
           value: {
             html: councilTax
@@ -205,7 +205,24 @@ No phone number provided
               {
                 href: "rates-or-council-tax",
                 text: "Change",
-                visuallyHiddenText: "your answer to 'Is your name on your household's council tax bill?'"
+                visuallyHiddenText: "your answer to 'Are you registered for council tax at the address you're applying for?'"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Do you currently get benefits?"
+          },
+          value: {
+            html: data['receiving-benefits']
+          },
+          actions: {
+            items: [
+              {
+                href: "do-you-currently-get-benefits",
+                text: "Change",
+                visuallyHiddenText: "your answer to 'Do you currently get benefits?'"
               }
             ]
           }
