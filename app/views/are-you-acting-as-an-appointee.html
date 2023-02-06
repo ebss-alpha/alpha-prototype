@@ -1,0 +1,66 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Are you acting as an appointee
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+
+{% set backLink = 'what-is-your-phone-number' %}
+
+
+{% block beforeContent %}
+{{ alphaPhase() }}
+  {{ govukBackLink({
+    text: "Back",
+    href: backLink
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% filter localise(data.locale) %}
+<form action="appointee-check">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukRadios({
+        name: "are-you-acting-as-an-appointee",
+        fieldset: {
+          legend: {
+            text: "Are you acting as an appointee for the beneficiary?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          html: '<p class="govuk-hint">If you are acting as an appointee we may contact you about the application instead of the beneficiary.</p>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                What does this mean?
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              A legal appointee is someone who has been legally appointed to handle financial matters for individuals who do not have capacity to do so.
+            </div>
+          </details>' | safe
+        },
+        items: [
+        {
+          value: "no",
+          text: "No I am not a legal appointee for the beneficiary"
+        },
+        {
+          value: "yes",
+          text: "Yes I am a legal appointee for the beneficiary"
+        }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+</form>
+{% endfilter %}
+{% endblock %}

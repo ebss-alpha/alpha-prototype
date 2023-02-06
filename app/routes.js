@@ -216,12 +216,16 @@ router.get(['/afp-check'], (req, res) => {
   }
 })
 
-router.get(['/contact-check'], (req, res) => {
-  const y = req.session.data['dob-year'].length > 0 ? parseInt(req.session.data['dob-year']) : 1930
-  const m = req.session.data['dob-month'].length > 0 ? parseInt(req.session.data['dob-month']) - 1 : 0
-  const d = req.session.data['dob-day'].length > 0 ? parseInt(req.session.data['dob-day']) : 1
-  req.session.data.dob = new Date(y, m, d)
-  res.redirect('/what-are-your-bank-account-details')
+router.get(['/appointee-check'], (req, res) => {
+  switch (req.session.data['are-you-acting-as-an-appointee']) {
+    case 'yes':
+      res.redirect('/what-is-your-name-appointee')
+      break
+    case 'no':
+    default:
+      res.redirect('/what-are-your-bank-account-details')
+      break
+  }
 })
 
 router.get(['/council-tax-check', '/rates-check'], (req, res) => {
@@ -302,19 +306,6 @@ router.get(['/applying-for-residents-check'], (req, res) => {
   } else {
     res.redirect('/find-your-address')
   }
-})
-
-router.get(['/add-resident'], (req, res) => {
-  const y = req.session.data['resident-dob-year'].length > 0 ? parseInt(req.session.data['resident-dob-year']) : 1930
-  const m = req.session.data['resident-dob-month'].length > 0 ? parseInt(req.session.data['resident-dob-month']) - 1 : 0
-  const d = req.session.data['resident-dob-day'].length > 0 ? parseInt(req.session.data['resident-dob-day']) : 1
-  const newResident = {
-    name: req.session.data['name-of-resident'],
-    dob: new Date(y, m, d)
-  }
-  if (req.session.data.residents === undefined) req.session.data.residents = []
-  req.session.data.residents.push(newResident)
-  res.redirect('/resident-bank-details')
 })
 
 router.get(['/add-another'], (req, res) => {

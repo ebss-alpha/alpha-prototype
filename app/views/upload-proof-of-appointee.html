@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Upload proof that you are an appointee
+{% endblock %}
+
+{% from "./alphaPhase.html" import alphaPhase %}
+{% block beforeContent %}
+{{ alphaPhase() }}
+
+
+{% set backLink ="what-is-your-address-appointee" %}
+
+{{ govukBackLink({
+text: "Back",
+href: backLink
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<form action="what-are-your-bank-account-details">
+  <input type="hidden" name="proof-of-appointee-provided" value="yes">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Upload proof that you are an appointee</h1>
+      <p>Please upload proof, when we know what it is.</p>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="proof-of-appointee">
+          Upload files
+        </label>
+        <input class="govuk-file-upload" id="proof-of-appointee" name="proof-of-appointee" type="file" multiple>
+      </div>
+    </div>
+  </div>
+  <input class="govuk-button" type="submit" value="Continue" name="continue">
+  </div>
+  </div>
+</form>
+{% endblock %}
