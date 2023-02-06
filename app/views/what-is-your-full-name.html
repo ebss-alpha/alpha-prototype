@@ -4,8 +4,11 @@
 {% block pageTitle %}
 What is your full name?
 {% endblock %}
-
+{% if data.locale != 'ni' %}
 {% set backLink = 'do-you-currently-get-benefits' %}
+{% else %}
+{% set backLink = 'upload-proof-of-address' %}
+{% endif %}
 
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}

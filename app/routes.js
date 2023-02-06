@@ -229,14 +229,22 @@ router.get(['/council-tax-check', '/rates-check'], (req, res) => {
   if (proofRequired) {
     res.redirect('/upload-proof-of-address')
   } else {
-    res.redirect('/do-you-currently-get-benefits')
+    if (req.session.data.locale !== 'ni') {
+      res.redirect('/do-you-currently-get-benefits')
+    } else {
+      res.redirect('/what-is-your-full-name')
+    }
   }
 })
 
 router.get(['/upload-check'], (req, res) => {
   req.session.data.removed = undefined
   if (req.query.continue) {
-    res.redirect('/do-you-currently-get-benefits')
+    if (req.session.data.locale !== 'ni') {
+      res.redirect('/do-you-currently-get-benefits')
+    } else {
+      res.redirect('/what-is-your-full-name')
+    }
   } else {
     if (req.query['upload-multiple'] !== undefined && req.query['proof-of-address'].length !== 0) {
       req.session.data.error = false
