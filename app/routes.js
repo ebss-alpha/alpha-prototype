@@ -230,7 +230,7 @@ router.get(['/council-tax-check', '/rates-check'], (req, res) => {
     res.redirect('/upload-proof-of-address')
   } else {
     if (req.session.data.locale !== 'ni') {
-      res.redirect('/do-you-currently-get-benefits')
+      res.redirect('/are-you-receiving-dwp-benefits')
     } else {
       res.redirect('/what-is-your-full-name')
     }
@@ -241,7 +241,7 @@ router.get(['/upload-check'], (req, res) => {
   req.session.data.removed = undefined
   if (req.query.continue) {
     if (req.session.data.locale !== 'ni') {
-      res.redirect('/do-you-currently-get-benefits')
+      res.redirect('/are-you-receiving-dwp-benefits')
     } else {
       res.redirect('/what-is-your-full-name')
     }
