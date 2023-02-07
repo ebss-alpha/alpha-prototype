@@ -3,7 +3,7 @@
 
 {% block pageTitle %}
 {% filter localise(data.locale) %}
-Are you receiving any Department for Work and Pensions (DWP) benefits?
+Are you receiving any Department for Work and Pensions (DWP) or His Majesty's Revenue and Customs (HMRC) benefits?
 {% endfilter %}
 {% endblock %}
 
@@ -34,12 +34,12 @@ href: backLink
       {{ govukRadios({
         name: "receiving-benefits",
         hint: {
-          text: '<div class="govuk-!-margin-bottom-2">These include Universal Credit, the State Pension, Tax Credits and others.</div><div>Telling us this will allow your local council to use DWPʼs records to confirm your address when processing your application.</div>' | safe
+          text: '<div class="govuk-!-margin-bottom-2">These include Universal Credit, the State Pension, Tax Credits and other welfare benefits or credits.</div><div>Telling us this will allow your local council to use DWPʼs records to confirm your address when processing your application.</div>' | safe
         },
         fieldset: {
           classes: "govuk-radios--inline",
           legend: {
-            text: "Are you receiving any Department for Work and Pensions (DWP) benefits?",
+            text: "Are you receiving any Department for Work and Pensions (DWP) or His Majesty's Revenue and Customs (HMRC) benefits or credits?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
