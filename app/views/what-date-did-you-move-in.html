@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is your date of birth?
+What date did you move into this temporary housing?
 {% endblock %}
 
 
@@ -11,42 +11,39 @@ What is your date of birth?
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: "what-is-your-full-name"
+    href: "describe-where-you-live"
   }) }}
 {% endblock %}
 
 {% block content %}
-<form action="what-is-your-email-address" novalidate>
+<form action="find-your-address" novalidate>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         {{ govukDateInput({
-          id: "dob",
-          namePrefix: "dob",
+          id: "date-of-occupancy",
+          namePrefix: "date-of-occupancy",
           fieldset: {
             legend: {
-              text: "What is your date of birth?",
+              text: "What date did you move into this temporary housing?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "For example, 31 3 1980"
+            text: "For example, 22 9 2022"
           },
           items: [
             {
               name: "day",
-              classes: "govuk-input--width-2",
-              autocomplete: "bday-day"
+              classes: "govuk-input--width-2"
             },
             {
               name: "month",
-              classes: "govuk-input--width-2",
-              autocomplete: "bday-month"
+              classes: "govuk-input--width-2"
             },
             {
               name: "year",
-              classes: "govuk-input--width-4",
-              autocomplete: "bday-year"
+              classes: "govuk-input--width-4"
             }
           ]
         }) }}
