@@ -7,10 +7,15 @@ What are your bank details?
 
 {% from "./alphaPhase.html" import alphaPhase %}
 {% block beforeContent %}
+{% if data['are-you-acting-as-an-appointee'] == 'yes' %}
+{% set backLink = 'upload-proof-of-appointee' %}
+{% else %}
+{% set backLink = 'are-you-acting-as-an-appointee' %}
+{% endif %}
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: 'what-is-your-phone-number'
+    href: backLink
   }) }}
 {% endblock %}
 

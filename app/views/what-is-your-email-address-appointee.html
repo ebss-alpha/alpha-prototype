@@ -10,23 +10,14 @@ What is your email address?
 {{ alphaPhase() }}
   {{ govukBackLink({
     text: "Back",
-    href: "what-is-your-full-name-applicant"
+    href: "what-is-your-name-appointee"
   }) }}
 {% endblock %}
 
-{% set localisedHint %}
-<div class="govuk-!-margin-bottom-2">Include a local area code for landline numbers.</div>
-{% if data.locale == 'ni' %}
-<div>Our delivery partner might use your phone number to
-  contact you about your application</div>
-{% else %}
-<div>The Department for Business, Energy and Industrial Strategy or your local council might use your phone number to
-  contact you about your application.</div>
-{% endif %}
-{% endset %}
 
 {% block content %}
-<form action="what-is-your-phone-number-applicant">
+{% filter localise(data.locale) %}
+<form action="what-is-your-phone-number-appointee">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukInput({
@@ -36,7 +27,8 @@ What is your email address?
           classes: "govuk-label--l"
         },
         hint: {
-          text: localisedHint | safe
+          text: '<div>The Department for Business, Energy and Industrial Strategy or your local council might use your email address to
+            contact you about your application.</div>' | safe
         },
         id: "email",
         name: "email",
@@ -48,4 +40,5 @@ What is your email address?
     </div>
   </div>
 </form>
+{% endfilter %}
 {% endblock %}
