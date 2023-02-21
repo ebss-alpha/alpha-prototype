@@ -23,29 +23,32 @@ What date did you move into this temporary housing?
           id: "date-of-occupancy",
           namePrefix: "date-of-occupancy",
           fieldset: {
-            legend: {
-              text: "What date did you move into this temporary housing?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
+          legend: {
+          text: "What date did you move into this temporary housing?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+        },
+        hint: {
+          html: '<p class="govuk-hint">For example, 22 9 2022</p>
+          <p class="govuk-hint">You must have lived in the address you are applying for at least one month before the date that
+            you are making this
+            application.</p>'
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2"
           },
-          hint: {
-            text: "For example, 22 9 2022"
+          {
+            name: "month",
+            classes: "govuk-input--width-2"
           },
-          items: [
-            {
-              name: "day",
-              classes: "govuk-input--width-2"
-            },
-            {
-              name: "month",
-              classes: "govuk-input--width-2"
-            },
-            {
-              name: "year",
-              classes: "govuk-input--width-4"
-            }
-          ]
+          {
+            name: "year",
+            classes: "govuk-input--width-4"
+          }
+        ]
         }) }}
 
         {{ govukButton({
