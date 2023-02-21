@@ -14,6 +14,12 @@ Describe where you live
   }) }}
 {% endblock %}
 
+{% if data.locale == 'ni' %}
+{% set tempAccom = 'in temporary housing (placed the Northern Ireland Housing Executive)' %}
+{% else %}
+{% set tempAccom = 'in temporary housing (placed by your local council)' %}
+{% endif %}
+
 {% set preamble %}
 <p class="govuk-hint">
   Select the option that describes your home best if you fit into more than one category.</p> 
@@ -63,7 +69,7 @@ Describe where you live
           },
           {
             value: "temporary",
-            text: "in temporary housing (placed by your local council)"
+            text: tempAccom
           },
           {
             value: "house-or-flat-rented",
